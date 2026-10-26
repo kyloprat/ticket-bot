@@ -1,1 +1,11 @@
-{}
+{
+  "awaiting": {
+    "field": "newcity",
+    "link": {
+      "event_code": "ET00451914",
+      "region_slug": "kolkata",
+      "slug": "namit-malhotras-ramayana-hindi"
+    },
+    "label": "Namit Malhotra's Ramayana - (Hindi)"
+  }
+}
