@@ -23,9 +23,11 @@
       "pxl"
     ],
     "times": [
-      "evening",
-      "night"
+      "1900-2100"
     ],
-    "enabled": true
+    "enabled": true,
+    "formats": [
+      "pxl"
+    ]
   }
 ]
