@@ -51,10 +51,16 @@
     "event_code": "ET00477911",
     "region_slug": "kolkata",
     "slug": "drishyam-the-conclusion-hindi",
-    "dates": [],
+    "dates": [
+      "20261106"
+    ],
     "theatres": [],
-    "formats": [],
-    "times": [],
+    "formats": [
+      "pxl"
+    ],
+    "times": [
+      "1900-2100"
+    ],
     "enabled": true
   }
 ]
