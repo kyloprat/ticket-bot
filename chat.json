@@ -1,15 +1,11 @@
 {
-  "awaiting": {
-    "id": "et00491771-bengaluru",
-    "field": "any"
-  },
   "cards": {
     "et00451914-kolkata": {
       "done": false,
       "id": 38
     },
     "et00491771-bengaluru": {
-      "done": false,
+      "done": true,
       "id": 41
     }
   }
