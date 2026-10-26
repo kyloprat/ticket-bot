@@ -4,5 +4,14 @@
       "done": true,
       "id": 41
     }
+  },
+  "awaiting": {
+    "field": "newcity",
+    "link": {
+      "event_code": "ET00477911",
+      "region_slug": "kolkata",
+      "slug": "drishyam-the-conclusion-hindi"
+    },
+    "label": "Drishyam The Conclusion - (Hindi)"
   }
 }
