@@ -3,15 +3,14 @@
     "et00491771-bengaluru": {
       "done": true,
       "id": 41
+    },
+    "et00477911-kolkata": {
+      "done": false,
+      "id": 62
     }
   },
   "awaiting": {
-    "field": "newcity",
-    "link": {
-      "event_code": "ET00477911",
-      "region_slug": "kolkata",
-      "slug": "drishyam-the-conclusion-hindi"
-    },
-    "label": "Drishyam The Conclusion - (Hindi)"
+    "id": "et00477911-kolkata",
+    "field": "any"
   }
 }
