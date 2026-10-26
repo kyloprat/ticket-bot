@@ -1,17 +1,16 @@
 {
   "awaiting": {
-    "field": "newcity",
-    "link": {
-      "event_code": "ET00491771",
-      "region_slug": "kolkata",
-      "slug": "dune-part-three-english"
-    },
-    "label": "Dune: Part Three - (English)"
+    "id": "et00491771-bengaluru",
+    "field": "any"
   },
   "cards": {
     "et00451914-kolkata": {
       "done": false,
       "id": 38
+    },
+    "et00491771-bengaluru": {
+      "done": false,
+      "id": 41
     }
   }
 }
