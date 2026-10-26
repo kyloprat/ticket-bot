@@ -39,7 +39,8 @@
     "formats": [
       "imax",
       "imax 3d",
-      "3d pxl"
+      "3d pxl",
+      "pxl"
     ],
     "times": [],
     "enabled": true
