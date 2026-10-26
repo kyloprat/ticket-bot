@@ -1,6 +1,34 @@
 {
   "et00451914-kolkata": {
-    "shows": {},
+    "shows": {
+      "MSMA|23237|20261106|RECLINER": {
+        "venue": "PVR: Mani Square Mall, Kolkata",
+        "time": "07:50 PM",
+        "fmt": "3D PXL",
+        "date": "20261106",
+        "cat": "RECLINER",
+        "price": "940.00",
+        "status": "0"
+      },
+      "MSMA|23237|20261106|PRIME": {
+        "venue": "PVR: Mani Square Mall, Kolkata",
+        "time": "07:50 PM",
+        "fmt": "3D PXL",
+        "date": "20261106",
+        "cat": "PRIME",
+        "price": "540.00",
+        "status": "3"
+      },
+      "MSMA|23237|20261106|CLASSIC": {
+        "venue": "PVR: Mani Square Mall, Kolkata",
+        "time": "07:50 PM",
+        "fmt": "3D PXL",
+        "date": "20261106",
+        "cat": "CLASSIC",
+        "price": "470.00",
+        "status": "3"
+      }
+    },
     "dates": {
       "20261105": "AVAILABLE",
       "20261106": "BOOKABLE",
