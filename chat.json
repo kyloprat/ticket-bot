@@ -1,7 +1,12 @@
 {
   "awaiting": {
-    "id": "et00451914-kolkata",
-    "field": "theatres"
+    "field": "newcity",
+    "link": {
+      "event_code": "ET00491771",
+      "region_slug": "kolkata",
+      "slug": "dune-part-three-english"
+    },
+    "label": "Dune: Part Three - (English)"
   },
   "cards": {
     "et00451914-kolkata": {
