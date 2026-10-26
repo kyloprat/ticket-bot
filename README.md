@@ -10,7 +10,10 @@ Send the bot a **BookMyShow movie link** (or BookMyShow's share text, which carr
 1. It asks **which city** (Bengaluru first; the city in a link is just where it was shared from).
 2. It shows one **setup card** with the live status from BookMyShow: open or not, which dates, how many theatres.
 3. Narrow it with the buttons (dates and theatres come from what BookMyShow lists) or type it in one line:
-   `6 Nov 7-8 pm PXL`, `18-20 Dec evening`, `after 9 pm`, `PVR Orion, INOX`. Typed dates and theatres are
+   `6 Nov 7-8 pm 3D PXL Mani Square`, `18-20 Dec evening`, `after 9 pm`, `IMAX 3D at South City`.
+   Formats (2D, 3D, IMAX 3D...) are separate listings on BookMyShow; every one is checked, and
+   screens like PXL / IMAX / 4DX are format filters. Theatre names are checked against `cinemas.json`
+   (every cinema per city; refresh with `uv run cinemas.py`). Typed dates and theatres are
    checked against BookMyShow ("pxl (not listed yet)" means it will alert when PXL lists shows).
 4. When something matches you get a message immediately. If nothing is available you get one note a day at 8 pm IST.
 

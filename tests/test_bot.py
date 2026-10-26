@@ -127,7 +127,11 @@ def test_parse_dates():
 
 def test_parse_query_one_line_requests():
     q = chat.parse_query
-    assert q("6 Nov 7-8 PM PXL", TODAY) == {"times": ["1900-2000"], "dates": ["20261106"], "theatres": ["pxl"]}
+    assert q("6 Nov 7-8 PM PXL", TODAY) == {"times": ["1900-2000"], "dates": ["20261106"], "formats": ["pxl"]}
+    assert q("7:50 PM mani square 3D PXL 6 Nov", TODAY) == {
+        "times": ["1950-2050"], "dates": ["20261106"], "formats": ["3d pxl"], "theatres": ["mani square"]}
+    assert q("IMAX 3D at South City or Mani Square", TODAY) == {
+        "formats": ["imax 3d"], "theatres": ["south city", "mani square"]}
     assert q("18-20 Dec, evening and night", TODAY) == {
         "times": ["evening", "night"], "dates": ["20261218", "20261219", "20261220"]}
     assert q("PVR Orion, INOX", TODAY) == {"theatres": ["pvr orion", "inox"]}
@@ -159,7 +163,7 @@ def test_link_asks_city_then_shows_one_card():
     assert [t["id"] for t in trackers] == ["et00451914-bengaluru"]
     assert tg.edited[-1][0] == 99 and "📍 Bengaluru" in tg.last and "Checking BookMyShow" in tg.last
     assert meta["cards"]["et00451914-bengaluru"]["id"] == 99 and c.lookups == ["et00451914-bengaluru"]
-    assert tg.last_data == {f"set:et00451914-bengaluru:{x}" for x in ("dates", "theatres", "times", "city", "done")}
+    assert tg.last_data == {f"set:et00451914-bengaluru:{x}" for x in ("dates", "theatres", "formats", "times", "city", "done")}
 
 
 def test_typed_line_updates_everything_and_validates_against_bookmyshow():
@@ -170,11 +174,13 @@ def test_typed_line_updates_everything_and_validates_against_bookmyshow():
     c.handle(tap(2, "nc:kolkata"))
     assert "🟢 Bookings OPEN: 5 Nov - 6 Nov · 2 theatre(s)" in tg.last
     c.handle(tap(3, "set:et00451914-kolkata:dates"))
-    c.handle(msg(4, "6 Nov 7-8 PM PXL"))                                # what was rejected before
+    c.handle(msg(4, "6 Nov 7-8 PM PXL mani square"))                    # what was rejected before
     t = trackers[0]
-    assert (t["dates"], t["times"], t["theatres"]) == (["20261106"], ["1900-2000"], ["pxl"])
-    assert "6 Nov (open)" in tg.last and "pxl (not listed yet)" in tg.last and "7-8 pm" in tg.last
-    assert "Updated dates, time, theatres" in tg.last
+    assert (t["dates"], t["times"], t["formats"], t["theatres"]) == (
+        ["20261106"], ["1900-2000"], ["pxl"], ["mani square"])
+    assert "6 Nov (open)" in tg.last and "PXL (not listed yet)" in tg.last and "7-8 pm" in tg.last
+    assert "mani square (showing it)" in tg.last
+    assert "Updated dates, time, format, theatres" in tg.last
     assert tg.sent[-1][0] == tg.last and tg.edits[-1] == (99, [])        # fresh card; old one stripped
     assert meta["cards"][t["id"]]["id"] == 100 + len(tg.sent)
     c.handle(msg(5, "someday soon"))
@@ -196,7 +202,7 @@ def test_date_and_theatre_buttons_come_from_bookmyshow():
     assert trackers[0]["dates"] == ["20261106"] and "✅ 6 Nov" in {b[0] for row in tg.log[-1][1] for b in row}
     c.handle(tap(5, "set:et00451914-kolkata:theatres"))
     c.handle(tap(6, "vn:et00451914-kolkata:1"))
-    assert trackers[0]["theatres"] == ["pvr: mani square"] and "pvr: mani square (1 listed)" in tg.last
+    assert trackers[0]["theatres"] == ["pvr: mani square"] and "pvr: mani square (showing it)" in tg.last
     c.handle(tap(7, "vn:et00451914-kolkata:1"))
     assert trackers[0]["theatres"] == []
     c.handle(tap(8, "set:et00451914-kolkata:times"))
@@ -423,7 +429,7 @@ def test_run_does_not_rewrite_files_when_nothing_changed(workdir):
 
 
 def test_run_saves_catalog_and_refreshes_the_card_only_when_it_changes(workdir):
-    t = doomsday_tracker(theatres=["pxl"])
+    t = doomsday_tracker(formats=["pxl"])
     Path("trackers.json").write_text(json.dumps([t]))
     Path("chat.json").write_text(json.dumps({"cards": {t["id"]: {"id": 7, "done": False}}}))
     tg = FakeTg()
@@ -434,7 +440,7 @@ def test_run_saves_catalog_and_refreshes_the_card_only_when_it_changes(workdir):
     assert len(tg.edited) == 1                                     # unchanged: no edit
     main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["INOX Garuda"]))
     assert read("meta.json")["catalog"][t["id"]]["venues"] == ["INOX Garuda"]
-    assert "pxl (not listed yet)" in tg.edited[-1][1] and "Bookings OPEN" in tg.edited[-1][1]
+    assert "PXL (not listed yet)" in tg.edited[-1][1] and "Bookings OPEN" in tg.edited[-1][1]
     assert tg.sent == []                                           # pxl not listed: no alert yet
 
 
@@ -445,3 +451,25 @@ def test_run_only_checks_one_tracker_and_skips_the_daily_note(workdir):
     main.run(now=NOW_8PM, tg=tg, fetch=lambda *a: api([]), only="other")
     assert list(read("meta.json")["results"]) == ["other"] and tg.sent == []
     assert "last_heartbeat" not in read("meta.json")
+
+
+def test_check_bms_covers_every_format_and_matches_screens():
+    """The real miss: 7:50 PM PXL at Mani Square was listed under the 3D event, not the 2D link."""
+    def payload(code, venue, screen):
+        d = api([venue])
+        d["data"]["showtimeWidgets"][0]["data"][0]["data"][0]["showtimes"][0]["screenAttr"] = screen
+        d["data"]["bottomSheetData"] = {"format-selector": {"widgets": [{"type": "chip-list", "text": "Hindi", "data": [
+            {"title": "2D", "cta": {"additionalData": {"eventCode": "ET2D"}}},
+            {"title": "3D", "cta": {"additionalData": {"eventCode": "ET3D"}}}]}]}}
+        return d
+    feeds = {"ET2D": payload("ET2D", "INOX Quest", ""), "ET3D": payload("ET3D", "PVR: Mani Square Mall", "PXL")}
+    t = doomsday_tracker(event_code="ET2D", formats=["3d pxl"])
+    r = main.check_bms(t, {}, fetch=lambda code, *a: feeds[code])
+    assert r["catalog"]["formats"] == ["2D", "3D"] and r["catalog"]["screens"] == ["PXL"]
+    assert len(r["shows"]) == 1 and r["shows"][0].fmt == "3D"
+    assert "BOOKINGS OPEN: 1 matching show" in r["changes"][0]
+    assert "PVR: Mani Square Mall · 3D PXL" in r["changes"][1]
+    card = chat.card_text(t, r["catalog"], r["result"])
+    assert "3D PXL (showing)" in card and "Available: 2D, 3D · PXL" in card
+    t2 = doomsday_tracker(event_code="ET2D", theatres=["mani square"], formats=["2d"])
+    assert main.check_bms(t2, {}, fetch=lambda code, *a: feeds[code])["shows"] == []   # AND, not OR

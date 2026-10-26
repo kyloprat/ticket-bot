@@ -89,6 +89,7 @@ class ShowInfo:
     time_code: str
     screen_attr: str
     categories: list[CatInfo] = field(default_factory=list)
+    fmt: str = ""            # "3D", "IMAX 3D"... each format is its own BookMyShow event
 
 @dataclass
 class DateInfo:
@@ -198,6 +199,20 @@ def parse_movie_info(data):
     return info
 
 
+def parse_formats(data, event_code):
+    """[(event_code, format)] for every format of the same language as event_code.
+    BookMyShow lists 2D / 3D / IMAX 3D... as separate events; a PXL show can live under 3D."""
+    widgets = data.get("data", {}).get("bottomSheetData", {}).get("format-selector", {}).get("widgets", [])
+    for w in widgets:
+        if w.get("type") != "chip-list":
+            continue
+        chips = [((c.get("cta", {}).get("additionalData", {}).get("eventCode") or ""), c.get("title", ""))
+                 for c in w.get("data", [])]
+        if any(code == event_code for code, _ in chips):
+            return [(code, title) for code, title in chips if code]
+    return [(event_code, "")]
+
+
 def parse_dates(data):
     dates = []
     for w in data.get("data", {}).get("topStickyWidgets", []):
@@ -264,7 +279,9 @@ def parse_shows(data):
 # ──────────────────────────────────────────────────────────────────────
 # FILTERING
 # ──────────────────────────────────────────────────────────────────────
-def filter_shows(shows, theatre_filter, time_periods, date_codes):
+def filter_shows(shows, theatre_filter, time_periods, date_codes, formats=()):
+    """Theatre keywords match the theatre name (or screen/format, for older trackers). Each format
+    filter ("3d pxl") needs all its words in the show's format + screen. Filters combine with AND."""
     result = []
     kws = [k.strip().lower() for k in theatre_filter.split(",")
            if k.strip()] if theatre_filter else []
@@ -276,8 +293,14 @@ def filter_shows(shows, theatre_filter, time_periods, date_codes):
     for s in shows:
         # Theatre filter
         if kws:
-            name_lower = s.venue_name.lower()
+            name_lower = f"{s.venue_name} {s.screen_attr} {s.fmt}".lower()
             if not any(k in name_lower for k in kws):
+                continue
+
+        # Format filter (2D / 3D / IMAX 3D / PXL / 3D PXL ...)
+        if formats:
+            have = f"{s.fmt} {s.screen_attr}".lower().split()
+            if not any(all(w in have for w in f.split()) for f in formats):
                 continue
 
         # Date filter
@@ -329,6 +352,7 @@ def build_state(shows, dates):
             show_state[key] = {
                 "venue": s.venue_name,
                 "time": s.time,
+                "fmt": " ".join(x for x in (s.fmt, s.screen_attr) if x),
                 "date": s.date_code,
                 "cat": c.name,
                 "price": c.price,
@@ -360,8 +384,9 @@ def detect_changes(old_state, new_state):
     # New showtimes
     for key in set(new_shows) - set(old_shows):
         s = new_shows[key]
+        fmt = f" {s['fmt']}" if s.get("fmt") else ""
         changes.append(
-            f"🆕 NEW: {s['venue']} {s['time']} [{s['date']}] "
+            f"🆕 NEW: {s['venue']} {s['time']}{fmt} [{s['date']}] "
             f"— {s['cat']} ₹{s['price']}"
         )
 
@@ -558,35 +583,48 @@ def check_bms(t, old, fetch=fetch_bms):
     region_code, region_slug, lat, lon, geohash = resolve_region(t["region_slug"])
     all_shows, all_dates, got = [], [], False
     movie_info = {"name": "Unknown", "language": ""}
+    formats = None
     for dc in (t.get("dates") or [""]):
-        data = fetch(t["event_code"], dc, region_code, region_slug, lat, lon, geohash)
-        if not data:
-            continue
-        got = True
-        if movie_info["name"] == "Unknown":
-            movie_info = parse_movie_info(data)
-        all_dates.extend(parse_dates(data))
-        all_shows.extend(parse_shows(data))
+        first = fetch(t["event_code"], dc, region_code, region_slug, lat, lon, geohash)
+        if first and formats is None:
+            formats = parse_formats(first, t["event_code"])
+        for code, fmt in formats or [(t["event_code"], "")]:
+            data = first if code == t["event_code"] else \
+                fetch(code, dc, region_code, region_slug, lat, lon, geohash)
+            if not data:
+                continue
+            got = True
+            if movie_info["name"] == "Unknown":
+                movie_info = parse_movie_info(data)
+            if code == t["event_code"]:
+                all_dates.extend(parse_dates(data))
+            for show in parse_shows(data):
+                show.fmt = fmt
+                all_shows.append(show)
     seen = {}
     for d in all_dates:
         seen.setdefault(d.date_code, d.status)
     catalog = {"name": "" if movie_info["name"] in ("Unknown", "Unknown Movie") else movie_info["name"],
                "language": movie_info["language"], "dates": [[k, v] for k, v in seen.items()],
-               "venues": sorted({s.venue_name for s in all_shows})} if got else None
+               "venues": sorted({s.venue_name for s in all_shows}),
+               "formats": [f for _, f in formats or [] if f],
+               "screens": sorted({s.screen_attr for s in all_shows if s.screen_attr})} if got else None
     if not all_shows:
         return {"ok": got, "result": "no showtimes listed yet" if got else "BookMyShow gave no data",
                 "state": None, "changes": [], "shows": [], "movie_info": movie_info, "catalog": catalog}
 
     filtered = filter_shows(all_shows, ",".join(t.get("theatres", [])), ",".join(t.get("times", [])),
-                            ",".join(t.get("dates", [])))
+                            ",".join(t.get("dates", [])), t.get("formats", []))
     new_state = build_state(filtered, all_dates)
     changes = []
     if old.get("shows"):
         changes = detect_changes(old, new_state)
     elif new_state["shows"]:
         theatres = sorted({v["venue"] for v in new_state["shows"].values()})
-        changes = [f"🎟️ BOOKINGS OPEN: {len(new_state['shows'])} show/category slots "
-                   f"at {len(theatres)} theatre(s)"] + [f"   {x}" for x in theatres[:8]]
+        slots = sorted({(v["date"], v["venue"], v["time"], v.get("fmt", ""))
+                        for v in new_state["shows"].values()})
+        changes = [f"🎟️ BOOKINGS OPEN: {len(slots)} matching show(s) at {len(theatres)} theatre(s)"] + \
+            [f"   {d[6:8]}/{d[4:6]} {tm} · {v}" + (f" · {f}" if f else "") for d, v, tm, f in slots[:10]]
     return {"ok": True, "result": f"{len(filtered)} matching showtimes", "state": new_state,
             "changes": changes, "shows": filtered, "movie_info": movie_info, "catalog": catalog}
 

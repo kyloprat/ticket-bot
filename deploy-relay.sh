@@ -7,7 +7,7 @@ here="$(cd "$(dirname "$0")" && pwd)"
 out="$(mktemp -d)"
 mkdir -p "$out/api/_lib"
 cp "$here/api/telegram.py" "$out/api/"
-cp "$here"/{relay,chat,district,main}.py "$out/api/_lib/"
+cp "$here"/{relay,chat,district,main}.py "$here/cinemas.json" "$out/api/_lib/"
 cat > "$out/pyproject.toml" <<'TOML'
 [project]
 name = "bms-ticket-relay"
