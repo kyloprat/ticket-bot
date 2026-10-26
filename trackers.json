@@ -27,5 +27,17 @@
     "formats": [
       "pxl"
     ]
+  },
+  {
+    "id": "et00491771-bengaluru",
+    "label": "Dune: Part Three - (English)",
+    "event_code": "ET00491771",
+    "region_slug": "bengaluru",
+    "slug": "dune-part-three-english",
+    "dates": [],
+    "theatres": [],
+    "formats": [],
+    "times": [],
+    "enabled": true
   }
 ]
