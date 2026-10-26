@@ -37,7 +37,8 @@
     "dates": [],
     "theatres": [],
     "formats": [
-      "imax"
+      "imax",
+      "imax 3d"
     ],
     "times": [],
     "enabled": true
