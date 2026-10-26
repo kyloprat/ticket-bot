@@ -2,7 +2,54 @@
   "last_heartbeat": "2026-10-26",
   "results": {
     "et00439706-bengaluru": "no showtimes listed yet",
-    "et00451914-kolkata": "0 showtimes listed"
+    "et00451914-kolkata": "0 matching showtimes"
   },
-  "fails": 0
+  "fails": 0,
+  "catalog": {
+    "et00451914-kolkata": {
+      "name": "Namit Malhotra's Ramayana",
+      "language": "Hindi  •  2D",
+      "dates": [
+        [
+          "20261105",
+          "AVAILABLE"
+        ],
+        [
+          "20261106",
+          "BOOKABLE"
+        ],
+        [
+          "20261107",
+          "AVAILABLE"
+        ],
+        [
+          "20261108",
+          "AVAILABLE"
+        ],
+        [
+          "20261109",
+          "AVAILABLE"
+        ],
+        [
+          "20261110",
+          "NOT_OPEN"
+        ],
+        [
+          "20261111",
+          "NOT_OPEN"
+        ]
+      ],
+      "venues": [
+        "INOX: City Center, Salt Lake",
+        "INOX: City Centre II, Rajarhat",
+        "INOX: Forum Mall, Elgin Road",
+        "INOX: Quest Mall",
+        "INOX: Swabhumi, Maulana Azad Sarani",
+        "PVR: Diamond Plaza, Jessore Kolkata",
+        "PVR: Mani Square Mall, Kolkata",
+        "Priya Cinema: Rashbehari Avenue"
+      ]
+    }
+  },
+  "card_hash": {}
 }
