@@ -5,8 +5,12 @@
       "id": 41
     },
     "et00477911-kolkata": {
-      "done": true,
+      "done": false,
       "id": 65
     }
+  },
+  "awaiting": {
+    "id": "et00477911-kolkata",
+    "field": "any"
   }
 }
