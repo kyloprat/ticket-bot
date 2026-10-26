@@ -8,6 +8,8 @@ Commands: /list  /pause N  /resume N  /remove N  /edit N  /help   (N = number fr
 from __future__ import annotations
 
 import calendar
+import json
+import os
 import re
 from datetime import date, timedelta
 
@@ -38,7 +40,30 @@ HELP = (
     "/pause N, /resume N, /remove N\n"
     "N is the number shown in /list. Checks run every ~10 minutes."
 )
-TIP = "Tip: type it in one line, e.g. 6 Nov 7-8 pm PXL"
+TIP = "Tip: type it in one line, e.g. 6 Nov 7-8 pm 3D PXL Mani Square"
+
+# Screens and formats BookMyShow uses; a typed run of these becomes one format filter ("3D PXL").
+FORMAT_WORDS = ["2d", "3d", "imax", "pxl", "4dx", "screenx", "screen x", "insignia", "dolby", "atmos", "ice",
+                "mx4d", "epiq", "onyx", "laser", "playhouse", "luxe", "lux", "director's cut", "gold"]
+FORMAT_RUN = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in FORMAT_WORDS) + r")(?:\s+(?:"
+                        + "|".join(re.escape(w) for w in FORMAT_WORDS) + r"))*\b", re.I)
+DEFAULT_FORMATS = ["2D", "3D", "IMAX", "IMAX 3D", "PXL", "3D PXL", "4DX", "Insignia"]
+
+
+def _load_cinemas() -> dict:
+    """cinemas.json (made by cinemas.py): every cinema per city, to check typed theatre names."""
+    try:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "cinemas.json"), encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+CINEMAS = _load_cinemas()
+
+
+def cinema_matches(city: str, keyword: str) -> list[str]:
+    return [c for c in CINEMAS.get(city, []) if keyword.lower() in c.lower()]
 
 
 # ── links ───────────────────────────────────────────────────────────────
@@ -234,7 +259,7 @@ FILLER = {"at", "on", "in", "for", "show", "shows", "showtime", "showtimes", "ti
 
 
 def parse_query(text: str, today: date) -> dict:
-    """Free text -> {'dates': [...], 'times': [...], 'theatres': [...]} with only what was found.
+    """Free text -> {'dates', 'times', 'formats', 'theatres'} with only what was found.
     Raises ValueError for a date-looking phrase that isn't a real date."""
     out: dict = {}
     times, rest = _take_times(text)
@@ -244,6 +269,10 @@ def parse_query(text: str, today: date) -> dict:
     if phrases:
         out["dates"] = parse_dates(", ".join(phrases), today)
         rest = DATE_PHRASE.sub(" ", rest)
+    formats = [re.sub(r"\s+", " ", m).lower() for m in FORMAT_RUN.findall(rest)]
+    if formats:
+        out["formats"] = list(dict.fromkeys(formats))
+        rest = FORMAT_RUN.sub(" ", rest)
     names = []
     for seg in re.split(r"[,;/]|\band\b|\bor\b", rest, flags=re.I):
         words = [w for w in re.findall(r"[\w'&.:-]+", seg) if w.lower().strip(".:") not in FILLER]
@@ -258,13 +287,13 @@ def parse_query(text: str, today: date) -> dict:
 def new_tracker(link: dict, label: str) -> dict:
     return {"id": f"{link['event_code'].lower()}-{link['region_slug']}", "label": label,
             "event_code": link["event_code"], "region_slug": link["region_slug"], "slug": link["slug"],
-            "dates": [], "theatres": [], "times": [], "enabled": True}
+            "dates": [], "theatres": [], "formats": [], "times": [], "enabled": True}
 
 
 def title(t: dict, cat: dict | None = None) -> str:
     cat = cat or {}
     name = cat.get("name") or t["label"]
-    lang = re.sub(r"\s*•\s*", " ", cat.get("language") or "").strip()
+    lang = (cat.get("language") or "").split("•")[0].strip()      # every format is checked
     return f"{name} · {lang}" if lang else name
 
 
@@ -273,8 +302,10 @@ def describe(t: dict, cat: dict | None = None) -> str:
         return f"{t['label']} - District ({t['city']})\n   alert when showtimes appear"
     dates = ", ".join(fmt_date(d) for d in t["dates"]) or "any date"
     theatres = ", ".join(t["theatres"]) or "any theatre"
+    formats = ", ".join(x.upper() for x in t.get("formats", [])) or "any format"
     times = ", ".join(fmt_time(x) for x in t["times"]) or "any time"
-    return f"{title(t, cat)} ({city_name(t['region_slug'])})\n   📅 {dates} · 🏛 {theatres} · 🕐 {times}"
+    return (f"{title(t, cat)} ({city_name(t['region_slug'])})\n"
+            f"   📅 {dates} · 🏛 {theatres} · 🎞 {formats} · 🕐 {times}")
 
 
 def _span(codes: list[str]) -> str:
@@ -295,10 +326,29 @@ def status_line(cat: dict | None, result: str | None) -> str:
     return "⏳ Bookings not open yet. I'll alert you the moment they open."
 
 
+def theatre_options(cat: dict | None) -> list[str]:
+    """Theatre buttons: the cinemas BookMyShow lists for this movie."""
+    return (cat or {}).get("venues", [])
+
+
+def format_options(cat: dict | None) -> list[str]:
+    """Format buttons: what this movie is listed in (formats, then special screens), else common ones."""
+    cat = cat or {}
+    listed = cat.get("formats", []) + [x for x in cat.get("screens", []) if x not in cat.get("formats", [])]
+    return listed or DEFAULT_FORMATS
+
+
+def format_buttons(t: dict, cat: dict | None):
+    opts = format_options(cat)[:14]
+    btns = [(("✅ " if o.lower() in t.get("formats", []) else "") + o, f"fm:{t['id']}:{i}")
+            for i, o in enumerate(opts)]
+    return _rows(btns, 2) + [[("Any format", f"fm:{t['id']}:any"), ("⬅️ Back", f"set:{t['id']}:back")]]
+
+
 def card_text(t: dict, cat: dict | None = None, result: str | None = None, note: str = "") -> str:
     """The setup card. Shared by the relay (on taps) and the checker (after each check)."""
     statuses = {d: s for d, s in (cat or {}).get("dates", [])}
-    venues = [v.lower() for v in (cat or {}).get("venues", [])]
+    known = [v.lower() for v in theatre_options(cat) + (cat or {}).get("formats", [])]
 
     def date_tag(d):                     # validated against what BookMyShow lists, once we know
         if not cat:
@@ -307,16 +357,36 @@ def card_text(t: dict, cat: dict | None = None, result: str | None = None, note:
         return f"{short_date(d)} ({'open' if s in OPEN_STATUSES else 'not open yet' if s else 'not listed yet'})"
 
     def theatre_tag(k):
+        if cat and any(k in v for v in known):
+            return f"{k} (showing it)"
+        names = cinema_matches(t["region_slug"], k)
+        if len(names) == 1:
+            where = names[0]
+        elif names:
+            where = f"{len(names)} cinemas"
+        else:
+            where = f"no cinema by that name in {city_name(t['region_slug'])}" if CINEMAS else ""
+        if cat and names:
+            where += ", not showing it yet"
+        return f"{k} ({where})" if where else k
+
+    fmt_known = " ".join((cat or {}).get("formats", []) + (cat or {}).get("screens", [])).lower().split()
+
+    def format_tag(k):
         if not cat:
-            return k
-        n = sum(k in v for v in venues)
-        return f"{k} ({n} listed)" if n else f"{k} (not listed yet)"
+            return k.upper()
+        ok = all(w in fmt_known for w in k.split())
+        return f"{k.upper()} ({'showing' if ok else 'not listed yet'})"
 
     dates = ", ".join(date_tag(d) for d in t["dates"]) or "any date"
     theatres = ", ".join(theatre_tag(k) for k in t["theatres"]) or "any theatre"
+    formats = ", ".join(format_tag(k) for k in t.get("formats", [])) or "any format"
     times = ", ".join(fmt_time(x) for x in t["times"]) or "any time"
     lines = [f"🎬 {title(t, cat)}", f"📍 {city_name(t['region_slug'])}", "", status_line(cat, result), "",
-             "Alert me for:", f"📅 {dates}", f"🏛 {theatres}", f"🕐 {times}"]
+             "Alert me for:", f"📅 {dates}", f"🏛 {theatres}", f"🎞 {formats}", f"🕐 {times}"]
+    if cat and (cat.get("formats") or cat.get("screens")):
+        lines += ["", "Available: " + " · ".join(x for x in (", ".join(cat.get("formats", [])),
+                                                    ", ".join(cat.get("screens", []))) if x)]
     if cat and result:
         lines += ["", f"Right now: {result}"]
     if note:
@@ -326,8 +396,8 @@ def card_text(t: dict, cat: dict | None = None, result: str | None = None, note:
 
 def main_buttons(tid: str):
     return [[("📅 Dates", f"set:{tid}:dates"), ("🏛 Theatres", f"set:{tid}:theatres")],
-            [("🕐 Time", f"set:{tid}:times"), ("📍 City", f"set:{tid}:city")],
-            [("✅ Done", f"set:{tid}:done")]]
+            [("🎞 Format", f"set:{tid}:formats"), ("🕐 Time", f"set:{tid}:times")],
+            [("📍 City", f"set:{tid}:city"), ("✅ Done", f"set:{tid}:done")]]
 
 
 def done_buttons(tid: str):
@@ -353,9 +423,8 @@ def date_buttons(t: dict, cat: dict | None):
 
 
 def theatre_buttons(t: dict, cat: dict | None):
-    venues = (cat or {}).get("venues", [])[:12]
     btns = [(("✅ " if v.lower() in t["theatres"] else "") + v[:32], f"vn:{t['id']}:{i}")
-            for i, v in enumerate(venues)]
+            for i, v in enumerate(theatre_options(cat)[:14])]
     return _rows(btns, 1) + [[("Any theatre", f"vn:{t['id']}:any"), ("⬅️ Back", f"set:{t['id']}:back")]]
 
 
@@ -523,14 +592,24 @@ class Chat:
             self.lookups.append(t["id"])
             self._show(t, "Tap dates, or type them (e.g. 18-20 Dec).", message_id, date_buttons(t, cat))
         elif kind == "vn":
-            venues = (cat or {}).get("venues", [])
+            venues = theatre_options(cat)
             if arg == "any":
                 t["theatres"] = []
             elif arg.isdigit() and int(arg) < len(venues):
                 name = venues[int(arg)].lower()
                 t["theatres"] = [x for x in t["theatres"] if x != name] if name in t["theatres"] \
                     else t["theatres"] + [name]
-            self._show(t, "Tap theatres, or type a name (e.g. PXL, INOX).", message_id, theatre_buttons(t, cat))
+            self._show(t, "Tap theatres, or type part of a name (e.g. Mani Square).", message_id,
+                       theatre_buttons(t, cat))
+        elif kind == "fm":
+            opts = [o.lower() for o in format_options(cat)]
+            cur = t.setdefault("formats", [])
+            if arg == "any":
+                t["formats"] = []
+            elif arg.isdigit() and int(arg) < len(opts):
+                o = opts[int(arg)]
+                t["formats"] = [x for x in cur if x != o] if o in cur else cur + [o]
+            self._show(t, "Tap formats, or type them (e.g. 3D PXL, IMAX).", message_id, format_buttons(t, cat))
         elif kind == "ct":
             self._move(t, arg, message_id)
 
@@ -552,9 +631,12 @@ class Chat:
             self._show(t, hint, message_id, date_buttons(t, cat))
         elif arg == "theatres":
             self.meta["awaiting"] = {"id": tid, "field": "theatres"}
-            hint = "Tap theatres, or type a name (e.g. PXL, INOX)." if (cat or {}).get("venues") else \
-                "Type theatre names, e.g. PXL, INOX. Nothing is listed yet, so I'll match them once it is."
+            hint = "Tap theatres, or type part of a name (e.g. Mani Square, South City)." if \
+                theatre_options(cat) else "Type part of a cinema name, e.g. Mani Square, South City."
             self._show(t, hint, message_id, theatre_buttons(t, cat))
+        elif arg == "formats":
+            self.meta["awaiting"] = {"id": tid, "field": "formats"}
+            self._show(t, "Tap formats, or type them (e.g. 3D PXL, IMAX).", message_id, format_buttons(t, cat))
         elif arg == "city":
             self._show(t, "Which city?", message_id,
                        city_buttons(f"ct:{tid}:", t["region_slug"], back=f"set:{tid}:back"))
@@ -599,7 +681,7 @@ class Chat:
         self.tg.send("Send me a BookMyShow movie link, or /help.")
 
     def _apply(self, t: dict, field: str, text: str) -> None:
-        if text.lower() in ("any", "clear", "all", "none") and field in ("dates", "theatres", "times"):
+        if text.lower() in ("any", "clear", "all", "none") and field in ("dates", "theatres", "formats", "times"):
             t[field] = []
             self._show(t, f"✅ Cleared {field}.")
             return
@@ -619,7 +701,7 @@ class Chat:
         if "dates" in q:
             self.lookups.append(t["id"])
         self.meta["awaiting"] = {"id": t["id"], "field": "any"}
-        names = {"dates": "dates", "times": "time", "theatres": "theatres"}
+        names = {"dates": "dates", "times": "time", "formats": "format", "theatres": "theatres"}
         self._show(t, "✅ Updated " + ", ".join(names[k] for k in names if k in q) + ".")
 
     def _add(self, link: dict, label: str = "") -> None:
