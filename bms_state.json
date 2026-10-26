@@ -1,54 +1,13 @@
 {
-  "et00451914-kolkata": {
-    "shows": {
-      "MSMA|23237|20261106|RECLINER": {
-        "venue": "PVR: Mani Square Mall, Kolkata",
-        "time": "07:50 PM",
-        "fmt": "3D PXL",
-        "date": "20261106",
-        "cat": "RECLINER",
-        "price": "940.00",
-        "status": "0"
-      },
-      "MSMA|23237|20261106|PRIME": {
-        "venue": "PVR: Mani Square Mall, Kolkata",
-        "time": "07:50 PM",
-        "fmt": "3D PXL",
-        "date": "20261106",
-        "cat": "PRIME",
-        "price": "540.00",
-        "status": "3"
-      },
-      "MSMA|23237|20261106|CLASSIC": {
-        "venue": "PVR: Mani Square Mall, Kolkata",
-        "time": "07:50 PM",
-        "fmt": "3D PXL",
-        "date": "20261106",
-        "cat": "CLASSIC",
-        "price": "470.00",
-        "status": "3"
-      }
-    },
-    "dates": {
-      "20261105": "AVAILABLE",
-      "20261106": "BOOKABLE",
-      "20261107": "AVAILABLE",
-      "20261108": "AVAILABLE",
-      "20261109": "AVAILABLE",
-      "20261110": "NOT_OPEN",
-      "20261111": "NOT_OPEN"
-    },
-    "_epoch": 0
-  },
   "et00477911-kolkata": {
     "shows": {},
     "dates": {
-      "20261026": "BOOKABLE",
+      "20261026": "AVAILABLE",
       "20261027": "AVAILABLE",
       "20261028": "AVAILABLE",
       "20261029": "AVAILABLE",
       "20261030": "AVAILABLE",
-      "20261031": "AVAILABLE",
+      "20261031": "BOOKABLE",
       "20261101": "AVAILABLE"
     },
     "_epoch": 0
