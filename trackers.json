@@ -36,7 +36,9 @@
     "slug": "dune-part-three-english",
     "dates": [],
     "theatres": [],
-    "formats": [],
+    "formats": [
+      "imax"
+    ],
     "times": [],
     "enabled": true
   }
