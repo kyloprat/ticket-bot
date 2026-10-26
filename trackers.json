@@ -11,24 +11,6 @@
     "enabled": true
   },
   {
-    "id": "et00451914-kolkata",
-    "label": "Namit Malhotras Ramayana Hindi",
-    "event_code": "ET00451914",
-    "region_slug": "kolkata",
-    "slug": "namit-malhotras-ramayana-hindi",
-    "dates": [
-      "20261106"
-    ],
-    "theatres": [],
-    "times": [
-      "1900-2100"
-    ],
-    "enabled": true,
-    "formats": [
-      "pxl"
-    ]
-  },
-  {
     "id": "et00491771-bengaluru",
     "label": "Dune: Part Three - (English)",
     "event_code": "ET00491771",
