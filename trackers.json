@@ -26,5 +26,22 @@
     ],
     "times": [],
     "enabled": true
+  },
+  {
+    "id": "et00477911-kolkata",
+    "label": "Drishyam The Conclusion - (Hindi)",
+    "event_code": "ET00477911",
+    "region_slug": "kolkata",
+    "slug": "drishyam-the-conclusion-hindi",
+    "dates": [
+      "20261031"
+    ],
+    "theatres": [],
+    "formats": [
+      "2d"
+    ],
+    "times": [],
+    "enabled": true,
+    "confirmed": false
   }
 ]
