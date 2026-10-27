@@ -50,11 +50,26 @@ HELP = (
     "Add details in the same message or the next one, e.g. 6, 7 Nov 3D PXL Mani Square evening\n"
     "I show a card with the live booking status; adjust it with the buttons and tap ✅ Done "
     "to start watching.\n\n"
-    "/list - what I'm watching for you\n"
+    "/list - everything I'm watching for you, numbered\n"
+    "/check N - check tracker N on BookMyShow right now (/check alone: all of them)\n"
+    "/status N - show tracker N's card with the latest result\n"
     "/edit N - change dates, theatres, format, time or city\n"
     "/pause N, /resume N, /remove N\n"
-    "N is the number shown in /list. Checks run every ~10 minutes."
+    "/help - this list (also: type / to see the menu)\n\n"
+    "N is the number shown in /list. Checks also run on their own every ~10 minutes."
 )
+COMMANDS = [("list", "What I'm watching for you"), ("check", "Check now: /check N (or all)"),
+            ("status", "Show a tracker's card: /status N"), ("edit", "Change a tracker: /edit N"),
+            ("pause", "Pause: /pause N"), ("resume", "Resume: /resume N"), ("remove", "Stop: /remove N"),
+            ("help", "How to use the bot")]
+
+# Big multiplexes people actually go to; shown first (⭐) in theatre buttons, even before a movie opens.
+FAVORITES = {
+    "kolkata": ["mani square", "city cent", "south city", "quest", "acropolis", "diamond plaza",
+                "forum mall, elgin", "avani"],
+    "bengaluru": ["koramangala", "phoenix marketcity", "vr bengaluru", "soul spirit", "orion mall",
+                  "mall of asia", "nexus, whitefield", "lulu mall", "garuda mall, magrath", "forum rex"],
+}
 TIP = "Tip: type it in one line, e.g. 6, 7 Nov 7-8 pm 3D PXL Mani Square"
 NOT_YET = "👉 Not watching yet. Tap ✅ Done when this looks right."
 SAVED = "✅ Watching. /list shows everything."
@@ -450,9 +465,15 @@ def status_line(cat: dict | None, result: str | None) -> str:
     return "⏳ Bookings not open yet. I'll alert you the moment they open."
 
 
-def theatre_options(cat: dict | None) -> list[str]:
-    """Theatre buttons: the cinemas BookMyShow lists for this movie."""
-    return (cat or {}).get("venues", [])
+def is_favorite(city: str, name: str) -> bool:
+    return any(k in name.lower() for k in FAVORITES.get(city, []))
+
+
+def theatre_options(cat: dict | None, city: str = "") -> list[str]:
+    """Theatre buttons: the cinemas BookMyShow lists for this movie, big malls first. Before
+    anything is listed, the big malls of the city (from cinemas.json) so they can be picked early."""
+    venues = (cat or {}).get("venues", []) or [c for c in CINEMAS.get(city, []) if is_favorite(city, c)]
+    return sorted(venues, key=lambda v: (not is_favorite(city, v), v))
 
 
 def format_options(cat: dict | None) -> list[str]:
@@ -465,7 +486,7 @@ def format_options(cat: dict | None) -> list[str]:
 def card_text(t: dict, cat: dict | None = None, result: str | None = None, note: str = "") -> str:
     """The setup card. Shared by the relay (on taps) and the checker (after each check)."""
     statuses = {d: s for d, s in (cat or {}).get("dates", [])}
-    known = [v.lower() for v in theatre_options(cat) + (cat or {}).get("formats", [])]
+    known = [v.lower() for v in (cat or {}).get("venues", []) + (cat or {}).get("formats", [])]
 
     def date_tag(d):                     # validated against what BookMyShow lists, once we know
         if not cat:
@@ -542,8 +563,9 @@ def date_buttons(t: dict, cat: dict | None):
 
 
 def theatre_buttons(t: dict, cat: dict | None):
-    btns = [(("✅ " if v.lower() in t["theatres"] else "") + v[:32], f"vn:{t['id']}:{i}")
-            for i, v in enumerate(theatre_options(cat)[:14])]
+    city = t["region_slug"]
+    btns = [(("✅ " if v.lower() in t["theatres"] else "⭐ " if is_favorite(city, v) else "") + v[:32],
+             f"vn:{t['id']}:{i}") for i, v in enumerate(theatre_options(cat, city)[:14])]
     return _rows(btns, 1) + [[("Any theatre", f"vn:{t['id']}:any"), ("⬅️ Back", f"set:{t['id']}:back")]]
 
 
@@ -787,7 +809,7 @@ class Chat:
                 t["dates"] = sorted(set(t["dates"]) ^ {arg})
             self._show(t, "Tap dates, or type them (e.g. 6, 7 Nov).", message_id, date_buttons(t, cat))
         elif kind == "vn":
-            venues = theatre_options(cat)
+            venues = theatre_options(cat, t["region_slug"])
             if arg == "any":
                 t["theatres"] = []
             elif arg.isdigit() and int(arg) < len(venues):
@@ -841,8 +863,9 @@ class Chat:
             self._show(t, hint, message_id, date_buttons(t, cat))
         elif arg == "theatres":
             self.me["awaiting"] = {"id": tid, "field": "theatres"}
-            hint = "Tap theatres, or type part of a name (e.g. Mani Square, South City)." if \
-                theatre_options(cat) else "Type part of a cinema name, e.g. Mani Square, South City."
+            hint = ("Tap theatres (⭐ = big malls), or type part of a name (e.g. Mani Square)." if
+                    (cat or {}).get("venues") else
+                    "Nothing listed yet. Tap the big malls you want (⭐), or type part of a cinema name.")
             self._show(t, hint, message_id, theatre_buttons(t, cat))
         elif arg == "formats":
             self.me["awaiting"] = {"id": tid, "field": "formats"}
@@ -1068,7 +1091,12 @@ class Chat:
                 self._say(f"Removed {uid} and their trackers.")
             else:
                 self._say("Usage: /revoke ID (see /users)")
-        elif cmd in ("/pause", "/resume", "/remove", "/edit"):
+        elif cmd == "/check" and not arg.strip():
+            mine = [t for t in self._mine() if t.get("enabled", True) and t.get("source") != "district"]
+            self.lookups += [t["id"] for t in mine]
+            self._say(f"🔎 Checking {len(mine)} tracker(s) on BookMyShow now; cards update in about a minute."
+                      if mine else "Nothing to check. Send me a BookMyShow movie link.")
+        elif cmd in ("/pause", "/resume", "/remove", "/edit", "/check", "/status"):
             t = self._find(arg)
             if not t:
                 self._say(f"Usage: {cmd} N  (N from /list)")
@@ -1077,6 +1105,13 @@ class Chat:
             elif cmd == "/edit":
                 self.me["awaiting"] = {"id": t["id"], "field": "any"}
                 self._show(t, TIP)
+            elif cmd == "/check":
+                self.lookups.append(t["id"])
+                self._show(t, "🔎 Checking BookMyShow now; this card updates in about a minute.",
+                           buttons=done_buttons(t["id"]) if t.get("confirmed", True) else None)
+            elif cmd == "/status":
+                self._show(t, SAVED if t.get("confirmed", True) else NOT_YET,
+                           buttons=done_buttons(t["id"]) if t.get("confirmed", True) else None)
             elif cmd == "/remove":
                 self.trackers.remove(t)                 # the checker drops its state next run
                 self._cards().pop(t["id"], None)
