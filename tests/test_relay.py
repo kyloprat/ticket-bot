@@ -102,3 +102,11 @@ def test_webhook_reports_save_failure_to_the_owner():
     status = relay.handle_webhook("s3cret", json.dumps(msg(1, DOOMSDAY)).encode(), env=ENV,
                                   store=Broken(), tg=tg, label_fn=LABEL)
     assert status == 200 and tg.texts == ["⚠️ Couldn't save that (RuntimeError). Please try again."]
+
+
+def test_tick_starts_a_full_run_only_with_the_secret():
+    store = FakeStore()
+    assert relay.handle_tick("wrong", env={**ENV, "TICK_SECRET": "t1ck"}, store=store) == 403
+    assert relay.handle_tick("", env=ENV, store=store) == 403                  # no secret configured
+    assert relay.handle_tick("t1ck", env={**ENV, "TICK_SECRET": "t1ck"}, store=store) == 200
+    assert store.dispatched == [""]

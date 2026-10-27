@@ -2,10 +2,11 @@
 import os
 import sys
 from http.server import BaseHTTPRequestHandler
+from urllib.parse import parse_qs, urlparse
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "_lib"))
 
-from relay import handle_webhook  # noqa: E402
+from relay import handle_tick, handle_webhook  # noqa: E402
 
 
 class handler(BaseHTTPRequestHandler):
@@ -18,7 +19,9 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(b"ok" if status == 200 else b"no")
 
     def do_GET(self):
-        self.send_response(200)
+        tick = parse_qs(urlparse(self.path).query).get("tick", [""])[0]
+        status = handle_tick(tick) if tick else 200
+        self.send_response(status)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
-        self.wfile.write(b"ticket relay up")
+        self.wfile.write(b"ticket relay up" if not tick else b"ok" if status == 200 else b"no")
