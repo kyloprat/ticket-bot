@@ -5,17 +5,21 @@ entirely from Telegram. GitHub Actions runs it every 10 minutes for free; nothin
 
 ## Use it
 
-Send the bot a **BookMyShow movie link** (or BookMyShow's share text, which carries the movie name).
+Send the bot a **BookMyShow movie link** (or BookMyShow's share text). Details can go in the same
+message or the next one, e.g. `kolkata 6, 7 Nov 3D PXL Mani Square evening`.
 
-1. It asks **which city** (Bengaluru first; the city in a link is just where it was shared from).
-2. It shows one **setup card** with the live status from BookMyShow: open or not, which dates, how many theatres.
-3. Narrow it with the buttons (dates and theatres come from what BookMyShow lists) or type it in one line:
-   `6 Nov 7-8 pm 3D PXL Mani Square`, `18-20 Dec evening`, `after 9 pm`, `IMAX 3D at South City`.
-   Formats (2D, 3D, IMAX 3D...) are separate listings on BookMyShow; every one is checked, and
-   screens like PXL / IMAX / 4DX are format filters. Theatre names are checked against `cinemas.json`
-   (every cinema per city; refresh with `uv run cinemas.py`). Typed dates and theatres are
-   checked against BookMyShow ("pxl (not listed yet)" means it will alert when PXL lists shows).
-4. When something matches you get a message immediately. If nothing is available you get one note a day at 8 pm IST.
+1. If it can't tell the **city** it asks (the city in a link is just where it was shared from).
+2. It shows one **setup card** with the live status from BookMyShow: open or not, which dates and
+   theatres, which formats (2D, 3D, IMAX 3D...) and screens (PXL, IMAX...).
+3. Adjust with the buttons or by typing (`6, 7 Nov`, `7 and 8`, `fri`, `this weekend`, `after 9 pm`,
+   `IMAX 3D at South City`). Typed dates, theatres and formats are checked against BookMyShow and
+   against `cinemas.json` (every cinema per city).
+4. Tap **✅ Done** to start watching. Nothing alerts before that. If bookings are already open and no
+   dates are picked, Done first asks which dates. Done always runs a fresh check.
+5. You get a message the moment matching shows appear, and one note a day at 8 pm IST.
+
+**Other people** can use the same bot: when someone new messages it, the owner gets an Allow button.
+Each person has their own trackers and alerts. Owner commands: `/users`, `/revoke ID`.
 
 | Command | What it does |
 |---|---|

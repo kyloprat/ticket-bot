@@ -53,17 +53,19 @@ def test_link_asks_city_then_creates_tracker_and_starts_a_check():
     relay.process(tap(2, "nc:bengaluru"), store, tg, TODAY)
     assert store.files["trackers.json"][0][0]["id"] == TID
     assert store.dispatched == [TID] and "Checking BookMyShow" in tg.last
-    assert store.files["chat.json"][0]["cards"][TID]["id"] == 99          # the tapped message is the card
+    assert store.files["chat.json"][0]["users"]["42"]["cards"][TID]["id"] == 99   # the tapped message is the card
 
 
 def test_typed_text_round_trip_and_new_card_id_is_saved():
     store, tg = FakeStore(), FakeTg()
     start(store, tg)
-    relay.process(msg(3, "18-19 Dec 7 pm"), store, tg, TODAY)
+    relay.process(msg(3, "18, 19 Dec 7 pm"), store, tg, TODAY)
     t = store.files["trackers.json"][0][0]
     assert t["dates"] == ["20261218", "20261219"] and t["times"] == ["1900-2000"]
-    assert store.files["chat.json"][0]["cards"][TID]["id"] == 100 + len(tg.sent)   # fresh card remembered
-    assert store.dispatched[-1] == TID                                    # dates changed: check again
+    assert store.files["chat.json"][0]["users"]["42"]["cards"][TID]["id"] == tg.n   # fresh card remembered
+    relay.process(tap(4, f"set:{TID}:done"), store, tg, TODAY)
+    assert store.files["trackers.json"][0][0]["confirmed"] is True
+    assert store.dispatched[-1] == TID                                    # Done: check again now
 
 
 def test_list_reads_results_written_by_the_checker():
@@ -89,9 +91,9 @@ def test_webhook_rejects_wrong_secret_and_ignores_strangers():
     assert relay.handle_webhook("s3cret", b"not json", env=ENV, store=store, tg=tg) == 400
     stranger = json.dumps(msg(1, DOOMSDAY, chat_id=666)).encode()
     assert relay.handle_webhook("s3cret", stranger, env=ENV, store=store, tg=tg) == 200
-    assert store.writes == [] and tg.sent == []
+    assert "trackers.json" not in store.files and "private bot" in tg.last_to("666")   # asks the owner
     assert relay.handle_webhook("s3cret", raw, env=ENV, store=store, tg=tg, label_fn=LABEL) == 200
-    assert store.writes == ["chat.json"]
+    assert "Which city" in tg.last_to("42")
 
 
 def test_webhook_reports_save_failure_to_the_owner():
@@ -102,6 +104,14 @@ def test_webhook_reports_save_failure_to_the_owner():
     status = relay.handle_webhook("s3cret", json.dumps(msg(1, DOOMSDAY)).encode(), env=ENV,
                                   store=Broken(), tg=tg, label_fn=LABEL)
     assert status == 200 and tg.texts == ["⚠️ Couldn't save that (RuntimeError). Please try again."]
+
+
+def test_new_person_gets_an_answer_and_the_owner_an_allow_button():
+    store, tg = FakeStore(), FakeTg()
+    raw = json.dumps(msg(1, DOOMSDAY, chat_id="77", first_name="Tanu")).encode()
+    assert relay.handle_webhook("s3cret", raw, env=ENV, store=store, tg=tg) == 200
+    assert "private bot" in tg.last_to("77") and "Tanu wants to use" in tg.last_to("42")
+    assert store.files["chat.json"][0]["pending"] == {"77": "Tanu"}
 
 
 def test_tick_starts_a_full_run_only_with_the_secret():

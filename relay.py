@@ -70,24 +70,24 @@ class Buffered:
 
     def __init__(self, chat_id: str):
         self.chat_id = chat_id
-        self.calls: list[tuple[str, tuple]] = []
+        self.calls: list[tuple[str, tuple, dict]] = []
 
-    def send(self, text, buttons=None, on_id=None):
-        self.calls.append(("send", (text, buttons, on_id)))
+    def send(self, text, buttons=None, on_id=None, chat=None):
+        self.calls.append(("send", (text, buttons), {"on_id": on_id, "chat": chat}))
 
-    def edit(self, message_id, text, buttons=None):
-        self.calls.append(("edit", (message_id, text, buttons)))
+    def edit(self, message_id, text, buttons=None, chat=None):
+        self.calls.append(("edit", (message_id, text, buttons), {"chat": chat}))
         return True
 
-    def edit_buttons(self, message_id, buttons):
-        self.calls.append(("edit_buttons", (message_id, buttons)))
+    def edit_buttons(self, message_id, buttons, chat=None):
+        self.calls.append(("edit_buttons", (message_id, buttons), {"chat": chat}))
 
     def answer(self, callback_id, text=""):
-        self.calls.append(("answer", (callback_id,)))
+        self.calls.append(("answer", (callback_id,), {}))
 
     def flush(self, tg) -> None:
-        for name, args in self.calls:
-            getattr(tg, name)(*args)
+        for name, args, kw in self.calls:
+            getattr(tg, name)(*args, **kw)
 
 
 def _dump(x) -> str:
@@ -115,8 +115,9 @@ def process(update: dict, store, tg, today, label_fn=None, attempts: int = 3) ->
             if attempt == attempts - 1:
                 raise
             continue
-        if chat.lookups and hasattr(store, "dispatch"):
-            store.dispatch(chat.lookups[-1])
+        if hasattr(store, "dispatch"):
+            for tid in list(dict.fromkeys(chat.lookups))[-2:]:
+                store.dispatch(tid)
         saved = _dump(chat_state)
         out.flush(tg)                          # may record new setup-card message ids
         if _dump(chat_state) != saved:
@@ -144,8 +145,9 @@ def handle_webhook(secret_header: str, raw: bytes, env=os.environ, store=None, t
     except Exception as e:  # noqa: BLE001
         print(f"relay error: {e!r}")
         msg = update.get("message") or (update.get("callback_query") or {}).get("message") or {}
-        if str((msg.get("chat") or {}).get("id", "")) == str(tg.chat_id):
-            tg.send(f"⚠️ Couldn't save that ({type(e).__name__}). Please try again.")
+        sender = str((msg.get("chat") or {}).get("id", ""))
+        if sender:
+            tg.send(f"⚠️ Couldn't save that ({type(e).__name__}). Please try again.", chat=sender)
     return 200
 
 
