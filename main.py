@@ -705,11 +705,12 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
         if t.get("source") == "district":
             ok, result, is_open = district_check(t)
             was_open = state.get(t["id"], {}).get("open", False)
-            if ok:
-                state[t["id"]] = {"open": is_open, "_epoch": epoch}
+            sent = True
             if is_open and not was_open:
-                tg.send(f"🎟️ BOOKINGS OPEN on District: {t['label']} ({t['city']})\n{result}\n"
-                        f"{district_url(t)}", chat=t.get("chat"))
+                sent = tg.send(f"🎟️ BOOKINGS OPEN on District: {t['label']} ({t['city']})\n{result}\n"
+                               f"{district_url(t)}", chat=t.get("chat"))
+            if ok and sent:                   # an alert Telegram didn't take is sent again next run
+                state[t["id"]] = {"open": is_open, "_epoch": epoch}
         else:
             bms_ran = True
             r = check_bms(t, state.get(t["id"], {}), fetch)
@@ -720,15 +721,18 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
             if not t.get("confirmed", True):
                 pass                          # still being set up in chat: no alerts, no saved state yet
             else:
-                if r["state"] is not None:
-                    state[t["id"]] = {**r["state"], "_epoch": epoch}
+                sent = True
                 if r["changes"]:
                     subject = (f"BMS Alert: {title(t, catalog.get(t['id']))} ({city_name(t['region_slug'])})"
                                f" - {len(r['changes'])} change(s)")
                     lines = [subject, ""] + r["changes"][:15] + ["", buy_url(t)]
-                    tg.send("\n".join(lines), chat=t.get("chat"))
+                    sent = tg.send("\n".join(lines), chat=t.get("chat"))
                     if not t.get("chat"):
                         send_email(subject, r["changes"], r["shows"], r["movie_info"])
+                if r["state"] is not None and sent:
+                    # remember what was seen only once the alert went out; otherwise the same
+                    # changes are found, and sent, again next run
+                    state[t["id"]] = {**r["state"], "_epoch": epoch}
         results[t["id"]] = result
         print(f"  {t['id']}: {result}")
     for d in (results, catalog):
