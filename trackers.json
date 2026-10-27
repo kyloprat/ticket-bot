@@ -46,6 +46,8 @@
     "formats": [],
     "times": [],
     "enabled": true,
-    "confirmed": false
+    "confirmed": true,
+    "epoch": 1,
+    "confirmed_sig": "[\"kolkata\", [\"20261031\", \"20261106\"], [\"city centre\", \"inox: city center, salt lake\", \"inox: south city, kolkata\", \"pvr: mani square mall, kolkata\"], [], []]"
   }
 ]
