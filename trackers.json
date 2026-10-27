@@ -37,7 +37,9 @@
       "20261031",
       "20261106"
     ],
-    "theatres": [],
+    "theatres": [
+      "city centre"
+    ],
     "formats": [],
     "times": [],
     "enabled": true,
