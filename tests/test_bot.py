@@ -681,3 +681,20 @@ def test_a_refused_request_is_retried_and_partial_checks_change_nothing():
     assert r["changes"] == [] and len(r["shows"]) == 2
     r = main.check_bms(t, full["state"], fetch=lambda code, *a: None if code == "ET3D" else payload("PVR ET2D"))
     assert r["state"] is None and r["changes"] == [] and r["catalog"] is None and "partial check" in r["result"]
+
+
+def test_an_alert_telegram_did_not_take_is_sent_again_next_run(workdir):
+    write("trackers.json", [doomsday_tracker()])
+
+    class Down(FakeTg):
+        def send(self, *a, **kw):
+            super().send(*a, **kw)
+            return None                                        # Telegram error
+    down = Down()
+    main.run(now=NOW_MORNING, tg=down, fetch=lambda *a: api(["PVR Forum"]))
+    assert len(down.sent) == 1 and read("bms_state.json") == {}
+    tg = FakeTg()
+    main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["PVR Forum"]))
+    assert len(tg.sent) == 1 and "BOOKINGS OPEN" in tg.texts[0]
+    main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["PVR Forum"]))
+    assert len(tg.sent) == 1                                   # delivered once: not again

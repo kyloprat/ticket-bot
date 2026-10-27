@@ -641,6 +641,7 @@ class ConsoleTelegram:
     def send(self, text, buttons=None, on_id=None, chat=None):
         self.sent.append(text)
         print(f"\n[telegram {chat or ''}]\n" + text + "\n")
+        return len(self.sent)
 
     def edit(self, message_id, text, buttons=None, chat=None):
         print(f"\n[telegram edit {message_id}]\n" + text + "\n")
