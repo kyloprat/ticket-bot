@@ -57,6 +57,7 @@
         ]
       ],
       "venues": [
+        "INOX: South City, Kolkata",
         "SSR Ajanta Cinema: Behala",
         "SSR Cinemas, Suncity Mall: Barasat",
         "SSR Cinemas: Maheshtala"
@@ -66,12 +67,13 @@
         "IMAX 2D"
       ],
       "screens": [
+        "IMAX",
         "Renovated"
       ]
     }
   },
   "card_hash": {
     "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything.",
-    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Tue 27 Oct - Sun 1 Nov · 3 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open)\n🏛 mani square (PVR: Mani Square Mall, Kolkata, not showing it yet)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · Renovated\n\nRight now: 0 matching showtimes\n\n✅ Watching. /list shows everything."
+    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Tue 27 Oct - Sun 1 Nov · 4 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open)\n🏛 mani square (PVR: Mani Square Mall, Kolkata, not showing it yet)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · IMAX, Renovated\n\nRight now: 0 matching showtimes\n\n✅ Watching. /list shows everything."
   }
 }
