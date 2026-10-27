@@ -147,3 +147,13 @@ def handle_webhook(secret_header: str, raw: bytes, env=os.environ, store=None, t
         if str((msg.get("chat") or {}).get("id", "")) == str(tg.chat_id):
             tg.send(f"⚠️ Couldn't save that ({type(e).__name__}). Please try again.")
     return 200
+
+
+def handle_tick(key: str, env=os.environ, store=None) -> int:
+    """GET /api/telegram?tick=<TICK_SECRET>, called every 10 minutes by an outside cron
+    (cron-job.org): starts a full checker run. GitHub's own schedule fires only now and then."""
+    expected = env.get("TICK_SECRET", "")
+    if not expected or not hmac.compare_digest(key or "", expected):
+        return 403
+    store = store or GitHubStore(env["GITHUB_REPO"], env["GITHUB_TOKEN"])
+    return 200 if store.dispatch("") else 502
