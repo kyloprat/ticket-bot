@@ -58,9 +58,7 @@
       ],
       "venues": [
         "INOX: Hiland Park",
-        "INOX: Metro, Jawaharlal Nehru Road",
         "INOX: South City, Kolkata",
-        "Miraj Cinemas: The Terminus, New Town",
         "PVR: Avani, Kolkata",
         "PVR: Diamond Plaza, Jessore Kolkata",
         "RDB Cinemas: Salt Lake, Kolkata",
@@ -80,6 +78,6 @@
   },
   "card_hash": {
     "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything.",
-    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Tue 27 Oct - Sun 1 Nov · 10 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open), Fri 6 Nov (not listed yet)\n🏛 city centre (INOX: City Centre II, Rajarhat, not showing it yet), inox: city center, salt lake (no cinema by that name in Kolkata), pvr: mani square mall, kolkata (PVR: Mani Square Mall, Kolkata, not showing it yet), inox: south city, kolkata (showing it)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · IMAX, Renovated\n\nRight now: 2 matching showtimes\n\n✅ Watching. /list shows everything."
+    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Tue 27 Oct - Sun 1 Nov · 8 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open), Fri 6 Nov (not listed yet)\n🏛 city centre (INOX: City Centre II, Rajarhat, not showing it yet), inox: city center, salt lake (no cinema by that name in Kolkata), pvr: mani square mall, kolkata (PVR: Mani Square Mall, Kolkata, not showing it yet), inox: south city, kolkata (showing it)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · IMAX, Renovated\n\nRight now: 2 matching showtimes\n\n✅ Watching. /list shows everything."
   }
 }
