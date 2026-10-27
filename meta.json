@@ -28,10 +28,6 @@
       "language": "Hindi  •  2D",
       "dates": [
         [
-          "20261027",
-          "AVAILABLE"
-        ],
-        [
           "20261028",
           "AVAILABLE"
         ],
@@ -54,30 +50,50 @@
         [
           "20261102",
           "NOT_OPEN"
+        ],
+        [
+          "20261103",
+          "NOT_OPEN"
         ]
       ],
       "venues": [
+        "INOX: City Center, Salt Lake",
+        "INOX: City Centre II, Rajarhat",
+        "INOX: Forum Mall, Elgin Road",
+        "INOX: Forum Rangoli Mall, Belur",
         "INOX: Hiland Park",
+        "INOX: Metro, Jawaharlal Nehru Road",
+        "INOX: Quest Mall",
         "INOX: South City, Kolkata",
+        "INOX: Swabhumi, Maulana Azad Sarani",
+        "Miraj Cinemas: The Terminus, New Town",
         "PVR: Avani, Kolkata",
         "PVR: Diamond Plaza, Jessore Kolkata",
+        "PVR: Mani Square Mall, Kolkata",
         "RDB Cinemas: Salt Lake, Kolkata",
         "SSR Ajanta Cinema: Behala",
         "SSR Cinemas, Suncity Mall: Barasat",
-        "SSR Cinemas: Maheshtala"
+        "SSR Cinemas: Maheshtala",
+        "SSR Globe Cinemas: New Market, Kolkata",
+        "SVF Cinemas: Platina Mall, Howrah",
+        "SVF Cinemas: Wood Square Mall, Narendrapur"
       ],
       "formats": [
         "2D",
         "IMAX 2D"
       ],
       "screens": [
+        "11.1 Surround Sound",
+        "2K",
+        "Dolby 5.1",
         "IMAX",
+        "INSIGNIA",
         "Renovated"
       ]
     }
   },
   "card_hash": {
     "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything.",
-    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Tue 27 Oct - Sun 1 Nov · 8 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open), Fri 6 Nov (not listed yet)\n🏛 city centre (INOX: City Centre II, Rajarhat, not showing it yet), inox: city center, salt lake (no cinema by that name in Kolkata), pvr: mani square mall, kolkata (PVR: Mani Square Mall, Kolkata, not showing it yet), inox: south city, kolkata (showing it)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · IMAX, Renovated\n\nRight now: 2 matching showtimes\n\n✅ Watching. /list shows everything."
+    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Wed 28 Oct - Sun 1 Nov · 20 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open), Fri 6 Nov (not listed yet)\n🏛 city centre (showing it), inox: city center, salt lake (showing it), pvr: mani square mall, kolkata (showing it), inox: south city, kolkata (showing it)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · 11.1 Surround Sound, 2K, Dolby 5.1, IMAX, INSIGNIA, Renovated\n\nRight now: 2 matching showtimes\n\n✅ Watching. /list shows everything."
   }
 }
