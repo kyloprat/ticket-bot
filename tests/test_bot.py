@@ -625,3 +625,35 @@ def test_run_only_checks_one_tracker_and_skips_the_daily_note(workdir):
     main.run(now=NOW_8PM, tg=tg, fetch=lambda *a: api([]), only="other")
     assert list(read("meta.json")["results"]) == ["other"] and tg.sent == []
     assert "last_heartbeat" not in read("meta.json")
+
+
+def test_big_malls_come_first_even_before_a_movie_opens():
+    handle, tg, trackers, state = make_chat()
+    handle(msg(1, RAMAYANA_KOL))
+    handle(tap(2, "nc:kolkata"))
+    handle(tap(3, "set:et00451914-kolkata:theatres"))
+    labels = [b[0] for row in tg.log[-1][2] for b in row][:-2]
+    assert labels and all(x.startswith("⭐ ") for x in labels)              # nothing listed yet: big malls
+    assert any("Mani Square" in x for x in labels) and any("South City" in x for x in labels)
+    i = next(n for n, x in enumerate(labels) if "Mani Square" in x)
+    handle(tap(4, f"vn:et00451914-kolkata:{i}"))
+    assert trackers[0]["theatres"] == ["pvr: mani square mall, kolkata"]
+    cat = {"venues": ["Bijoli Cinema: Kolkata", "INOX: South City, Kolkata", "Priya Cinema"], "dates": []}
+    assert chat.theatre_options(cat, "kolkata")[0] == "INOX: South City, Kolkata"
+    assert chat.is_favorite("bengaluru", "PVR: Nexus (Formerly Forum), Koramangala")
+
+
+def test_check_and_status_commands():
+    handle, tg, trackers, state = make_chat(results={"et00439706-bengaluru": "no showtimes listed yet"})
+    handle(msg(1, f"{DOOMSDAY} 18 Dec"))
+    handle(tap(2, "nc:bengaluru"))
+    handle(tap(3, "set:et00439706-bengaluru:done"))
+    handle.lookups.clear()
+    handle(msg(4, "/check 1"))
+    assert handle.lookups == ["et00439706-bengaluru"] and "Checking BookMyShow now" in tg.last
+    handle(msg(5, "/check"))
+    assert "Checking 1 tracker(s)" in tg.last and handle.lookups[-1] == "et00439706-bengaluru"
+    handle(msg(6, "/status 1"))
+    assert "Avengers: Doomsday" in tg.last and tg.last_data == {"set:et00439706-bengaluru:edit"}
+    handle(msg(7, "/help"))
+    assert "/check N" in tg.last and "/status N" in tg.last
