@@ -3,7 +3,7 @@
   "results": {
     "et00439706-bengaluru": "BookMyShow gave no data",
     "et00491771-bengaluru": "no showtimes listed yet",
-    "et00477911-kolkata": "BookMyShow gave no data"
+    "et00477911-kolkata": "5 matching showtimes"
   },
   "fails": 0,
   "catalog": {
@@ -29,7 +29,7 @@
       "dates": [
         [
           "20261027",
-          "BOOKABLE"
+          "AVAILABLE"
         ],
         [
           "20261028",
@@ -45,7 +45,7 @@
         ],
         [
           "20261031",
-          "AVAILABLE"
+          "BOOKABLE"
         ],
         [
           "20261101",
@@ -57,40 +57,23 @@
         ]
       ],
       "venues": [
-        "INOX: City Center, Salt Lake",
-        "INOX: City Centre II, Rajarhat",
-        "INOX: Forum Mall, Elgin Road",
-        "INOX: Forum Rangoli Mall, Belur",
-        "INOX: Hiland Park",
-        "INOX: Metro, Jawaharlal Nehru Road",
-        "INOX: Quest Mall",
         "INOX: South City, Kolkata",
-        "INOX: Swabhumi, Maulana Azad Sarani",
-        "Miraj Cinemas: Downtown Mall, Salt Lake",
-        "Miraj Cinemas: The Terminus, New Town",
-        "PVR: Avani, Kolkata",
-        "PVR: Diamond Plaza, Jessore Kolkata",
-        "PVR: Mani Square Mall, Kolkata",
-        "RDB Cinemas: Salt Lake, Kolkata",
-        "SSR Cinemas: Maheshtala",
-        "SSR Globe Cinemas: New Market, Kolkata",
-        "SVF Cinemas: Platina Mall, Howrah"
+        "SSR Ajanta Cinema: Behala",
+        "SSR Cinemas, Suncity Mall: Barasat",
+        "SSR Cinemas: Maheshtala"
       ],
       "formats": [
         "2D",
         "IMAX 2D"
       ],
       "screens": [
-        "11.1 Surround Sound",
-        "Dolby 5.1",
         "IMAX",
-        "INSIGNIA",
         "Renovated"
       ]
     }
   },
   "card_hash": {
-    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 any format\n🕐 any time\n\nRight now: no showtimes listed yet\n\nTip: type it in one line, e.g. 6 Nov 7-8 pm 3D PXL Mani Square",
+    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything.",
     "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: 27 Oct - 1 Nov · 18 theatre(s) listed so far\n\nAlert me for:\n📅 1 Nov (open), 6 Nov (not listed yet)\n🏛 any theatre\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · 11.1 Surround Sound, Dolby 5.1, IMAX, INSIGNIA, Renovated\n\nRight now: BookMyShow gave no data\n\nTip: type it in one line, e.g. 6 Nov 7-8 pm 3D PXL Mani Square"
   }
 }
