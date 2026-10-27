@@ -1,12 +1,18 @@
 {
-  "cards": {
-    "et00491771-bengaluru": {
-      "done": true,
-      "id": 41
-    },
-    "et00477911-kolkata": {
-      "done": true,
-      "id": 86
+  "users": {
+    "8948605299": {
+      "cards": {
+        "et00491771-bengaluru": {
+          "done": true,
+          "id": 41
+        },
+        "et00477911-kolkata": {
+          "done": true,
+          "id": 86
+        }
+      }
     }
-  }
+  },
+  "allowed": [],
+  "pending": {}
 }
