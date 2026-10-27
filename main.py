@@ -16,7 +16,8 @@ from dataclasses import dataclass, field
 from urllib.parse import urlparse
 import requests
 
-from chat import ConsoleTelegram, Telegram, buy_url, card_text, city_name, done_buttons, main_buttons, title, TIP
+from chat import (NOT_YET, SAVED, TIP, ConsoleTelegram, Telegram, buy_url, card_text, city_name, done_buttons,
+                  main_buttons, migrate_state, title)
 from district import check_district, district_url
 
 RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
@@ -584,10 +585,15 @@ def check_bms(t, old, fetch=fetch_bms):
     all_shows, all_dates, got = [], [], False
     movie_info = {"name": "Unknown", "language": ""}
     formats = None
-    for dc in (t.get("dates") or [""]):
+    wanted = list(t.get("dates") or [""])
+    for dc in wanted:
         first = fetch(t["event_code"], dc, region_code, region_slug, lat, lon, geohash)
         if first and formats is None:
             formats = parse_formats(first, t["event_code"])
+        if first and dc == "" and not t.get("dates"):
+            # "any open date": "" only returns the first open day, so also fetch the other open days
+            wanted += [d.date_code for d in parse_dates(first)
+                       if d.status == "AVAILABLE" and d.date_code not in wanted][:6]
         for code, fmt in formats or [(t["event_code"], "")]:
             data = first if code == t["event_code"] else \
                 fetch(code, dc, region_code, region_slug, lat, lon, geohash)
@@ -629,18 +635,20 @@ def check_bms(t, old, fetch=fetch_bms):
             "changes": changes, "shows": filtered, "movie_info": movie_info, "catalog": catalog}
 
 
-def refresh_cards(tg, trackers, meta, cards):
-    """Re-render each setup card with the latest status; edit only when the text changed."""
+def refresh_cards(tg, trackers, meta, chat_state, admin):
+    """Re-render each person's setup cards with the latest status; edit only when the text changed."""
     hashes = meta.setdefault("card_hash", {})
+    users = migrate_state(chat_state, admin)["users"]
     for t in trackers:
-        card = cards.get(t["id"]) or {}
+        owner = str(t.get("chat") or admin)
+        card = (users.get(owner, {}).get("cards") or {}).get(t["id"]) or {}
         if not card.get("id") or t.get("source") == "district":
             continue
-        done = card.get("done")
+        done, confirmed = card.get("done"), t.get("confirmed", True)
         text = card_text(t, meta.get("catalog", {}).get(t["id"]), meta["results"].get(t["id"]),
-                         "✅ Saved. /list shows everything I'm tracking." if done else TIP)
-        if hashes.get(t["id"]) != text and tg.edit(card["id"], text,
-                                                   done_buttons(t["id"]) if done else main_buttons(t["id"])):
+                         SAVED if done else TIP if confirmed else NOT_YET)
+        buttons = done_buttons(t["id"]) if done else main_buttons(t["id"], confirmed)
+        if hashes.get(t["id"]) != text and tg.edit(card["id"], text, buttons, chat=owner):
             hashes[t["id"]] = text
     for tid in [k for k in hashes if not any(t["id"] == k for t in trackers)]:
         hashes.pop(tid)
@@ -681,22 +689,26 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
                 state[t["id"]] = {"open": is_open, "_epoch": epoch}
             if is_open and not was_open:
                 tg.send(f"🎟️ BOOKINGS OPEN on District: {t['label']} ({t['city']})\n{result}\n"
-                        f"{district_url(t)}")
+                        f"{district_url(t)}", chat=t.get("chat"))
         else:
             bms_ran = True
             r = check_bms(t, state.get(t["id"], {}), fetch)
             ok, result = r["ok"], r["result"]
             bms_ok = bms_ok or ok
-            if r["state"] is not None:
-                state[t["id"]] = {**r["state"], "_epoch": epoch}
             if r["catalog"] is not None:
                 catalog[t["id"]] = r["catalog"]
-            if r["changes"]:
-                subject = (f"BMS Alert: {title(t, catalog.get(t['id']))} ({city_name(t['region_slug'])})"
-                           f" - {len(r['changes'])} change(s)")
-                lines = [subject, ""] + r["changes"][:15] + ["", buy_url(t)]
-                tg.send("\n".join(lines))
-                send_email(subject, r["changes"], r["shows"], r["movie_info"])
+            if not t.get("confirmed", True):
+                pass                          # still being set up in chat: no alerts, no saved state yet
+            else:
+                if r["state"] is not None:
+                    state[t["id"]] = {**r["state"], "_epoch": epoch}
+                if r["changes"]:
+                    subject = (f"BMS Alert: {title(t, catalog.get(t['id']))} ({city_name(t['region_slug'])})"
+                               f" - {len(r['changes'])} change(s)")
+                    lines = [subject, ""] + r["changes"][:15] + ["", buy_url(t)]
+                    tg.send("\n".join(lines), chat=t.get("chat"))
+                    if not t.get("chat"):
+                        send_email(subject, r["changes"], r["shows"], r["movie_info"])
         results[t["id"]] = result
         print(f"  {t['id']}: {result}")
     for d in (results, catalog):
@@ -704,7 +716,7 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
             d.pop(tid)
 
     # 2. keep each setup card in Telegram current (booking status, validated dates/theatres)
-    refresh_cards(tg, trackers, meta, load_json(CHAT_FILE, {}).get("cards", {}))
+    refresh_cards(tg, trackers, meta, load_json(CHAT_FILE, {}), str(getattr(tg, "chat_id", "") or ""))
 
     # 3. one-time warning if BookMyShow keeps returning nothing; one "still watching" note a day
     if bms_ran and not only:
@@ -713,12 +725,15 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
             tg.send("⚠️ Can't read BookMyShow: 3 checks in a row got no data. "
                     "It may be blocking GitHub, so check manually.")
     if not only and now.hour >= HEARTBEAT_HOUR and meta.get("last_heartbeat") != now.date().isoformat():
-        active = [t for t in trackers if t.get("enabled", True)]
-        if active:
+        by_chat = {}
+        for t in trackers:
+            if t.get("enabled", True) and t.get("confirmed", True):
+                by_chat.setdefault(t.get("chat"), []).append(t)
+        for owner, active in by_chat.items():         # one note a day per person
             lines = [f"{i}. {title(t, catalog.get(t['id']))}: {results.get(t['id'], 'not checked yet')}"
                      for i, t in enumerate(active, 1)]
             tg.send(f"🫡 Still watching {len(active)} tracker(s), checking every 10 minutes:\n"
-                    + "\n".join(lines))
+                    + "\n".join(lines), chat=owner)
         meta["last_heartbeat"] = now.date().isoformat()
 
     write_json_if_changed(META_FILE, meta)
