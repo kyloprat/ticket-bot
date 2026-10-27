@@ -1,6 +1,61 @@
 {
   "et00477911-kolkata": {
-    "shows": {},
+    "shows": {
+      "RDBK|28598|20261031|PLAT": {
+        "venue": "RDB Cinemas: Salt Lake, Kolkata",
+        "time": "10:00 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PLAT",
+        "price": "150.00",
+        "status": "3"
+      },
+      "RDBK|28598|20261031|GOLD": {
+        "venue": "RDB Cinemas: Salt Lake, Kolkata",
+        "time": "10:00 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "GOLD",
+        "price": "150.00",
+        "status": "3"
+      },
+      "RDBK|28598|20261031|PLATINUM PLUS": {
+        "venue": "RDB Cinemas: Salt Lake, Kolkata",
+        "time": "10:00 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PLATINUM PLUS",
+        "price": "220.00",
+        "status": "3"
+      },
+      "RDBK|28571|20261031|PLAT": {
+        "venue": "RDB Cinemas: Salt Lake, Kolkata",
+        "time": "10:00 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PLAT",
+        "price": "200.00",
+        "status": "3"
+      },
+      "RDBK|28571|20261031|GOLD": {
+        "venue": "RDB Cinemas: Salt Lake, Kolkata",
+        "time": "10:00 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "GOLD",
+        "price": "200.00",
+        "status": "3"
+      },
+      "RDBK|28571|20261031|PLATINUM PLUS": {
+        "venue": "RDB Cinemas: Salt Lake, Kolkata",
+        "time": "10:00 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PLATINUM PLUS",
+        "price": "270.00",
+        "status": "3"
+      }
+    },
     "dates": {
       "20261027": "BOOKABLE",
       "20261028": "AVAILABLE",
