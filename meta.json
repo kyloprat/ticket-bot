@@ -3,7 +3,7 @@
   "results": {
     "et00439706-bengaluru": "no showtimes listed yet",
     "et00491771-bengaluru": "no showtimes listed yet",
-    "et00477911-kolkata": "BookMyShow gave no data"
+    "et00477911-kolkata": "5 matching showtimes"
   },
   "fails": 0,
   "catalog": {
@@ -57,7 +57,21 @@
         ]
       ],
       "venues": [
+        "INOX: City Center, Salt Lake",
+        "INOX: City Centre II, Rajarhat",
+        "INOX: Forum Mall, Elgin Road",
+        "INOX: Forum Rangoli Mall, Belur",
+        "INOX: Hiland Park",
+        "INOX: Metro, Jawaharlal Nehru Road",
+        "INOX: Quest Mall",
         "INOX: South City, Kolkata",
+        "INOX: Swabhumi, Maulana Azad Sarani",
+        "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "Miraj Cinemas: The Terminus, New Town",
+        "PVR: Avani, Kolkata",
+        "PVR: Diamond Plaza, Jessore Kolkata",
+        "PVR: Mani Square Mall, Kolkata",
+        "RDB Cinemas: Salt Lake, Kolkata",
         "SSR Ajanta Cinema: Behala",
         "SSR Cinemas, Suncity Mall: Barasat",
         "SSR Cinemas: Maheshtala"
@@ -68,6 +82,7 @@
       ],
       "screens": [
         "IMAX",
+        "INSIGNIA",
         "Renovated"
       ]
     }
