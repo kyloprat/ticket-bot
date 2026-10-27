@@ -17,8 +17,8 @@
       }
     }
   },
-  "allowed": [],
-  "pending": {
-    "8699430209": "Minnie"
-  }
+  "allowed": [
+    "8699430209"
+  ],
+  "pending": {}
 }
