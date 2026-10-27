@@ -36,7 +36,9 @@
     "dates": [
       "20261031"
     ],
-    "theatres": [],
+    "theatres": [
+      "mani square"
+    ],
     "formats": [],
     "times": [],
     "enabled": true,
