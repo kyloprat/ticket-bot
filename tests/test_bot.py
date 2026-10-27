@@ -14,6 +14,8 @@ import chat  # noqa: E402
 import district  # noqa: E402
 import main  # noqa: E402
 
+main.RETRY_DELAY = 0
+
 TODAY = date(2026, 10, 26)
 NOW = datetime(2026, 10, 26, 12, 0, tzinfo=main.IST)
 NOW_MORNING = datetime(2026, 10, 27, 9, 0, tzinfo=main.IST)
@@ -657,3 +659,25 @@ def test_check_and_status_commands():
     assert "Avengers: Doomsday" in tg.last and tg.last_data == {"set:et00439706-bengaluru:edit"}
     handle(msg(7, "/help"))
     assert "/check N" in tg.last and "/status N" in tg.last
+
+
+def test_a_refused_request_is_retried_and_partial_checks_change_nothing():
+    """BookMyShow refuses some requests from GitHub (HTTP 403); that must not look like shows vanishing."""
+    def payload(venue):
+        d = api([venue])
+        d["data"]["bottomSheetData"] = {"format-selector": {"widgets": [{"type": "chip-list", "data": [
+            {"title": "2D", "cta": {"additionalData": {"eventCode": "ET2D"}}},
+            {"title": "3D", "cta": {"additionalData": {"eventCode": "ET3D"}}}]}]}}
+        return d
+    t = doomsday_tracker(event_code="ET2D")
+    full = main.check_bms(t, {}, fetch=lambda code, *a: payload(f"PVR {code}"))
+    assert len(full["shows"]) == 2
+    flaky = {"n": 0}
+
+    def once_refused(code, *a):
+        flaky["n"] += 1
+        return None if (code == "ET3D" and flaky["n"] == 2) else payload(f"PVR {code}")
+    r = main.check_bms(t, full["state"], fetch=once_refused)                # retried: complete
+    assert r["changes"] == [] and len(r["shows"]) == 2
+    r = main.check_bms(t, full["state"], fetch=lambda code, *a: None if code == "ET3D" else payload("PVR ET2D"))
+    assert r["state"] is None and r["changes"] == [] and r["catalog"] is None and "partial check" in r["result"]

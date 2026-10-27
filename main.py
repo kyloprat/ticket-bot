@@ -10,6 +10,7 @@ import os
 import re
 import sys
 import json
+import time
 from html import escape
 from datetime import datetime, timedelta, timezone
 from dataclasses import dataclass, field
@@ -33,6 +34,7 @@ TRACKERS_FILE = "trackers.json"    # what to watch (managed from Telegram)
 CHAT_FILE = "chat.json"            # setup-card message ids (written by the relay, read here)
 HEARTBEAT_HOUR = int(os.getenv("HEARTBEAT_HOUR", "20"))   # IST: one "still watching" note a day, 8 pm
 IST = timezone(timedelta(hours=5, minutes=30))
+RETRY_DELAY = 3   # seconds before asking BookMyShow once more after a refused request
 
 # ──────────────────────────────────────────────────────────────────────
 # CONSTANTS
@@ -585,9 +587,22 @@ def check_bms(t, old, fetch=fetch_bms):
     all_shows, all_dates, got = [], [], False
     movie_info = {"name": "Unknown", "language": ""}
     formats = None
+    missing = []
+
+    def get(code, dc):
+        """BookMyShow now and then refuses one request from GitHub (403): ask once more, then give up."""
+        for attempt in range(2):
+            data = fetch(code, dc, region_code, region_slug, lat, lon, geohash)
+            if data:
+                return data
+            if attempt == 0 and RETRY_DELAY:
+                time.sleep(RETRY_DELAY)
+        missing.append((code, dc))
+        return None
+
     wanted = list(t.get("dates") or [""])
     for dc in wanted:
-        first = fetch(t["event_code"], dc, region_code, region_slug, lat, lon, geohash)
+        first = get(t["event_code"], dc)
         if first and formats is None:
             formats = parse_formats(first, t["event_code"])
         if first and dc == "" and not t.get("dates"):
@@ -595,8 +610,7 @@ def check_bms(t, old, fetch=fetch_bms):
             wanted += [d.date_code for d in parse_dates(first)
                        if d.status == "AVAILABLE" and d.date_code not in wanted][:6]
         for code, fmt in formats or [(t["event_code"], "")]:
-            data = first if code == t["event_code"] else \
-                fetch(code, dc, region_code, region_slug, lat, lon, geohash)
+            data = first if code == t["event_code"] else get(code, dc)
             if not data:
                 continue
             got = True
@@ -615,6 +629,12 @@ def check_bms(t, old, fetch=fetch_bms):
                "venues": sorted({s.venue_name for s in all_shows}),
                "formats": [f for _, f in formats or [] if f],
                "screens": sorted({s.screen_attr for s in all_shows if s.screen_attr})} if got else None
+    if got and missing:
+        # Part of the picture is missing: comparing it with the last check would report shows as
+        # gone and later as "new". Keep the last state, send nothing, try again next run.
+        return {"ok": True, "result": f"partial check (BookMyShow refused {len(missing)} request(s)); "
+                                      "trying again next run",
+                "state": None, "changes": [], "shows": [], "movie_info": movie_info, "catalog": None}
     if not all_shows:
         return {"ok": got, "result": "no showtimes listed yet" if got else "BookMyShow gave no data",
                 "state": None, "changes": [], "shows": [], "movie_info": movie_info, "catalog": catalog}
