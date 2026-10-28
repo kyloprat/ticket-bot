@@ -89,7 +89,7 @@
         "date": "20261031",
         "cat": "PRIME ROWS",
         "price": "280.00",
-        "status": "2"
+        "status": "3"
       },
       "DMPZ|28052|20261031|CLASSIC ROWS": {
         "venue": "PVR: Diamond Plaza, Jessore Kolkata",
@@ -604,21 +604,21 @@
         "price": "240.00",
         "status": "3"
       },
-      "PVAK|21592|20261031|PRIME PLUS ROWS": {
-        "venue": "PVR: Avani, Kolkata",
-        "time": "10:20 AM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PRIME PLUS ROWS",
-        "price": "210.00",
-        "status": "3"
-      },
       "PVAK|21592|20261031|PICTURE PERFECT ROWS": {
         "venue": "PVR: Avani, Kolkata",
         "time": "10:20 AM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PICTURE PERFECT ROWS",
+        "price": "210.00",
+        "status": "3"
+      },
+      "PVAK|21592|20261031|PRIME PLUS ROWS": {
+        "venue": "PVR: Avani, Kolkata",
+        "time": "10:20 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
         "price": "210.00",
         "status": "3"
       },
@@ -694,21 +694,21 @@
         "price": "350.00",
         "status": "3"
       },
-      "PVAK|21619|20261031|PRIME PLUS ROWS": {
-        "venue": "PVR: Avani, Kolkata",
-        "time": "07:15 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PRIME PLUS ROWS",
-        "price": "300.00",
-        "status": "3"
-      },
       "PVAK|21619|20261031|PICTURE PERFECT ROWS": {
         "venue": "PVR: Avani, Kolkata",
         "time": "07:15 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PICTURE PERFECT ROWS",
+        "price": "300.00",
+        "status": "3"
+      },
+      "PVAK|21619|20261031|PRIME PLUS ROWS": {
+        "venue": "PVR: Avani, Kolkata",
+        "time": "07:15 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
         "price": "300.00",
         "status": "3"
       },
@@ -739,21 +739,21 @@
         "price": "350.00",
         "status": "3"
       },
-      "PVAK|21596|20261031|PICTURE PERFECT ROWS": {
-        "venue": "PVR: Avani, Kolkata",
-        "time": "10:45 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT ROWS",
-        "price": "300.00",
-        "status": "3"
-      },
       "PVAK|21596|20261031|PRIME PLUS ROWS": {
         "venue": "PVR: Avani, Kolkata",
         "time": "10:45 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME PLUS ROWS",
+        "price": "300.00",
+        "status": "3"
+      },
+      "PVAK|21596|20261031|PICTURE PERFECT ROWS": {
+        "venue": "PVR: Avani, Kolkata",
+        "time": "10:45 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT ROWS",
         "price": "300.00",
         "status": "3"
       },
