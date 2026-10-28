@@ -89,7 +89,7 @@
         "date": "20261031",
         "cat": "PRIME ROWS",
         "price": "280.00",
-        "status": "2"
+        "status": "3"
       },
       "DMPZ|28052|20261031|CLASSIC ROWS": {
         "venue": "PVR: Diamond Plaza, Jessore Kolkata",
@@ -449,6 +449,114 @@
         "date": "20261031",
         "cat": "CLASSIC",
         "price": "280.00",
+        "status": "3"
+      },
+      "INSL|113967|20261031|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "09:55 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "220.00",
+        "status": "3"
+      },
+      "INSL|113967|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "09:55 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "200.00",
+        "status": "3"
+      },
+      "INSL|113967|20261031|PRIME ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "09:55 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
+        "price": "200.00",
+        "status": "3"
+      },
+      "INSL|113967|20261031|CLASSIC ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "09:55 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "CLASSIC ROWS",
+        "price": "200.00",
+        "status": "3"
+      },
+      "INSL|113968|20261031|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "01:00 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "330.00",
+        "status": "3"
+      },
+      "INSL|113968|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "01:00 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "310.00",
+        "status": "3"
+      },
+      "INSL|113968|20261031|PRIME ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "01:00 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INSL|113968|20261031|CLASSIC ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "01:00 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "CLASSIC ROWS",
+        "price": "230.00",
+        "status": "3"
+      },
+      "INSL|113970|20261031|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "06:50 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "360.00",
+        "status": "3"
+      },
+      "INSL|113970|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "06:50 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "340.00",
+        "status": "3"
+      },
+      "INSL|113970|20261031|PRIME ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "06:50 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
+        "price": "300.00",
+        "status": "3"
+      },
+      "INSL|113970|20261031|CLASSIC ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "06:50 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "CLASSIC ROWS",
+        "price": "250.00",
         "status": "3"
       },
       "INSL|113955|20261031|PRIME PLUS ROWS": {
