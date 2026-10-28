@@ -244,21 +244,21 @@
         "price": "280.00",
         "status": "3"
       },
-      "INRK|98925|20261031|PICTURE PERFECT": {
-        "venue": "INOX: City Centre II, Rajarhat",
-        "time": "01:30 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT",
-        "price": "270.00",
-        "status": "3"
-      },
       "INRK|98925|20261031|PRIME ROWS": {
         "venue": "INOX: City Centre II, Rajarhat",
         "time": "01:30 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98925|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "01:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
         "price": "270.00",
         "status": "3"
       },
@@ -280,21 +280,21 @@
         "price": "280.00",
         "status": "3"
       },
-      "INRK|98927|20261031|PICTURE PERFECT": {
-        "venue": "INOX: City Centre II, Rajarhat",
-        "time": "07:25 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT",
-        "price": "270.00",
-        "status": "3"
-      },
       "INRK|98927|20261031|PRIME ROWS": {
         "venue": "INOX: City Centre II, Rajarhat",
         "time": "07:25 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98927|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
         "price": "270.00",
         "status": "3"
       },
@@ -316,21 +316,21 @@
         "price": "280.00",
         "status": "3"
       },
-      "INRK|98928|20261031|PICTURE PERFECT": {
-        "venue": "INOX: City Centre II, Rajarhat",
-        "time": "10:30 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT",
-        "price": "270.00",
-        "status": "3"
-      },
       "INRK|98928|20261031|PRIME ROWS": {
         "venue": "INOX: City Centre II, Rajarhat",
         "time": "10:30 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98928|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
         "price": "270.00",
         "status": "3"
       },
@@ -460,15 +460,6 @@
         "price": "220.00",
         "status": "3"
       },
-      "INSL|113967|20261031|PRIME PLUS ROWS": {
-        "venue": "INOX: City Center, Salt Lake",
-        "time": "09:55 AM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PRIME PLUS ROWS",
-        "price": "200.00",
-        "status": "3"
-      },
       "INSL|113967|20261031|PRIME ROWS": {
         "venue": "INOX: City Center, Salt Lake",
         "time": "09:55 AM",
@@ -484,6 +475,15 @@
         "fmt": "2D",
         "date": "20261031",
         "cat": "CLASSIC ROWS",
+        "price": "200.00",
+        "status": "3"
+      },
+      "INSL|113967|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "09:55 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
         "price": "200.00",
         "status": "3"
       },
@@ -739,21 +739,21 @@
         "price": "350.00",
         "status": "3"
       },
-      "PVAK|21596|20261031|PICTURE PERFECT ROWS": {
-        "venue": "PVR: Avani, Kolkata",
-        "time": "10:45 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT ROWS",
-        "price": "300.00",
-        "status": "3"
-      },
       "PVAK|21596|20261031|PRIME PLUS ROWS": {
         "venue": "PVR: Avani, Kolkata",
         "time": "10:45 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME PLUS ROWS",
+        "price": "300.00",
+        "status": "3"
+      },
+      "PVAK|21596|20261031|PICTURE PERFECT ROWS": {
+        "venue": "PVR: Avani, Kolkata",
+        "time": "10:45 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT ROWS",
         "price": "300.00",
         "status": "3"
       },
