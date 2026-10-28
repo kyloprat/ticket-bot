@@ -252,6 +252,186 @@
         "cat": "ROYAL",
         "price": "99.00",
         "status": "3"
+      },
+      "MCSL|19878|20261031|SILVER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:10 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "SILVER",
+        "price": "150.00",
+        "status": "3"
+      },
+      "MCSL|19878|20261031|EXECUTIVE": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:10 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
+        "price": "150.00",
+        "status": "3"
+      },
+      "MCSL|19878|20261031|GOLD": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:10 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "GOLD",
+        "price": "150.00",
+        "status": "3"
+      },
+      "MCSL|19878|20261031|RECLINER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:10 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "RECLINER",
+        "price": "250.00",
+        "status": "3"
+      },
+      "MCSL|19879|20261031|SILVER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "01:15 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "SILVER",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19879|20261031|EXECUTIVE": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "01:15 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19879|20261031|GOLD": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "01:15 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "GOLD",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19879|20261031|RECLINER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "01:15 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "RECLINER",
+        "price": "400.00",
+        "status": "3"
+      },
+      "MCSL|19880|20261031|SILVER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "04:20 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "SILVER",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19880|20261031|EXECUTIVE": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "04:20 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19880|20261031|GOLD": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "04:20 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "GOLD",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19880|20261031|RECLINER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "04:20 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "RECLINER",
+        "price": "400.00",
+        "status": "3"
+      },
+      "MCSL|19881|20261031|SILVER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "SILVER",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19881|20261031|EXECUTIVE": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19881|20261031|GOLD": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "GOLD",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19881|20261031|RECLINER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "RECLINER",
+        "price": "400.00",
+        "status": "3"
+      },
+      "MCSL|19882|20261031|SILVER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "SILVER",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19882|20261031|EXECUTIVE": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19882|20261031|GOLD": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "GOLD",
+        "price": "200.00",
+        "status": "3"
+      },
+      "MCSL|19882|20261031|RECLINER": {
+        "venue": "Miraj Cinemas: Downtown Mall, Salt Lake",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "RECLINER",
+        "price": "400.00",
+        "status": "3"
       }
     },
     "dates": {
