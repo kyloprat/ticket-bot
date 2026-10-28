@@ -82,21 +82,21 @@
         "price": "280.00",
         "status": "3"
       },
-      "INRK|98927|20261031|PICTURE PERFECT": {
-        "venue": "INOX: City Centre II, Rajarhat",
-        "time": "07:25 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT",
-        "price": "270.00",
-        "status": "3"
-      },
       "INRK|98927|20261031|PRIME ROWS": {
         "venue": "INOX: City Centre II, Rajarhat",
         "time": "07:25 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98927|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
         "price": "270.00",
         "status": "3"
       },
