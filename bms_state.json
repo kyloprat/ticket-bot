@@ -1,6 +1,150 @@
 {
   "et00477911-kolkata": {
     "shows": {
+      "INRK|98924|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:25 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "180.00",
+        "status": "3"
+      },
+      "INRK|98924|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:25 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
+        "price": "170.00",
+        "status": "3"
+      },
+      "INRK|98924|20261031|PRIME ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:25 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
+        "price": "170.00",
+        "status": "3"
+      },
+      "INRK|98924|20261031|CLASSIC ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:25 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "CLASSIC ROWS",
+        "price": "150.00",
+        "status": "3"
+      },
+      "INRK|98925|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "01:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "280.00",
+        "status": "3"
+      },
+      "INRK|98925|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "01:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98925|20261031|PRIME ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "01:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98925|20261031|CLASSIC ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "01:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "CLASSIC ROWS",
+        "price": "250.00",
+        "status": "3"
+      },
+      "INRK|98927|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "280.00",
+        "status": "3"
+      },
+      "INRK|98927|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98927|20261031|PRIME ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98927|20261031|CLASSIC ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "07:25 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "CLASSIC ROWS",
+        "price": "250.00",
+        "status": "3"
+      },
+      "INRK|98928|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "280.00",
+        "status": "3"
+      },
+      "INRK|98928|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98928|20261031|PRIME ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98928|20261031|CLASSIC ROWS": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "CLASSIC ROWS",
+        "price": "250.00",
+        "status": "3"
+      },
       "RDBK|28598|20261031|PLAT": {
         "venue": "RDB Cinemas: Salt Lake, Kolkata",
         "time": "10:00 AM",
