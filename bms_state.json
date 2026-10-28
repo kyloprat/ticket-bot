@@ -19,21 +19,21 @@
         "price": "270.00",
         "status": "3"
       },
-      "DMPZ|28034|20261031|PICTURE PERFECT": {
-        "venue": "PVR: Diamond Plaza, Jessore Kolkata",
-        "time": "09:25 AM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT",
-        "price": "220.00",
-        "status": "3"
-      },
       "DMPZ|28034|20261031|PRIME PLUS ROWS": {
         "venue": "PVR: Diamond Plaza, Jessore Kolkata",
         "time": "09:25 AM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME PLUS ROWS",
+        "price": "220.00",
+        "status": "3"
+      },
+      "DMPZ|28034|20261031|PICTURE PERFECT": {
+        "venue": "PVR: Diamond Plaza, Jessore Kolkata",
+        "time": "09:25 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
         "price": "220.00",
         "status": "3"
       },
