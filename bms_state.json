@@ -54,6 +54,60 @@
         "cat": "PLATINUM PLUS",
         "price": "270.00",
         "status": "3"
+      },
+      "SSGK|11809|20261031|REGULAR": {
+        "venue": "SSR Globe Cinemas: New Market, Kolkata",
+        "time": "11:00 AM",
+        "fmt": "2D 11.1 Surround Sound",
+        "date": "20261031",
+        "cat": "REGULAR",
+        "price": "99.00",
+        "status": "3"
+      },
+      "SSGK|11809|20261031|EXECUTIVE": {
+        "venue": "SSR Globe Cinemas: New Market, Kolkata",
+        "time": "11:00 AM",
+        "fmt": "2D 11.1 Surround Sound",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
+        "price": "99.00",
+        "status": "3"
+      },
+      "SSGK|11809|20261031|ROYAL": {
+        "venue": "SSR Globe Cinemas: New Market, Kolkata",
+        "time": "11:00 AM",
+        "fmt": "2D 11.1 Surround Sound",
+        "date": "20261031",
+        "cat": "ROYAL",
+        "price": "99.00",
+        "status": "3"
+      },
+      "SSGK|11813|20261031|REGULAR": {
+        "venue": "SSR Globe Cinemas: New Market, Kolkata",
+        "time": "10:00 PM",
+        "fmt": "2D 11.1 Surround Sound",
+        "date": "20261031",
+        "cat": "REGULAR",
+        "price": "99.00",
+        "status": "3"
+      },
+      "SSGK|11813|20261031|EXECUTIVE": {
+        "venue": "SSR Globe Cinemas: New Market, Kolkata",
+        "time": "10:00 PM",
+        "fmt": "2D 11.1 Surround Sound",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
+        "price": "99.00",
+        "status": "3"
+      },
+      "SSGK|11813|20261031|ROYAL": {
+        "venue": "SSR Globe Cinemas: New Market, Kolkata",
+        "time": "10:00 PM",
+        "fmt": "2D 11.1 Surround Sound",
+        "date": "20261031",
+        "cat": "ROYAL",
+        "price": "99.00",
+        "status": "3"
       }
     },
     "dates": {
