@@ -89,7 +89,7 @@
         "date": "20261031",
         "cat": "PRIME ROWS",
         "price": "280.00",
-        "status": "2"
+        "status": "3"
       },
       "DMPZ|28052|20261031|CLASSIC ROWS": {
         "venue": "PVR: Diamond Plaza, Jessore Kolkata",
@@ -208,21 +208,21 @@
         "price": "180.00",
         "status": "3"
       },
-      "INRK|98924|20261031|PICTURE PERFECT": {
-        "venue": "INOX: City Centre II, Rajarhat",
-        "time": "10:25 AM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT",
-        "price": "170.00",
-        "status": "3"
-      },
       "INRK|98924|20261031|PRIME ROWS": {
         "venue": "INOX: City Centre II, Rajarhat",
         "time": "10:25 AM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME ROWS",
+        "price": "170.00",
+        "status": "3"
+      },
+      "INRK|98924|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:25 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
         "price": "170.00",
         "status": "3"
       },
@@ -460,6 +460,15 @@
         "price": "220.00",
         "status": "3"
       },
+      "INSL|113967|20261031|PRIME PLUS ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "09:55 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME PLUS ROWS",
+        "price": "200.00",
+        "status": "3"
+      },
       "INSL|113967|20261031|PRIME ROWS": {
         "venue": "INOX: City Center, Salt Lake",
         "time": "09:55 AM",
@@ -475,15 +484,6 @@
         "fmt": "2D",
         "date": "20261031",
         "cat": "CLASSIC ROWS",
-        "price": "200.00",
-        "status": "3"
-      },
-      "INSL|113967|20261031|PRIME PLUS ROWS": {
-        "venue": "INOX: City Center, Salt Lake",
-        "time": "09:55 AM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PRIME PLUS ROWS",
         "price": "200.00",
         "status": "3"
       },
@@ -568,21 +568,21 @@
         "price": "340.00",
         "status": "3"
       },
-      "INSL|113955|20261031|PRIME ROWS": {
-        "venue": "INOX: City Center, Salt Lake",
-        "time": "10:15 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PRIME ROWS",
-        "price": "300.00",
-        "status": "3"
-      },
       "INSL|113955|20261031|PICTURE PERFECT": {
         "venue": "INOX: City Center, Salt Lake",
         "time": "10:15 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PICTURE PERFECT",
+        "price": "300.00",
+        "status": "3"
+      },
+      "INSL|113955|20261031|PRIME ROWS": {
+        "venue": "INOX: City Center, Salt Lake",
+        "time": "10:15 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PRIME ROWS",
         "price": "300.00",
         "status": "3"
       },
@@ -1018,21 +1018,21 @@
         "price": "240.00",
         "status": "3"
       },
-      "INHD|42032|20261031|EXECUTIVE": {
-        "venue": "Hind INOX: Kolkata",
-        "time": "10:05 AM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "EXECUTIVE",
-        "price": "190.00",
-        "status": "3"
-      },
       "INHD|42032|20261031|PREMIUM": {
         "venue": "Hind INOX: Kolkata",
         "time": "10:05 AM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PREMIUM",
+        "price": "190.00",
+        "status": "3"
+      },
+      "INHD|42032|20261031|EXECUTIVE": {
+        "venue": "Hind INOX: Kolkata",
+        "time": "10:05 AM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "EXECUTIVE",
         "price": "190.00",
         "status": "3"
       },
