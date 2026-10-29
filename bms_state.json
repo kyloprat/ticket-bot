@@ -89,7 +89,7 @@
         "date": "20261031",
         "cat": "PRIME ROWS",
         "price": "280.00",
-        "status": "2"
+        "status": "3"
       },
       "DMPZ|28052|20261031|CLASSIC ROWS": {
         "venue": "PVR: Diamond Plaza, Jessore Kolkata",
@@ -316,21 +316,21 @@
         "price": "280.00",
         "status": "3"
       },
-      "INRK|98928|20261031|PICTURE PERFECT": {
-        "venue": "INOX: City Centre II, Rajarhat",
-        "time": "10:30 PM",
-        "fmt": "2D",
-        "date": "20261031",
-        "cat": "PICTURE PERFECT",
-        "price": "270.00",
-        "status": "3"
-      },
       "INRK|98928|20261031|PRIME ROWS": {
         "venue": "INOX: City Centre II, Rajarhat",
         "time": "10:30 PM",
         "fmt": "2D",
         "date": "20261031",
         "cat": "PRIME ROWS",
+        "price": "270.00",
+        "status": "3"
+      },
+      "INRK|98928|20261031|PICTURE PERFECT": {
+        "venue": "INOX: City Centre II, Rajarhat",
+        "time": "10:30 PM",
+        "fmt": "2D",
+        "date": "20261031",
+        "cat": "PICTURE PERFECT",
         "price": "270.00",
         "status": "3"
       },
