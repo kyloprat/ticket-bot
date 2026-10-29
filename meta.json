@@ -3,7 +3,7 @@
   "results": {
     "et00439706-bengaluru": "no showtimes listed yet",
     "et00491771-bengaluru": "no showtimes listed yet",
-    "et00477911-kolkata": "34 matching showtimes"
+    "et00477911-kolkata": "partial check (BookMyShow refused 1 request(s)); trying again next run"
   },
   "fails": 0,
   "catalog": {
@@ -96,6 +96,6 @@
   },
   "card_hash": {
     "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything.",
-    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Thu 29 Oct - Sun 1 Nov · 23 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open), Fri 6 Nov (not listed yet)\n🏛 city centre (showing it), inox: city center, salt lake (showing it), pvr: mani square mall, kolkata (showing it), inox: south city, kolkata (showing it)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · 11.1 Surround Sound, Dolby 5.1, IMAX, INSIGNIA, Renovated\n\nRight now: 34 matching showtimes\n\n✅ Watching. /list shows everything."
+    "et00477911-kolkata": "🎬 Drishyam The Conclusion · Hindi\n📍 Kolkata\n\n🟢 Bookings OPEN: Thu 29 Oct - Sun 1 Nov · 23 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 31 Oct (open), Fri 6 Nov (not listed yet)\n🏛 city centre (showing it), inox: city center, salt lake (showing it), pvr: mani square mall, kolkata (showing it), inox: south city, kolkata (showing it)\n🎞 any format\n🕐 any time\n\nAvailable: 2D, IMAX 2D · 11.1 Surround Sound, Dolby 5.1, IMAX, INSIGNIA, Renovated\n\nRight now: partial check (BookMyShow refused 1 request(s)); trying again next run\n\n✅ Watching. /list shows everything."
   }
 }
