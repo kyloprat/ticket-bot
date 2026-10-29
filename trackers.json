@@ -26,28 +26,5 @@
     ],
     "times": [],
     "enabled": true
-  },
-  {
-    "id": "et00477911-kolkata",
-    "label": "Drishyam The Conclusion - (Hindi)",
-    "event_code": "ET00477911",
-    "region_slug": "kolkata",
-    "slug": "drishyam-the-conclusion-hindi",
-    "dates": [
-      "20261031",
-      "20261106"
-    ],
-    "theatres": [
-      "city centre",
-      "inox: city center, salt lake",
-      "pvr: mani square mall, kolkata",
-      "inox: south city, kolkata"
-    ],
-    "formats": [],
-    "times": [],
-    "enabled": true,
-    "confirmed": true,
-    "epoch": 1,
-    "confirmed_sig": "[\"kolkata\", [\"20261031\", \"20261106\"], [\"city centre\", \"inox: city center, salt lake\", \"inox: south city, kolkata\", \"pvr: mani square mall, kolkata\"], [], []]"
   }
 ]
