@@ -1,10 +1,10 @@
 {
   "last_heartbeat": "2026-10-30",
   "results": {
-    "et00439706-bengaluru": "no showtimes listed yet",
+    "et00439706-bengaluru": "BookMyShow gave no data",
     "et00491771-bengaluru": "BookMyShow gave no data"
   },
-  "fails": 0,
+  "fails": 1,
   "catalog": {
     "et00491771-bengaluru": {
       "name": "",
