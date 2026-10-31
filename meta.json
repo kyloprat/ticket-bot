@@ -2,7 +2,7 @@
   "last_heartbeat": "2026-10-31",
   "results": {
     "et00439706-bengaluru": "no showtimes listed yet",
-    "et00491771-bengaluru": "no showtimes listed yet"
+    "et00491771-bengaluru": "BookMyShow gave no data"
   },
   "fails": 0,
   "catalog": {
@@ -24,6 +24,6 @@
     }
   },
   "card_hash": {
-    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything."
+    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: BookMyShow gave no data\n\n✅ Watching. /list shows everything."
   }
 }
