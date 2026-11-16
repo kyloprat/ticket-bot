@@ -1,10 +1,10 @@
 {
   "last_heartbeat": "2026-11-16",
   "results": {
-    "et00439706-bengaluru": "BookMyShow gave no data",
-    "et00491771-bengaluru": "BookMyShow gave no data"
+    "et00439706-bengaluru": "5 matching showtimes",
+    "et00491771-bengaluru": "no showtimes listed yet"
   },
-  "fails": 13,
+  "fails": 0,
   "catalog": {
     "et00491771-bengaluru": {
       "name": "",
@@ -15,15 +15,51 @@
       "screens": []
     },
     "et00439706-bengaluru": {
-      "name": "",
-      "language": "",
-      "dates": [],
-      "venues": [],
-      "formats": [],
-      "screens": []
+      "name": "Avengers: Doomsday",
+      "language": "English  •  2D",
+      "dates": [
+        [
+          "20261116",
+          "NOT_OPEN"
+        ],
+        [
+          "20261117",
+          "NOT_OPEN"
+        ],
+        [
+          "20261118",
+          "NOT_OPEN"
+        ],
+        [
+          "20261119",
+          "NOT_OPEN"
+        ],
+        [
+          "20261120",
+          "NOT_OPEN"
+        ],
+        [
+          "20261121",
+          "NOT_OPEN"
+        ],
+        [
+          "20261122",
+          "NOT_OPEN"
+        ]
+      ],
+      "venues": [
+        "PVR: Soul Spirit Central Mall, Bellandur"
+      ],
+      "formats": [
+        "2D",
+        "MS-Infinity Vsn 3d"
+      ],
+      "screens": [
+        "DOLBY 7.1"
+      ]
     }
   },
   "card_hash": {
-    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: BookMyShow gave no data\n\n✅ Watching. /list shows everything."
+    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything."
   }
 }
