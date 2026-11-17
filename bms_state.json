@@ -7,8 +7,17 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Recliners Rows",
-        "price": "1200.00",
-        "status": "1"
+        "price": "1400.00",
+        "status": "0"
+      },
+      "IMCB|19597|20261217|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: M5 Ecity, Bengaluru",
+        "time": "08:50 AM",
+        "fmt": "MS-Infinity Vsn 3d BIGPIX",
+        "date": "20261217",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "800.00",
+        "status": "0"
       },
       "IMCB|19597|20261217|PICTURE PERFECT": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -19,14 +28,32 @@
         "price": "800.00",
         "status": "0"
       },
-      "IMCB|19597|20261217|EXTRA LEGROOM ROWS": {
+      "IMCB|19597|20261217|Prime Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
         "time": "08:50 AM",
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "680.00",
+        "cat": "Prime Rows",
+        "price": "750.00",
+        "status": "0"
+      },
+      "IMCB|19597|20261217|Classic Plus Rows": {
+        "venue": "INOX: M5 Ecity, Bengaluru",
+        "time": "08:50 AM",
+        "fmt": "MS-Infinity Vsn 3d BIGPIX",
+        "date": "20261217",
+        "cat": "Classic Plus Rows",
+        "price": "690.00",
         "status": "1"
+      },
+      "IMCB|19597|20261217|Classic Rows": {
+        "venue": "INOX: M5 Ecity, Bengaluru",
+        "time": "08:50 AM",
+        "fmt": "MS-Infinity Vsn 3d BIGPIX",
+        "date": "20261217",
+        "cat": "Classic Rows",
+        "price": "670.00",
+        "status": "2"
       },
       "IMCB|19597|20261217|Lounger Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -37,40 +64,13 @@
         "price": "650.00",
         "status": "3"
       },
-      "IMCB|19597|20261217|Classic Plus Rows": {
-        "venue": "INOX: M5 Ecity, Bengaluru",
-        "time": "08:50 AM",
-        "fmt": "MS-Infinity Vsn 3d BIGPIX",
-        "date": "20261217",
-        "cat": "Classic Plus Rows",
-        "price": "640.00",
-        "status": "1"
-      },
-      "IMCB|19597|20261217|Prime Rows": {
-        "venue": "INOX: M5 Ecity, Bengaluru",
-        "time": "08:50 AM",
-        "fmt": "MS-Infinity Vsn 3d BIGPIX",
-        "date": "20261217",
-        "cat": "Prime Rows",
-        "price": "630.00",
-        "status": "1"
-      },
-      "IMCB|19597|20261217|Classic Rows": {
-        "venue": "INOX: M5 Ecity, Bengaluru",
-        "time": "08:50 AM",
-        "fmt": "MS-Infinity Vsn 3d BIGPIX",
-        "date": "20261217",
-        "cat": "Classic Rows",
-        "price": "550.00",
-        "status": "2"
-      },
       "IMCB|19598|20261217|Recliners Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
         "time": "12:15 PM",
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Recliners Rows",
-        "price": "1140.00",
+        "price": "1400.00",
         "status": "0"
       },
       "IMCB|19598|20261217|PICTURE PERFECT": {
@@ -80,7 +80,7 @@
         "date": "20261217",
         "cat": "PICTURE PERFECT",
         "price": "800.00",
-        "status": "1"
+        "status": "0"
       },
       "IMCB|19598|20261217|EXTRA LEGROOM ROWS": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -88,7 +88,25 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "680.00",
+        "price": "750.00",
+        "status": "1"
+      },
+      "IMCB|19598|20261217|Prime Rows": {
+        "venue": "INOX: M5 Ecity, Bengaluru",
+        "time": "12:15 PM",
+        "fmt": "MS-Infinity Vsn 3d BIGPIX",
+        "date": "20261217",
+        "cat": "Prime Rows",
+        "price": "750.00",
+        "status": "2"
+      },
+      "IMCB|19598|20261217|Classic Plus Rows": {
+        "venue": "INOX: M5 Ecity, Bengaluru",
+        "time": "12:15 PM",
+        "fmt": "MS-Infinity Vsn 3d BIGPIX",
+        "date": "20261217",
+        "cat": "Classic Plus Rows",
+        "price": "690.00",
         "status": "2"
       },
       "IMCB|19598|20261217|Lounger Rows": {
@@ -100,31 +118,13 @@
         "price": "650.00",
         "status": "3"
       },
-      "IMCB|19598|20261217|Prime Rows": {
-        "venue": "INOX: M5 Ecity, Bengaluru",
-        "time": "12:15 PM",
-        "fmt": "MS-Infinity Vsn 3d BIGPIX",
-        "date": "20261217",
-        "cat": "Prime Rows",
-        "price": "630.00",
-        "status": "3"
-      },
-      "IMCB|19598|20261217|Classic Plus Rows": {
-        "venue": "INOX: M5 Ecity, Bengaluru",
-        "time": "12:15 PM",
-        "fmt": "MS-Infinity Vsn 3d BIGPIX",
-        "date": "20261217",
-        "cat": "Classic Plus Rows",
-        "price": "570.00",
-        "status": "2"
-      },
       "IMCB|19598|20261217|Classic Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
         "time": "12:15 PM",
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Classic Rows",
-        "price": "550.00",
+        "price": "620.00",
         "status": "3"
       },
       "IMCB|19599|20261217|Recliners Rows": {
@@ -133,7 +133,16 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Recliners Rows",
-        "price": "1200.00",
+        "price": "1400.00",
+        "status": "1"
+      },
+      "IMCB|19599|20261217|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: M5 Ecity, Bengaluru",
+        "time": "03:40 PM",
+        "fmt": "MS-Infinity Vsn 3d BIGPIX",
+        "date": "20261217",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "800.00",
         "status": "2"
       },
       "IMCB|19599|20261217|PICTURE PERFECT": {
@@ -143,16 +152,7 @@
         "date": "20261217",
         "cat": "PICTURE PERFECT",
         "price": "800.00",
-        "status": "1"
-      },
-      "IMCB|19599|20261217|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: M5 Ecity, Bengaluru",
-        "time": "03:40 PM",
-        "fmt": "MS-Infinity Vsn 3d BIGPIX",
-        "date": "20261217",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "750.00",
-        "status": "2"
+        "status": "0"
       },
       "IMCB|19599|20261217|Lounger Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -178,8 +178,8 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Classic Plus Rows",
-        "price": "640.00",
-        "status": "3"
+        "price": "690.00",
+        "status": "2"
       },
       "IMCB|19599|20261217|Classic Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -197,6 +197,15 @@
         "date": "20261217",
         "cat": "Recliners Rows",
         "price": "1400.00",
+        "status": "0"
+      },
+      "IMCB|19600|20261217|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: M5 Ecity, Bengaluru",
+        "time": "07:05 PM",
+        "fmt": "MS-Infinity Vsn 3d BIGPIX",
+        "date": "20261217",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "800.00",
         "status": "1"
       },
       "IMCB|19600|20261217|PICTURE PERFECT": {
@@ -206,16 +215,7 @@
         "date": "20261217",
         "cat": "PICTURE PERFECT",
         "price": "800.00",
-        "status": "1"
-      },
-      "IMCB|19600|20261217|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: M5 Ecity, Bengaluru",
-        "time": "07:05 PM",
-        "fmt": "MS-Infinity Vsn 3d BIGPIX",
-        "date": "20261217",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "750.00",
-        "status": "2"
+        "status": "0"
       },
       "IMCB|19600|20261217|Lounger Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -232,8 +232,8 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Prime Rows",
-        "price": "700.00",
-        "status": "3"
+        "price": "750.00",
+        "status": "2"
       },
       "IMCB|19600|20261217|Classic Plus Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -241,8 +241,8 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Classic Plus Rows",
-        "price": "640.00",
-        "status": "2"
+        "price": "690.00",
+        "status": "1"
       },
       "IMCB|19600|20261217|Classic Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -260,7 +260,7 @@
         "date": "20261217",
         "cat": "Recliners Rows",
         "price": "1400.00",
-        "status": "1"
+        "status": "0"
       },
       "IMCB|19601|20261217|PICTURE PERFECT": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -277,8 +277,8 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "750.00",
-        "status": "1"
+        "price": "800.00",
+        "status": "0"
       },
       "IMCB|19601|20261217|Lounger Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -295,8 +295,8 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Prime Rows",
-        "price": "700.00",
-        "status": "2"
+        "price": "750.00",
+        "status": "1"
       },
       "IMCB|19601|20261217|Classic Plus Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -304,8 +304,8 @@
         "fmt": "MS-Infinity Vsn 3d BIGPIX",
         "date": "20261217",
         "cat": "Classic Plus Rows",
-        "price": "640.00",
-        "status": "2"
+        "price": "690.00",
+        "status": "1"
       },
       "IMCB|19601|20261217|Classic Rows": {
         "venue": "INOX: M5 Ecity, Bengaluru",
@@ -316,14 +316,293 @@
         "price": "620.00",
         "status": "3"
       },
+      "CLGM|13232|20261217|NORMAL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "06:30 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "NORMAL",
+        "price": "710.00",
+        "status": "3"
+      },
+      "CLGM|13232|20261217|EXECUTIVE": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "06:30 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "EXECUTIVE",
+        "price": "810.00",
+        "status": "3"
+      },
+      "CLGM|13232|20261217|PREMIUM": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "06:30 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM",
+        "price": "840.00",
+        "status": "2"
+      },
+      "CLGM|13232|20261217|PREMIUM XL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "06:30 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM XL",
+        "price": "890.00",
+        "status": "1"
+      },
+      "CLGM|13232|20261217|PREMIUM PLUS": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "06:30 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM PLUS",
+        "price": "870.00",
+        "status": "2"
+      },
+      "CLGM|13233|20261217|NORMAL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "09:25 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "NORMAL",
+        "price": "710.00",
+        "status": "3"
+      },
+      "CLGM|13233|20261217|EXECUTIVE": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "09:25 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "EXECUTIVE",
+        "price": "810.00",
+        "status": "3"
+      },
+      "CLGM|13233|20261217|PREMIUM": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "09:25 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM",
+        "price": "840.00",
+        "status": "3"
+      },
+      "CLGM|13233|20261217|PREMIUM XL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "09:25 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM XL",
+        "price": "890.00",
+        "status": "2"
+      },
+      "CLGM|13233|20261217|PREMIUM PLUS": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "09:25 AM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM PLUS",
+        "price": "870.00",
+        "status": "2"
+      },
+      "CLGM|13234|20261217|NORMAL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "12:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "NORMAL",
+        "price": "710.00",
+        "status": "3"
+      },
+      "CLGM|13234|20261217|EXECUTIVE": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "12:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "EXECUTIVE",
+        "price": "790.00",
+        "status": "3"
+      },
+      "CLGM|13234|20261217|PREMIUM": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "12:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM",
+        "price": "810.00",
+        "status": "3"
+      },
+      "CLGM|13234|20261217|PREMIUM XL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "12:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM XL",
+        "price": "850.00",
+        "status": "2"
+      },
+      "CLGM|13234|20261217|PREMIUM PLUS": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "12:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM PLUS",
+        "price": "830.00",
+        "status": "2"
+      },
+      "CLGM|13235|20261217|NORMAL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "03:50 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "NORMAL",
+        "price": "710.00",
+        "status": "3"
+      },
+      "CLGM|13235|20261217|EXECUTIVE": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "03:50 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "EXECUTIVE",
+        "price": "810.00",
+        "status": "3"
+      },
+      "CLGM|13235|20261217|PREMIUM": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "03:50 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM",
+        "price": "840.00",
+        "status": "3"
+      },
+      "CLGM|13235|20261217|PREMIUM XL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "03:50 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM XL",
+        "price": "890.00",
+        "status": "2"
+      },
+      "CLGM|13235|20261217|PREMIUM PLUS": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "03:50 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM PLUS",
+        "price": "870.00",
+        "status": "2"
+      },
+      "CLGM|13236|20261217|NORMAL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "07:10 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "NORMAL",
+        "price": "710.00",
+        "status": "3"
+      },
+      "CLGM|13236|20261217|EXECUTIVE": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "07:10 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "EXECUTIVE",
+        "price": "810.00",
+        "status": "3"
+      },
+      "CLGM|13236|20261217|PREMIUM": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "07:10 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM",
+        "price": "840.00",
+        "status": "2"
+      },
+      "CLGM|13236|20261217|PREMIUM XL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "07:10 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM XL",
+        "price": "890.00",
+        "status": "2"
+      },
+      "CLGM|13236|20261217|PREMIUM PLUS": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "07:10 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM PLUS",
+        "price": "870.00",
+        "status": "1"
+      },
+      "CLGM|13237|20261217|NORMAL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "NORMAL",
+        "price": "710.00",
+        "status": "3"
+      },
+      "CLGM|13237|20261217|EXECUTIVE": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "EXECUTIVE",
+        "price": "810.00",
+        "status": "3"
+      },
+      "CLGM|13237|20261217|PREMIUM": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM",
+        "price": "840.00",
+        "status": "2"
+      },
+      "CLGM|13237|20261217|PREMIUM XL": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM XL",
+        "price": "890.00",
+        "status": "1"
+      },
+      "CLGM|13237|20261217|PREMIUM PLUS": {
+        "venue": "Cinepolis: Lulu Mall, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "MS-Infinity Vsn 3d 4K LASER ATMOS MACRO XE",
+        "date": "20261217",
+        "cat": "PREMIUM PLUS",
+        "price": "870.00",
+        "status": "2"
+      },
       "PSLC|21365|20261217|RECLINER ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
         "time": "08:50 AM",
         "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
         "date": "20261217",
         "cat": "RECLINER ROWS",
-        "price": "2000.00",
-        "status": "1"
+        "price": "2100.00",
+        "status": "0"
+      },
+      "PSLC|21365|20261217|CLASSIC PLUS ROWS": {
+        "venue": "PVR: Soul Spirit Central Mall, Bellandur",
+        "time": "08:50 AM",
+        "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
+        "date": "20261217",
+        "cat": "CLASSIC PLUS ROWS",
+        "price": "1100.00",
+        "status": "2"
       },
       "PSLC|21365|20261217|PRIME ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
@@ -334,22 +613,13 @@
         "price": "1100.00",
         "status": "1"
       },
-      "PSLC|21365|20261217|CLASSIC PLUS ROWS": {
-        "venue": "PVR: Soul Spirit Central Mall, Bellandur",
-        "time": "08:50 AM",
-        "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
-        "date": "20261217",
-        "cat": "CLASSIC PLUS ROWS",
-        "price": "900.00",
-        "status": "2"
-      },
       "PSLC|21365|20261217|CLASSIC ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
         "time": "08:50 AM",
         "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
         "date": "20261217",
         "cat": "CLASSIC ROWS",
-        "price": "650.00",
+        "price": "700.00",
         "status": "3"
       },
       "PSLC|21366|20261217|RECLINER ROWS": {
@@ -358,8 +628,8 @@
         "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
         "date": "20261217",
         "cat": "RECLINER ROWS",
-        "price": "2000.00",
-        "status": "1"
+        "price": "2100.00",
+        "status": "0"
       },
       "PSLC|21366|20261217|PRIME ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
@@ -394,8 +664,8 @@
         "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
         "date": "20261217",
         "cat": "RECLINER ROWS",
-        "price": "2000.00",
-        "status": "2"
+        "price": "2100.00",
+        "status": "0"
       },
       "PSLC|21367|20261217|PRIME ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
@@ -412,7 +682,7 @@
         "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
         "date": "20261217",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "720.00",
+        "price": "900.00",
         "status": "3"
       },
       "PSLC|21367|20261217|CLASSIC ROWS": {
@@ -448,8 +718,8 @@
         "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
         "date": "20261217",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "900.00",
-        "status": "2"
+        "price": "1100.00",
+        "status": "1"
       },
       "PSLC|21368|20261217|CLASSIC ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
@@ -466,8 +736,17 @@
         "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
         "date": "20261217",
         "cat": "RECLINER ROWS",
-        "price": "2000.00",
+        "price": "2100.00",
         "status": "1"
+      },
+      "PSLC|21369|20261217|CLASSIC PLUS ROWS": {
+        "venue": "PVR: Soul Spirit Central Mall, Bellandur",
+        "time": "10:30 PM",
+        "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
+        "date": "20261217",
+        "cat": "CLASSIC PLUS ROWS",
+        "price": "1100.00",
+        "status": "2"
       },
       "PSLC|21369|20261217|PRIME ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
@@ -477,15 +756,6 @@
         "cat": "PRIME ROWS",
         "price": "1100.00",
         "status": "1"
-      },
-      "PSLC|21369|20261217|CLASSIC PLUS ROWS": {
-        "venue": "PVR: Soul Spirit Central Mall, Bellandur",
-        "time": "10:30 PM",
-        "fmt": "MS-Infinity Vsn 3d DOLBY 7.1",
-        "date": "20261217",
-        "cat": "CLASSIC PLUS ROWS",
-        "price": "900.00",
-        "status": "3"
       },
       "PSLC|21369|20261217|CLASSIC ROWS": {
         "venue": "PVR: Soul Spirit Central Mall, Bellandur",
