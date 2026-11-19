@@ -35,6 +35,11 @@ CHAT_FILE = "chat.json"            # setup-card message ids (written by the rela
 HEARTBEAT_HOUR = int(os.getenv("HEARTBEAT_HOUR", "20"))   # IST: one "still watching" note a day, 8 pm
 IST = timezone(timedelta(hours=5, minutes=30))
 RETRY_DELAY = 3   # seconds before asking BookMyShow once more after a refused request
+# Two checkers share this repo's state: GitHub (CHECKER=github) and the owner's laptop (CHECKER=laptop,
+# laptop/run-check.ps1), whose home network BookMyShow doesn't block. GitHub skips its run while
+# the laptop has read BookMyShow in the last LAPTOP_FRESH_MIN minutes.
+LAPTOP_FRESH_MIN = 9
+BACK_AFTER = 3    # GitHub good reads in a row before "reading again" (one is enough from the laptop)
 
 # ──────────────────────────────────────────────────────────────────────
 # CONSTANTS
@@ -282,10 +287,17 @@ def parse_shows(data):
 # ──────────────────────────────────────────────────────────────────────
 # FILTERING
 # ──────────────────────────────────────────────────────────────────────
-def filter_shows(shows, theatre_filter, time_periods, date_codes, formats=()):
+def format_hit(f, words):
+    """A format filter ("3d pxl") matches when all its words are in the show's format + screen."""
+    return all(w in words for w in f.split())
+
+
+def filter_shows(shows, theatre_filter, time_periods, date_codes, formats=(), skip_theatres=(), skip_formats=()):
     """Theatre keywords match the theatre name (or screen/format, for older trackers). Each format
-    filter ("3d pxl") needs all its words in the show's format + screen. Filters combine with AND."""
+    filter ("3d pxl") needs all its words in the show's format + screen. Filters combine with AND.
+    skip_theatres / skip_formats ("crossed out" in chat) drop the shows they match."""
     result = []
+    skip_kws = [k.lower() for k in skip_theatres or [] if k]
     kws = [k.strip().lower() for k in theatre_filter.split(",")
            if k.strip()] if theatre_filter else []
     periods = [p.strip().lower() for p in time_periods.split(",")
@@ -300,11 +312,15 @@ def filter_shows(shows, theatre_filter, time_periods, date_codes, formats=()):
             if not any(k in name_lower for k in kws):
                 continue
 
+        if skip_kws and any(k in s.venue_name.lower() for k in skip_kws):
+            continue
+
         # Format filter (2D / 3D / IMAX 3D / PXL / 3D PXL ...)
-        if formats:
-            have = f"{s.fmt} {s.screen_attr}".lower().split()
-            if not any(all(w in have for w in f.split()) for f in formats):
-                continue
+        have = f"{s.fmt} {s.screen_attr}".lower().split()
+        if formats and not any(format_hit(f, have) for f in formats):
+            continue
+        if skip_formats and any(format_hit(f, have) for f in skip_formats):
+            continue
 
         # Date filter
         if dates_set and s.date_code and s.date_code not in dates_set:
@@ -369,43 +385,54 @@ def build_state(shows, dates):
     return {"shows": show_state, "dates": date_state}
 
 
+def slots(state):
+    """{(theatre, format, date)} in a saved state: what an alert lists (no times, no prices)."""
+    return {(v["venue"], fmt_label(v.get("fmt", "")), v["date"]) for v in (state or {}).get("shows", {}).values()}
+
+
+def fmt_label(fmt):
+    """'MS InfVsn ICE 3D ICE' (format + screen) -> 'MS InfVsn ICE 3D'"""
+    seen = []
+    for w in fmt.split():
+        if w.lower() not in (x.lower() for x in seen):
+            seen.append(w)
+    return " ".join(seen)
+
+
+def day_label(code):
+    """20261217 -> 17 Dec"""
+    try:
+        return datetime.strptime(code, "%Y%m%d").strftime("%d %b").lstrip("0")
+    except ValueError:
+        return code
+
+
 def detect_changes(old_state, new_state):
-    changes = []
+    """What newly opened, as alert lines: one line per theatre + format. Dates go on the line only
+    when the new shows span more than one date (alert_text adds the one date otherwise)."""
+    new = slots(new_state) - slots(old_state)
+    by_pair = {}
+    for venue, fmt, d in new:
+        by_pair.setdefault((venue, fmt), set()).add(d)
+    many = len({d for _, _, d in new}) > 1
+    return [f"• {venue}" + (f" · {fmt}" if fmt else "")
+            + (" · " + ", ".join(day_label(d) for d in sorted(ds)) if many else "")
+            for (venue, fmt), ds in sorted(by_pair.items())]
 
-    # New dates opening
-    old_dates = old_state.get("dates", {})
-    new_dates = new_state.get("dates", {})
-    for dc, status in new_dates.items():
-        old_status = old_dates.get(dc)
-        if (old_status == "NOT_OPEN"
-                and status in ("BOOKABLE", "AVAILABLE")):
-            changes.append(f"📅 NEW DATE OPENED: {dc}")
 
-    old_shows = old_state.get("shows", {})
-    new_shows = new_state.get("shows", {})
+def new_days(old_state, new_state):
+    return sorted({d for _, _, d in slots(new_state) - slots(old_state)})
 
-    # New showtimes
-    for key in set(new_shows) - set(old_shows):
-        s = new_shows[key]
-        fmt = f" {s['fmt']}" if s.get("fmt") else ""
-        changes.append(
-            f"🆕 NEW: {s['venue']} {s['time']}{fmt} [{s['date']}] "
-            f"— {s['cat']} ₹{s['price']}"
-        )
 
-    # Sold out → available
-    for key, new_s in new_shows.items():
-        old_s = old_shows.get(key)
-        if old_s and old_s["status"] == "0" and new_s["status"] != "0":
-            lbl, ico = AVAIL_STATUS_MAP.get(
-                new_s["status"], ("UNKNOWN", "⚪")
-            )
-            changes.append(
-                f"{ico} BACK: {new_s['venue']} {new_s['time']} "
-                f"[{new_s['date']}] — {new_s['cat']} → {lbl}"
-            )
-
-    return changes
+def alert_text(name, city, changes, days, first=True):
+    """The Telegram alert: what opened, as 'theatre · format' lines. The Book button carries the link."""
+    head = "🎟️ Bookings open" if first else "🆕 More shows"
+    lines = [f"{head}: {name} ({city})", ""] + changes[:15]
+    if len(changes) > 15:
+        lines.append(f"…and {len(changes) - 15} more")
+    if len(days) == 1:
+        lines += ["", f"📅 {day_label(days[0])}"]
+    return "\n".join(lines)
 
 
 # ──────────────────────────────────────────────────────────────────────
@@ -590,7 +617,11 @@ def check_bms(t, old, fetch=fetch_bms):
     missing = []
 
     def get(code, dc):
-        """BookMyShow now and then refuses one request from GitHub (403): ask once more, then give up."""
+        """BookMyShow now and then refuses one request from GitHub (403): ask once more, then give up.
+        After a refusal the retry didn't fix, stop asking this run: more requests only add to the block."""
+        if missing:
+            missing.append((code, dc))
+            return None
         for attempt in range(2):
             data = fetch(code, dc, region_code, region_slug, lat, lon, geohash)
             if data:
@@ -600,6 +631,7 @@ def check_bms(t, old, fetch=fetch_bms):
         missing.append((code, dc))
         return None
 
+    skip_formats = t.get("skip_formats") or []
     wanted = list(t.get("dates") or [""])
     for dc in wanted:
         first = get(t["event_code"], dc)
@@ -610,6 +642,8 @@ def check_bms(t, old, fetch=fetch_bms):
             wanted += [d.date_code for d in parse_dates(first)
                        if d.status == "AVAILABLE" and d.date_code not in wanted][:6]
         for code, fmt in formats or [(t["event_code"], "")]:
+            if code != t["event_code"] and any(format_hit(f, fmt.lower().split()) for f in skip_formats):
+                continue                      # every show of this format is crossed out: don't ask
             data = first if code == t["event_code"] else get(code, dc)
             if not data:
                 continue
@@ -640,19 +674,12 @@ def check_bms(t, old, fetch=fetch_bms):
                 "state": None, "changes": [], "shows": [], "movie_info": movie_info, "catalog": catalog}
 
     filtered = filter_shows(all_shows, ",".join(t.get("theatres", [])), ",".join(t.get("times", [])),
-                            ",".join(t.get("dates", [])), t.get("formats", []))
+                            ",".join(t.get("dates", [])), t.get("formats", []),
+                            t.get("skip_theatres", []), skip_formats)
     new_state = build_state(filtered, all_dates)
-    changes = []
-    if old.get("shows"):
-        changes = detect_changes(old, new_state)
-    elif new_state["shows"]:
-        theatres = sorted({v["venue"] for v in new_state["shows"].values()})
-        slots = sorted({(v["date"], v["venue"], v["time"], v.get("fmt", ""))
-                        for v in new_state["shows"].values()})
-        changes = [f"🎟️ BOOKINGS OPEN: {len(slots)} matching show(s) at {len(theatres)} theatre(s)"] + \
-            [f"   {d[6:8]}/{d[4:6]} {tm} · {v}" + (f" · {f}" if f else "") for d, v, tm, f in slots[:10]]
     return {"ok": True, "result": f"{len(filtered)} matching showtimes", "state": new_state,
-            "changes": changes, "shows": filtered, "movie_info": movie_info, "catalog": catalog}
+            "changes": detect_changes(old, new_state), "first": not old.get("shows"), "shows": filtered,
+            "movie_info": movie_info, "catalog": catalog}
 
 
 def refresh_cards(tg, trackers, meta, chat_state, admin):
@@ -674,6 +701,39 @@ def refresh_cards(tg, trackers, meta, chat_state, admin):
         hashes.pop(tid)
 
 
+def laptop_fresh(meta, now):
+    try:
+        return now - datetime.fromisoformat(meta.get("laptop_ok_at", "")) < timedelta(minutes=LAPTOP_FRESH_MIN)
+    except (ValueError, TypeError):
+        return False
+
+
+def warn_or_clear(tg, meta, ok, checker):
+    """GitHub's reads now and then get through even while it is blocked: one good read must not
+    end the outage, or the warning comes back every few runs."""
+    if ok:
+        meta["fails"] = 0
+        if not meta.get("warned"):
+            meta.pop("oks", None)
+            return
+        meta["oks"] = meta.get("oks", 0) + 1
+        if checker == "laptop" or meta["oks"] >= BACK_AFTER:
+            sent = tg.send("✅ Reading BookMyShow again" + (" from your laptop" if checker == "laptop" else "")
+                           + ". Alerts work again.")
+            if sent:
+                meta.pop("warned")
+                meta.pop("oks")
+        return
+    meta["oks"], meta["fails"] = 0, meta.get("fails", 0) + 1
+    if meta["fails"] >= 3 and not meta.get("warned"):
+        where = "your laptop's network" if checker == "laptop" else "GitHub's servers"
+        sent = tg.send(f"⚠️ Can't read BookMyShow: 3 checks in a row got no data. BookMyShow is refusing "
+                       f"{where}. Check the app yourself for now; I'll tell you when checks work again."
+                       + ("" if checker == "laptop" else " Open your laptop and it checks from there."))
+        if sent:
+            meta["warned"] = True
+
+
 def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=None):
     """only: a tracker id the relay asked to check right away (skips the others and the daily note)."""
     now = now or datetime.now(IST)
@@ -684,6 +744,10 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
     state = load_state()
     if "shows" in state:                      # old single-movie format
         state = {}
+    checker = os.getenv("CHECKER", "").strip().lower()
+    if checker == "github" and not only and laptop_fresh(meta, now):
+        print(f"  Laptop read BookMyShow at {meta['laptop_ok_at']}: nothing to do here.")
+        return
     tg = tg or make_telegram()
 
     # Chat (links, buttons, commands) is answered instantly by the relay (relay.py on Vercel),
@@ -725,8 +789,11 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
                 if r["changes"]:
                     subject = (f"BMS Alert: {title(t, catalog.get(t['id']))} ({city_name(t['region_slug'])})"
                                f" - {len(r['changes'])} change(s)")
-                    lines = [subject, ""] + r["changes"][:15] + ["", buy_url(t)]
-                    sent = tg.send("\n".join(lines), chat=t.get("chat"))
+                    days = new_days(state.get(t["id"], {}), r["state"])
+                    text = alert_text(title(t, catalog.get(t["id"])), city_name(t["region_slug"]),
+                                      r["changes"], days, r.get("first", True))
+                    book = [[("🎟️ Book on BookMyShow", buy_url(t, days[0] if days else ""))]]
+                    sent = tg.send(text, book, chat=t.get("chat"))
                     if not t.get("chat"):
                         send_email(subject, r["changes"], r["shows"], r["movie_info"])
                 if r["state"] is not None and sent:
@@ -742,12 +809,12 @@ def run(now=None, tg=None, fetch=fetch_bms, district_check=check_district, only=
     # 2. keep each setup card in Telegram current (booking status, validated dates/theatres)
     refresh_cards(tg, trackers, meta, load_json(CHAT_FILE, {}), str(getattr(tg, "chat_id", "") or ""))
 
-    # 3. one-time warning if BookMyShow keeps returning nothing; one "still watching" note a day
+    # 3. one warning per outage if BookMyShow keeps returning nothing, one note when it's back;
+    #    one "still watching" note a day
+    if bms_ok and checker == "laptop":
+        meta["laptop_ok_at"] = now.isoformat(timespec="minutes")
     if bms_ran and not only:
-        meta["fails"] = 0 if bms_ok else meta.get("fails", 0) + 1
-        if meta["fails"] == 3:
-            tg.send("⚠️ Can't read BookMyShow: 3 checks in a row got no data. "
-                    "It may be blocking GitHub, so check manually.")
+        warn_or_clear(tg, meta, bms_ok, checker)
     if not only and now.hour >= HEARTBEAT_HOUR and meta.get("last_heartbeat") != now.date().isoformat():
         by_chat = {}
         for t in trackers:

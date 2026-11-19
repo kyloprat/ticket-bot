@@ -42,6 +42,7 @@ jobs:
           RESEND_TO_EMAIL: ${{ secrets.RESEND_TO_EMAIL }}
           RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
           ONLY_TRACKER: ${{ inputs.only }}
+          CHECKER: github   # skips the run while the laptop checked recently (laptop/run-check.ps1)
         run: uv run main.py
 
       - name: Commit updated state

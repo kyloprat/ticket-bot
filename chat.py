@@ -68,7 +68,8 @@ FAVORITES = {
     "kolkata": ["mani square", "city cent", "south city", "quest", "acropolis", "diamond plaza",
                 "forum mall, elgin", "avani"],
     "bengaluru": ["koramangala", "phoenix marketcity", "vr bengaluru", "soul spirit", "orion mall",
-                  "mall of asia", "nexus, whitefield", "lulu mall", "garuda mall, magrath", "forum rex"],
+                  "mall of asia", "nexus, whitefield", "lulu mall", "garuda mall, magrath", "forum rex",
+                  "superplex forum mall"],
 }
 TIP = "Tip: type it in one line, e.g. 6, 7 Nov 7-8 pm 3D PXL Mani Square"
 NOT_YET = "👉 Not watching yet. Tap ✅ Done when this looks right."
@@ -117,9 +118,11 @@ def link_extras(text: str) -> str:
     return BMS_LINK.sub(" ", SHARE_TEXT.sub(" ", text or "")).strip()
 
 
-def buy_url(t: dict) -> str:
+def buy_url(t: dict, day: str = "") -> str:
+    """With a date (20261217) the page opens on that day; without one BookMyShow opens today,
+    which shows 'no shows' when only later days are open."""
     return (f"https://in.bookmyshow.com/movies/{t['region_slug']}/{t['slug'] or 'movie'}"
-            f"/buytickets/{t['event_code']}/")
+            f"/buytickets/{t['event_code']}/{day}")
 
 
 def page_url(t: dict) -> str:
@@ -366,6 +369,11 @@ FILLER = {"at", "on", "in", "for", "show", "shows", "showtime", "showtimes", "ti
           "need", "i", "me", "book", "booking", "watch", "movie", "&"}
 
 
+NEG = r"(?:\b(?:no|not|without|except|skip|but\s+not)\s+|(?<![\w-])-\s*)"
+NEG_START = re.compile(r"\s*" + NEG, re.I)
+NEG_FORMAT = re.compile(NEG + "(" + FORMAT_RUN.pattern + ")", re.I)
+
+
 def parse_query(text: str, today: date) -> dict:
     """Free text -> {'city', 'dates', 'times', 'formats', 'theatres'} with only what was found.
     Raises ValueError for a date-looking phrase that isn't a real date."""
@@ -376,6 +384,10 @@ def parse_query(text: str, today: date) -> dict:
     dates, rest = take_dates(rest, today)
     if dates:
         out["dates"] = dates
+    skips = [re.sub(r"\s+", " ", m.group(1)).lower() for m in NEG_FORMAT.finditer(rest)]
+    if skips:
+        out["skip_formats"] = list(dict.fromkeys(skips))
+        rest = NEG_FORMAT.sub(" ", rest)
     formats = [re.sub(r"\s+", " ", m).lower() for m in FORMAT_RUN.findall(rest)]
     if formats:
         out["formats"] = list(dict.fromkeys(formats))
@@ -384,13 +396,18 @@ def parse_query(text: str, today: date) -> dict:
         if re.search(rf"\b{word}\b", rest, re.I):
             out["city"] = slug
             rest = re.sub(rf"\b{word}\b", " ", rest, flags=re.I)
-    names = []
+    names, crossed = [], []
     for seg in re.split(r"[,;/]|\band\b|\bor\b", rest, flags=re.I):
+        neg = NEG_START.match(seg)
+        if neg:
+            seg = seg[neg.end():]
         words = [w for w in re.findall(r"[\w'&.:-]+", seg) if w.lower().strip(".:") not in FILLER]
         if words:
-            names.append(" ".join(words).lower())
+            (crossed if neg else names).append(" ".join(words).lower())
     if names:
         out["theatres"] = list(dict.fromkeys(names))
+    if crossed:
+        out["skip_theatres"] = list(dict.fromkeys(crossed))
     return out
 
 
@@ -402,22 +419,28 @@ def summarize(q: dict) -> str:
         bits.append("📅 " + ", ".join(short_date(d) for d in q["dates"]))
     if q.get("theatres"):
         bits.append("🏛 " + ", ".join(q["theatres"]))
+    if q.get("skip_theatres"):
+        bits.append("🏛 not " + ", ".join(q["skip_theatres"]))
     if q.get("formats"):
         bits.append("🎞 " + ", ".join(x.upper() for x in q["formats"]))
+    if q.get("skip_formats"):
+        bits.append("🎞 not " + ", ".join(x.upper() for x in q["skip_formats"]))
     if q.get("times"):
         bits.append("🕐 " + ", ".join(fmt_time(x) for x in q["times"]))
     return " · ".join(bits)
 
 
 # ── trackers ────────────────────────────────────────────────────────────
-FILTERS = ("dates", "theatres", "formats", "times")
+FILTERS = ("dates", "theatres", "formats", "times", "skip_theatres", "skip_formats")
+SKIP_OF = {"theatres": "skip_theatres", "formats": "skip_formats"}
 
 
 def new_tracker(link: dict, label: str, owner: str = "", admin: str = "") -> dict:
     suffix = f"-{owner}" if owner and owner != admin else ""
     return {"id": f"{link['event_code'].lower()}-{link['region_slug']}{suffix}", "label": label,
             "event_code": link["event_code"], "region_slug": link["region_slug"], "slug": link["slug"],
-            "dates": [], "theatres": [], "formats": [], "times": [], "enabled": True, "confirmed": False,
+            "dates": [], "theatres": [], "formats": [], "times": [], "skip_theatres": [], "skip_formats": [],
+            "enabled": True, "confirmed": False,
             **({"chat": owner} if suffix else {})}
 
 
@@ -432,12 +455,17 @@ def title(t: dict, cat: dict | None = None) -> str:
     return f"{name} · {lang}" if lang else name
 
 
+def with_skips(text: str, skips) -> str:
+    return f"{text}, not {', '.join(skips)}" if skips else text
+
+
 def describe(t: dict, cat: dict | None = None) -> str:
     if t.get("source") == "district":
         return f"{t['label']} - District ({t['city']})\n   alert when showtimes appear"
     dates = ", ".join(short_date(d) for d in t["dates"]) or "any open date"
-    theatres = ", ".join(t["theatres"]) or "any theatre"
-    formats = ", ".join(x.upper() for x in t.get("formats", [])) or "any format"
+    theatres = with_skips(", ".join(t["theatres"]) or "any theatre", t.get("skip_theatres"))
+    formats = with_skips(", ".join(x.upper() for x in t.get("formats", [])) or "any format",
+                         [x.upper() for x in t.get("skip_formats") or []])
     times = ", ".join(fmt_time(x) for x in t["times"]) or "any time"
     flag = "" if t.get("confirmed", True) else " (not started: tap Done)"
     return (f"{title(t, cat)} ({city_name(t['region_slug'])}){flag}\n"
@@ -518,8 +546,10 @@ def card_text(t: dict, cat: dict | None = None, result: str | None = None, note:
 
     dates = ", ".join(date_tag(d) for d in t["dates"]) or (
         f"any open date ({_span(open_dates(cat))})" if open_dates(cat) else "any date")
-    theatres = ", ".join(theatre_tag(k) for k in t["theatres"]) or "any theatre"
-    formats = ", ".join(format_tag(k) for k in t.get("formats", [])) or "any format"
+    theatres = with_skips(", ".join(theatre_tag(k) for k in t["theatres"]) or "any theatre",
+                          ["❌ " + k for k in t.get("skip_theatres") or []])
+    formats = with_skips(", ".join(format_tag(k) for k in t.get("formats", [])) or "any format",
+                         ["❌ " + k.upper() for k in t.get("skip_formats") or []])
     times = ", ".join(fmt_time(x) for x in t["times"]) or "any time"
     lines = [f"🎬 {title(t, cat)}", f"📍 {city_name(t['region_slug'])}", "", status_line(cat, result), "",
              "Alert me for:", f"📅 {dates}", f"🏛 {theatres}", f"🎞 {formats}", f"🕐 {times}"]
@@ -562,17 +592,37 @@ def date_buttons(t: dict, cat: dict | None):
     return _rows(btns, 3) + [[("Any open date", f"dt:{t['id']}:any"), ("⬅️ Back", f"set:{t['id']}:back")]]
 
 
+def mark(t: dict, field: str, value: str, star: bool = False) -> str:
+    v = value.lower()
+    return ("✅ " if v in t.get(field, []) else "❌ " if v in t.get(SKIP_OF[field], []) else
+            "⭐ " if star else "")
+
+
+def cycle(t: dict, field: str, value: str) -> None:
+    """One tap: only this. Two taps: not this (crossed out). Three taps: back to neither."""
+    inc, exc = t.setdefault(field, []), t.setdefault(SKIP_OF[field], [])
+    if value in inc:
+        inc.remove(value)
+        exc.append(value)
+    elif value in exc:
+        exc.remove(value)
+    else:
+        inc.append(value)
+
+
+CYCLE_TIP = "Tap once = only this (✅), twice = not this (❌), again = clear."
+
+
 def theatre_buttons(t: dict, cat: dict | None):
     city = t["region_slug"]
-    btns = [(("✅ " if v.lower() in t["theatres"] else "⭐ " if is_favorite(city, v) else "") + v[:32],
-             f"vn:{t['id']}:{i}") for i, v in enumerate(theatre_options(cat, city)[:14])]
+    btns = [(mark(t, "theatres", v, is_favorite(city, v)) + v[:32], f"vn:{t['id']}:{i}")
+            for i, v in enumerate(theatre_options(cat, city)[:14])]
     return _rows(btns, 1) + [[("Any theatre", f"vn:{t['id']}:any"), ("⬅️ Back", f"set:{t['id']}:back")]]
 
 
 def format_buttons(t: dict, cat: dict | None):
     opts = format_options(cat)[:14]
-    btns = [(("✅ " if o.lower() in t.get("formats", []) else "") + o, f"fm:{t['id']}:{i}")
-            for i, o in enumerate(opts)]
+    btns = [(mark(t, "formats", o) + o, f"fm:{t['id']}:{i}") for i, o in enumerate(opts)]
     return _rows(btns, 2) + [[("Any format", f"fm:{t['id']}:any"), ("⬅️ Back", f"set:{t['id']}:back")]]
 
 
@@ -587,7 +637,9 @@ def city_buttons(prefix: str, link_city: str = "", back: str = ""):
 
 # ── Telegram client ─────────────────────────────────────────────────────
 def _markup(buttons):
-    return {"inline_keyboard": [[{"text": label, "callback_data": data} for label, data in row]
+    """(label, data) buttons; data that is a web link becomes a link button."""
+    return {"inline_keyboard": [[{"text": label, "url": data} if data.startswith("https://")
+                                 else {"text": label, "callback_data": data} for label, data in row]
                                 for row in (buttons or [])]}
 
 
@@ -812,22 +864,18 @@ class Chat:
         elif kind == "vn":
             venues = theatre_options(cat, t["region_slug"])
             if arg == "any":
-                t["theatres"] = []
+                t["theatres"], t["skip_theatres"] = [], []
             elif arg.isdigit() and int(arg) < len(venues):
-                name = venues[int(arg)].lower()
-                t["theatres"] = [x for x in t["theatres"] if x != name] if name in t["theatres"] \
-                    else t["theatres"] + [name]
-            self._show(t, "Tap theatres, or type part of a name (e.g. Mani Square).", message_id,
+                cycle(t, "theatres", venues[int(arg)].lower())
+            self._show(t, f"{CYCLE_TIP}\nOr type part of a name (e.g. Mani Square, not INOX).", message_id,
                        theatre_buttons(t, cat))
         elif kind == "fm":
             opts = [o.lower() for o in format_options(cat)]
-            cur = t.setdefault("formats", [])
             if arg == "any":
-                t["formats"] = []
+                t["formats"], t["skip_formats"] = [], []
             elif arg.isdigit() and int(arg) < len(opts):
-                o = opts[int(arg)]
-                t["formats"] = [x for x in cur if x != o] if o in cur else cur + [o]
-            self._show(t, "Tap formats, or type them (e.g. 3D PXL, IMAX).", message_id, format_buttons(t, cat))
+                cycle(t, "formats", opts[int(arg)])
+            self._show(t, f"{CYCLE_TIP}\nOr type them (e.g. IMAX, no 4DX).", message_id, format_buttons(t, cat))
         elif kind == "ct":
             self._move(t, arg, message_id)
 
@@ -864,13 +912,13 @@ class Chat:
             self._show(t, hint, message_id, date_buttons(t, cat))
         elif arg == "theatres":
             self.me["awaiting"] = {"id": tid, "field": "theatres"}
-            hint = ("Tap theatres (⭐ = big malls), or type part of a name (e.g. Mani Square)." if
+            hint = (f"⭐ = big malls. {CYCLE_TIP}\nOr type part of a name (e.g. Mani Square, not INOX)." if
                     (cat or {}).get("venues") else
                     "Nothing listed yet. Tap the big malls you want (⭐), or type part of a cinema name.")
             self._show(t, hint, message_id, theatre_buttons(t, cat))
         elif arg == "formats":
             self.me["awaiting"] = {"id": tid, "field": "formats"}
-            self._show(t, "Tap formats, or type them (e.g. 3D PXL, IMAX).", message_id, format_buttons(t, cat))
+            self._show(t, f"{CYCLE_TIP}\nOr type them (e.g. IMAX, no 4DX).", message_id, format_buttons(t, cat))
         elif arg == "city":
             self._show(t, "Which city?", message_id,
                        city_buttons(f"ct:{tid}:", t["region_slug"], back=f"set:{tid}:back"))
@@ -954,6 +1002,8 @@ class Chat:
     def _apply(self, t: dict, field: str, text: str) -> None:
         if text.lower() in ("any", "clear", "all", "none") and field in FILTERS:
             t[field] = []
+            if field in SKIP_OF:
+                t[SKIP_OF[field]] = []
             self._show(t, f"✅ Cleared {field}.")
             return
         try:
@@ -973,7 +1023,8 @@ class Chat:
         for k, v in q.items():
             t[k] = v
         self.me["awaiting"] = {"id": t["id"], "field": "any"}
-        names = {"dates": "dates", "times": "time", "formats": "format", "theatres": "theatres"}
+        names = {"dates": "dates", "times": "time", "formats": "format", "theatres": "theatres",
+                 "skip_formats": "crossed-out formats", "skip_theatres": "crossed-out theatres"}
         changed = ", ".join(names[k] for k in names if k in q)
         moved = f"📍 {city_name(t['region_slug'])}. " if city else ""
         self._show(t, f"✅ {moved}" + (f"Updated {changed}. " if changed else "") + "Tap ✅ Done to save and check now.")
