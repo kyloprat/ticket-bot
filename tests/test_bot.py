@@ -838,3 +838,11 @@ def test_a_cinema_name_with_a_comma_matches_only_that_cinema():
     t = doomsday_tracker(theatres=["inox: m5 ecity, bengaluru"])
     r = main.check_bms(t, {}, fetch=lambda *a: api(["INOX: M5 Ecity, Bengaluru", "AMB Cinemas Kapali: Bengaluru"]))
     assert r["changes"] == ["• INOX: M5 Ecity, Bengaluru"]
+
+
+def test_bengaluru_screen_names_are_formats_and_scanned_cinemas_are_known():
+    q = chat.parse_query("infinity vision, dolby cinema, not dine-in", TODAY)
+    assert q["formats"] == ["infinity vision", "dolby cinema"] and q["skip_formats"] == ["dine-in"]
+    assert "INOX: M5 Ecity, Bengaluru" in chat.CINEMAS["bengaluru"]
+    assert chat.resolve_theatre("m5 ecity", "bengaluru") == "m5 ecity"                  # part of a name
+    assert chat.resolve_theatre("pvr m5", "bengaluru") == "inox: m5 ecity, bengaluru"

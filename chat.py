@@ -77,7 +77,9 @@ SAVED = "✅ Watching. /list shows everything."
 
 # Screens and formats BookMyShow uses; a typed run of these becomes one format filter ("3D PXL").
 FORMAT_WORDS = ["2d", "3d", "imax", "pxl", "bigpix", "4dx", "screenx", "screen x", "insignia", "dolby", "atmos",
-                "ice", "mx4d", "epiq", "onyx", "laser", "playhouse", "luxe", "lux", "director's cut", "gold"]
+                "ice", "mx4d", "epiq", "onyx", "laser", "playhouse", "luxe", "lux", "director's cut", "gold",
+                # more Bengaluru screen names (screens.json, from `uv run cinemas.py --scan bengaluru`)
+                "infinity vision", "dolby cinema", "dine-in", "club", "kiddles", "macro xe"]
 DIMENSIONS = ("2d", "3d")
 FORMAT_WORD = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in sorted(FORMAT_WORDS, key=len, reverse=True))
                          + r")\b", re.I)
@@ -92,9 +94,10 @@ def split_formats(run: str) -> list[str]:
     if len(screens) <= 1:
         return [" ".join(words)]
     return [" ".join(dims + [x]) for x in screens]
-FORMAT_RUN = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in FORMAT_WORDS) + r")(?:\s+(?:"
-                        + "|".join(re.escape(w) for w in FORMAT_WORDS) + r"))*\b", re.I)
-DEFAULT_FORMATS = ["2D", "3D", "IMAX", "IMAX 3D", "PXL", "3D PXL", "4DX", "Insignia"]
+_LONGEST_FIRST = "|".join(re.escape(w) for w in sorted(FORMAT_WORDS, key=len, reverse=True))  # "dolby cinema" first
+FORMAT_RUN = re.compile(r"\b(?:" + _LONGEST_FIRST + r")(?:\s+(?:" + _LONGEST_FIRST + r"))*\b", re.I)
+DEFAULT_FORMATS = ["2D", "3D", "IMAX", "IMAX 3D", "PXL", "3D PXL", "BIGPIX", "4DX", "ICE", "Screen X",
+                   "Dolby Cinema", "Infinity Vision", "Insignia", "Dine-in"]
 
 
 def _load_cinemas() -> dict:
