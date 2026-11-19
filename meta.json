@@ -1,10 +1,10 @@
 {
   "last_heartbeat": "2026-11-18",
   "results": {
-    "et00439706-bengaluru": "BookMyShow gave no data",
-    "et00491771-bengaluru": "BookMyShow gave no data"
+    "et00439706-bengaluru": "125 matching showtimes",
+    "et00491771-bengaluru": "no showtimes listed yet"
   },
-  "fails": 6,
+  "fails": 0,
   "catalog": {
     "et00491771-bengaluru": {
       "name": "",
@@ -19,31 +19,31 @@
       "language": "English  •  2D",
       "dates": [
         [
-          "20261217",
-          "BOOKABLE"
-        ],
-        [
-          "20261218",
+          "20261119",
           "NOT_OPEN"
         ],
         [
-          "20261219",
+          "20261120",
           "NOT_OPEN"
         ],
         [
-          "20261220",
+          "20261121",
           "NOT_OPEN"
         ],
         [
-          "20261221",
+          "20261122",
           "NOT_OPEN"
         ],
         [
-          "20261222",
+          "20261123",
           "NOT_OPEN"
         ],
         [
-          "20261223",
+          "20261124",
+          "NOT_OPEN"
+        ],
+        [
+          "20261125",
           "NOT_OPEN"
         ]
       ],
@@ -55,21 +55,26 @@
         "Cinepolis: Orion Avenue Mall, Banaswadi",
         "Cinepolis: Royal Meenakshi Mall",
         "Gopalan Mall: Sirsi Circle",
-        "INOX: Garuda Mall, Magrath Road",
         "INOX: Garuda Swagath Mall, Jayanagar",
         "INOX: M5 Ecity, Bengaluru",
+        "INOX: Megaplex Mall of Asia Bangalore",
         "PVR: Bhartiya Mall of Bengaluru",
         "PVR: GT World Mall, Magadi Road",
+        "PVR: Global Mall, Mysore Road, Bengaluru",
         "PVR: Nexus (Formerly Forum), Koramangala",
         "PVR: Orion Mall, Dr Rajkumar Road",
+        "PVR: Phoenix Marketcity Mall, Whitefield Road",
         "PVR: Soul Spirit Central Mall, Bellandur",
         "PVR: Superplex Forum Mall, Kanakapura Road",
+        "PVR: VR Bengaluru, Whitefield Road",
         "PVR: Vega City, Bannerghatta Road"
       ],
       "formats": [
         "2D",
         "DOLBY CINEMA 2D",
         "MS - Inf Vsn 4DX 3D",
+        "MS - Infinity Vision",
+        "MS InVsn 3D Screen X",
         "MS-Infinity Vsn 3d"
       ],
       "screens": [
@@ -79,15 +84,17 @@
         "4K LASER ATMOS MACRO XE",
         "4K LASER DOLBY 7.1",
         "ATMOS",
-        "BARCO LASER DOLBY ATMOS",
         "BIGPIX",
         "DOLBY 7.1",
         "DOLBY CINEMAS",
-        "LASER"
+        "Infinity Vision 2D",
+        "Infinity Vision 3D",
+        "LASER",
+        "SCREEN X"
       ]
     }
   },
   "card_hash": {
-    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: BookMyShow gave no data\n\n✅ Watching. /list shows everything."
+    "et00491771-bengaluru": "🎬 Dune: Part Three - (English)\n📍 Bengaluru\n\n⏳ Bookings not open yet. I'll alert you the moment they open.\n\nAlert me for:\n📅 any date\n🏛 any theatre\n🎞 IMAX (not listed yet), IMAX 3D (not listed yet), 3D PXL (not listed yet), PXL (not listed yet)\n🕐 any time\n\nRight now: no showtimes listed yet\n\n✅ Watching. /list shows everything."
   }
 }
