@@ -7,9 +7,13 @@
           "id": 41
         },
         "et00439706-bengaluru": {
-          "done": true,
+          "done": false,
           "id": 205
         }
+      },
+      "awaiting": {
+        "id": "et00439706-bengaluru",
+        "field": "any"
       }
     }
   },
