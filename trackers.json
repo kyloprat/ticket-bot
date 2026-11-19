@@ -34,10 +34,7 @@
     "dates": [],
     "theatres": [],
     "formats": [
-      "imax",
-      "imax 3d",
-      "3d pxl",
-      "pxl"
+      "imax"
     ],
     "times": [],
     "enabled": true
