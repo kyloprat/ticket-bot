@@ -632,15 +632,19 @@ def check_bms(t, old, fetch=fetch_bms):
         return None
 
     skip_formats = t.get("skip_formats") or []
-    wanted = list(t.get("dates") or [""])
+    picked = t.get("dates") or []
+    # "" returns the first open day, however far ahead. A dated request only works for the 7 days
+    # in BookMyShow's date strip (a later date comes back empty), so always ask "" first, then
+    # only the strip days that are wanted; the date filter below keeps the picked dates.
+    wanted = [""]
     for dc in wanted:
         first = get(t["event_code"], dc)
         if first and formats is None:
             formats = parse_formats(first, t["event_code"])
-        if first and dc == "" and not t.get("dates"):
-            # "any open date": "" only returns the first open day, so also fetch the other open days
-            wanted += [d.date_code for d in parse_dates(first)
-                       if d.status == "AVAILABLE" and d.date_code not in wanted][:6]
+        if first and dc == "":
+            strip = parse_dates(first)
+            wanted += ([d.date_code for d in strip if d.date_code in picked] if picked else
+                       [d.date_code for d in strip if d.status == "AVAILABLE"][:6])
         for code, fmt in formats or [(t["event_code"], "")]:
             if code != t["event_code"] and any(format_hit(f, fmt.lower().split()) for f in skip_formats):
                 continue                      # every show of this format is crossed out: don't ask
@@ -655,9 +659,17 @@ def check_bms(t, old, fetch=fetch_bms):
             for show in parse_shows(data):
                 show.fmt = fmt
                 all_shows.append(show)
+    unique = {}
+    for s in all_shows:                       # "" and its own date can return the same day twice
+        unique.setdefault((s.venue_code, s.session_id, s.date_code, s.fmt), s)
+    all_shows = list(unique.values())
     seen = {}
     for d in all_dates:
         seen.setdefault(d.date_code, d.status)
+    for s in all_shows:                       # a day past the 7-day strip is open when it has shows
+        if s.date_code and seen.get(s.date_code) not in ("BOOKABLE", "AVAILABLE"):
+            seen[s.date_code] = "AVAILABLE"
+    seen = dict(sorted(seen.items()))
     catalog = {"name": "" if movie_info["name"] in ("Unknown", "Unknown Movie") else movie_info["name"],
                "language": movie_info["language"], "dates": [[k, v] for k, v in seen.items()],
                "venues": sorted({s.venue_name for s in all_shows}),

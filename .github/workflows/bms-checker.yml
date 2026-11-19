@@ -53,9 +53,17 @@ jobs:
           git add bms_state.json meta.json
           git diff --cached --quiet && exit 0
           git commit -m "chore: update tracker state [skip ci]"
-          # the relay may commit chat changes at the same moment; rebase and retry
+          # The relay (chat) or the laptop checker may push at the same moment. Then put this run's two
+          # state files, whole, on top of the newest main: no merge of JSON lines, and the chat's
+          # newest trackers.json / chat.json stay as they are.
           for i in 1 2 3 4 5; do
-            git pull --rebase --autostash && git push && exit 0
+            git push && exit 0
+            cp bms_state.json meta.json "$RUNNER_TEMP/"
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp "$RUNNER_TEMP/bms_state.json" "$RUNNER_TEMP/meta.json" .
+            git add bms_state.json meta.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "chore: update tracker state [skip ci]"
             sleep $((i * 3))
           done
           exit 1
