@@ -5,7 +5,9 @@
     "event_code": "ET00439706",
     "region_slug": "bengaluru",
     "slug": "avengers-doomsday",
-    "dates": [],
+    "dates": [
+      "20261119"
+    ],
     "theatres": [],
     "times": [],
     "enabled": true
