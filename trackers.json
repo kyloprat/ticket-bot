@@ -9,9 +9,12 @@
       "20261119",
       "20261122"
     ],
-    "theatres": [],
+    "theatres": [
+      "pvr: superplex forum mall, kanakapura road"
+    ],
     "times": [],
-    "enabled": true
+    "enabled": true,
+    "skip_theatres": []
   },
   {
     "id": "et00491771-bengaluru",
