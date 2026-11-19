@@ -18,7 +18,10 @@
     "formats": [],
     "skip_formats": [
       "4dx"
-    ]
+    ],
+    "epoch": 1,
+    "confirmed_sig": "[\"bengaluru\", [\"20261119\", \"20261122\"], [\"pvr: superplex forum mall, kanakapura road\"], [], [], [], [\"4dx\"]]",
+    "confirmed": true
   },
   {
     "id": "et00491771-bengaluru",
