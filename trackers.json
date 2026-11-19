@@ -14,7 +14,11 @@
     ],
     "times": [],
     "enabled": true,
-    "skip_theatres": []
+    "skip_theatres": [],
+    "formats": [
+      "4dx"
+    ],
+    "skip_formats": []
   },
   {
     "id": "et00491771-bengaluru",
