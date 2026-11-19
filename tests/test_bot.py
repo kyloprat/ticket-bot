@@ -467,7 +467,22 @@ def test_check_bms_any_date_fetches_every_open_day():
     assert seen == ["", "20261106", "20261107"]
     seen.clear()
     main.check_bms(doomsday_tracker(dates=["20261107"]), {}, fetch=fetch)
-    assert seen == ["20261107"]
+    assert seen == ["", "20261107"]                            # "" first: it finds days past the strip
+
+
+def test_a_day_past_the_date_strip_is_offered_and_matched():
+    """The real miss: Doomsday's shows are on 17 Dec, but BookMyShow's strip lists only 19-25 Nov,
+    and a dated request for 17 Dec comes back empty. "" returns the 17 Dec shows."""
+    strip = [(f"202611{d}", "date-disabled") for d in range(19, 26)]
+
+    def fetch(code, dc, *a):
+        d = api(["PVR Orion"] if dc == "" else [], dates=strip)       # api() shows are on 18 Dec
+        return d
+    t = doomsday_tracker()
+    r = main.check_bms(t, {}, fetch=fetch)
+    assert ["20261218", "AVAILABLE"] in r["catalog"]["dates"] and chat.open_dates(r["catalog"]) == ["20261218"]
+    assert main.check_bms(doomsday_tracker(dates=["20261218"]), {}, fetch=fetch)["changes"] == ["• PVR Orion"]
+    assert main.check_bms(doomsday_tracker(dates=["20261122"]), {}, fetch=fetch)["changes"] == []
 
 
 def test_check_bms_theatre_filter_and_no_data():

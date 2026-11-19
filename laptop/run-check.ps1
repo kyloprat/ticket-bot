@@ -46,9 +46,20 @@ Invoke-Logged git @('add', 'bms_state.json', 'meta.json') | Out-Null
 & git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) { exit 0 }
 Invoke-Logged git @('commit', '-q', '-m', 'chore: update tracker state (laptop) [skip ci]') | Out-Null
+# GitHub's run or the chat relay may have pushed meanwhile: then put this run's two state files, whole,
+# on top of the newest main (no merge of JSON lines; the chat's newest trackers stay as they are).
+$keep = Join-Path $base 'pending'
+New-Item -ItemType Directory -Force $keep | Out-Null
 foreach ($i in 1..5) {
-    if ((Invoke-Logged git @('pull', '-q', '--rebase')) -eq 0 -and (Invoke-Logged git @('push', '-q')) -eq 0) { exit 0 }
-    Invoke-Logged git @('rebase', '--abort') | Out-Null
+    if ((Invoke-Logged git @('push', '-q')) -eq 0) { exit 0 }
+    Copy-Item -Force bms_state.json, meta.json $keep
+    if ((Invoke-Logged git @('fetch', '-q', 'origin', 'main')) -ne 0) { break }
+    Invoke-Logged git @('reset', '-q', '--hard', 'origin/main') | Out-Null
+    Copy-Item -Force (Join-Path $keep 'bms_state.json'), (Join-Path $keep 'meta.json') .
+    Invoke-Logged git @('add', 'bms_state.json', 'meta.json') | Out-Null
+    & git diff --cached --quiet
+    if ($LASTEXITCODE -eq 0) { exit 0 }
+    Invoke-Logged git @('commit', '-q', '-m', 'chore: update tracker state (laptop) [skip ci]') | Out-Null
     Start-Sleep -Seconds ($i * 3)
 }
 Write-Log 'push failed 5 times; the next run checks again'
