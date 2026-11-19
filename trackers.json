@@ -20,7 +20,9 @@
     "times": [],
     "enabled": true,
     "skip_theatres": [],
-    "formats": [],
+    "formats": [
+      "pxl"
+    ],
     "skip_formats": [
       "4dx"
     ],
