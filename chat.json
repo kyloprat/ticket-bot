@@ -3,7 +3,7 @@
     "8948605299": {
       "cards": {
         "et00491771-bengaluru": {
-          "done": true,
+          "done": false,
           "id": 41
         },
         "et00439706-bengaluru": {
@@ -12,7 +12,7 @@
         }
       },
       "awaiting": {
-        "id": "et00439706-bengaluru",
+        "id": "et00491771-bengaluru",
         "field": "any"
       }
     }
