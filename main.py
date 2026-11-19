@@ -298,8 +298,9 @@ def filter_shows(shows, theatre_filter, time_periods, date_codes, formats=(), sk
     skip_theatres / skip_formats ("crossed out" in chat) drop the shows they match."""
     result = []
     skip_kws = [k.lower() for k in skip_theatres or [] if k]
-    kws = [k.strip().lower() for k in theatre_filter.split(",")
-           if k.strip()] if theatre_filter else []
+    if isinstance(theatre_filter, str):       # older callers: "a, b"
+        theatre_filter = theatre_filter.split(",")
+    kws = [k.strip().lower() for k in theatre_filter or [] if k.strip()]
     periods = [p.strip().lower() for p in time_periods.split(",")
                if p.strip()] if time_periods else []
     dates_set = set(d.strip() for d in date_codes.split(",")
@@ -685,7 +686,7 @@ def check_bms(t, old, fetch=fetch_bms):
         return {"ok": got, "result": "no showtimes listed yet" if got else "BookMyShow gave no data",
                 "state": None, "changes": [], "shows": [], "movie_info": movie_info, "catalog": catalog}
 
-    filtered = filter_shows(all_shows, ",".join(t.get("theatres", [])), ",".join(t.get("times", [])),
+    filtered = filter_shows(all_shows, t.get("theatres", []), ",".join(t.get("times", [])),
                             ",".join(t.get("dates", [])), t.get("formats", []),
                             t.get("skip_theatres", []), skip_formats)
     new_state = build_state(filtered, all_dates)

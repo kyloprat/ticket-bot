@@ -817,3 +817,24 @@ def test_one_refusal_stops_the_run_asking(monkeypatch):
 
 def test_format_label_drops_the_repeated_screen_name():
     assert main.fmt_label("MS InfVsn ICE 3D ICE") == "MS InfVsn ICE 3D" and main.fmt_label("3D PXL") == "3D PXL"
+
+
+def test_typed_screens_are_separate_formats_and_bigpix_is_one():
+    q = chat.parse_query("26-27 dec pxl bigpix pvr superplex m5 ecity", TODAY)
+    assert q["formats"] == ["pxl", "bigpix"] and q["theatres"] == ["pvr superplex m5 ecity"]
+    assert chat.parse_query("3d pxl", TODAY)["formats"] == ["3d pxl"]
+    assert chat.parse_query("imax 3d", TODAY)["formats"] == ["imax 3d"]
+    assert chat.parse_query("no 4dx ice", TODAY)["skip_formats"] == ["4dx", "ice"]
+
+
+def test_typed_theatre_name_finds_the_cinema_bookmyshow_means():
+    cat = {"venues": ["INOX: M5 Ecity, Bengaluru", "PVR: Superplex Forum Mall, Kanakapura Road"]}
+    assert chat.resolve_theatre("pvr superplex m5 ecity", "bengaluru", cat) == "inox: m5 ecity, bengaluru"
+    assert chat.resolve_theatre("superplex forum", "bengaluru", cat) == "superplex forum"   # part of a name
+    assert chat.resolve_theatre("pvr superplex", "bengaluru", {"venues": []}) == "pvr superplex"  # no clue: keep
+
+
+def test_a_cinema_name_with_a_comma_matches_only_that_cinema():
+    t = doomsday_tracker(theatres=["inox: m5 ecity, bengaluru"])
+    r = main.check_bms(t, {}, fetch=lambda *a: api(["INOX: M5 Ecity, Bengaluru", "AMB Cinemas Kapali: Bengaluru"]))
+    assert r["changes"] == ["• INOX: M5 Ecity, Bengaluru"]

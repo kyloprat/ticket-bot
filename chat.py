@@ -76,8 +76,22 @@ NOT_YET = "👉 Not watching yet. Tap ✅ Done when this looks right."
 SAVED = "✅ Watching. /list shows everything."
 
 # Screens and formats BookMyShow uses; a typed run of these becomes one format filter ("3D PXL").
-FORMAT_WORDS = ["2d", "3d", "imax", "pxl", "4dx", "screenx", "screen x", "insignia", "dolby", "atmos", "ice",
-                "mx4d", "epiq", "onyx", "laser", "playhouse", "luxe", "lux", "director's cut", "gold"]
+FORMAT_WORDS = ["2d", "3d", "imax", "pxl", "bigpix", "4dx", "screenx", "screen x", "insignia", "dolby", "atmos",
+                "ice", "mx4d", "epiq", "onyx", "laser", "playhouse", "luxe", "lux", "director's cut", "gold"]
+DIMENSIONS = ("2d", "3d")
+FORMAT_WORD = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in sorted(FORMAT_WORDS, key=len, reverse=True))
+                         + r")\b", re.I)
+
+
+def split_formats(run: str) -> list[str]:
+    """'3d pxl' is one format (3D shows on a PXL screen); 'pxl bigpix' is two (PXL or BIGPIX).
+    2D/3D go with each screen name: '3d pxl bigpix' -> '3d pxl', '3d bigpix'."""
+    words = [re.sub(r"\s+", " ", w).lower() for w in FORMAT_WORD.findall(run)]
+    dims = [w for w in words if w in DIMENSIONS]
+    screens = [w for w in words if w not in DIMENSIONS]
+    if len(screens) <= 1:
+        return [" ".join(words)]
+    return [" ".join(dims + [x]) for x in screens]
 FORMAT_RUN = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in FORMAT_WORDS) + r")(?:\s+(?:"
                         + "|".join(re.escape(w) for w in FORMAT_WORDS) + r"))*\b", re.I)
 DEFAULT_FORMATS = ["2D", "3D", "IMAX", "IMAX 3D", "PXL", "3D PXL", "4DX", "Insignia"]
@@ -97,6 +111,29 @@ CINEMAS = _load_cinemas()
 
 def cinema_matches(city: str, keyword: str) -> list[str]:
     return [c for c in CINEMAS.get(city, []) if keyword.lower() in c.lower()]
+
+
+# Words in many cinema names: they don't tell cinemas apart ("pvr superplex m5" is INOX: M5 Ecity).
+GENERIC_WORDS = {"pvr", "inox", "cinepolis", "superplex", "megaplex", "cinema", "cinemas", "mall", "the", "road",
+                 "multiplex", "bengaluru", "bangalore", "kolkata", "mumbai", "delhi", "chennai", "hyderabad", "pune"}
+
+
+def resolve_theatre(name: str, city: str, cat: dict | None = None) -> str:
+    """A typed theatre name -> the one cinema it means (lowercase BookMyShow name), from the movie's
+    own theatres and cinemas.json. Text that is part of a name is kept as typed ('forum' = all Forums)."""
+    known = list(dict.fromkeys((cat or {}).get("venues", []) + CINEMAS.get(city, [])))
+    if any(name.lower() in k.lower() for k in known):
+        return name
+    typed = re.findall(r"[a-z0-9]+", name.lower())
+    key = [w for w in typed if w not in GENERIC_WORDS]
+
+    def score(k):
+        words = set(re.findall(r"[a-z0-9]+", k.lower()))
+        return sum(w in words for w in key), sum(w in words for w in typed)
+    best = max(known, key=score, default=None)
+    if not best or score(best)[0] == 0 or [score(k) for k in known].count(score(best)) > 1:
+        return name
+    return best.lower()
 
 
 # ── links ───────────────────────────────────────────────────────────────
@@ -384,11 +421,11 @@ def parse_query(text: str, today: date) -> dict:
     dates, rest = take_dates(rest, today)
     if dates:
         out["dates"] = dates
-    skips = [re.sub(r"\s+", " ", m.group(1)).lower() for m in NEG_FORMAT.finditer(rest)]
+    skips = [f for m in NEG_FORMAT.finditer(rest) for f in split_formats(m.group(1))]
     if skips:
         out["skip_formats"] = list(dict.fromkeys(skips))
         rest = NEG_FORMAT.sub(" ", rest)
-    formats = [re.sub(r"\s+", " ", m).lower() for m in FORMAT_RUN.findall(rest)]
+    formats = [f for m in FORMAT_RUN.findall(rest) for f in split_formats(m)]
     if formats:
         out["formats"] = list(dict.fromkeys(formats))
         rest = FORMAT_RUN.sub(" ", rest)
@@ -1021,7 +1058,7 @@ class Chat:
             self._show(t, f"⚠️ No date in '{text}'. Try: 6, 7 Nov or 18-20 Dec")
             return
         for k, v in q.items():
-            t[k] = v
+            t[k] = [resolve_theatre(x, t["region_slug"], self.catalog.get(t["id"])) for x in v]                 if k in ("theatres", "skip_theatres") else v
         self.me["awaiting"] = {"id": t["id"], "field": "any"}
         names = {"dates": "dates", "times": "time", "formats": "format", "theatres": "theatres",
                  "skip_formats": "crossed-out formats", "skip_theatres": "crossed-out theatres"}
@@ -1078,7 +1115,7 @@ class Chat:
             self.trackers.append(t)
             note = ""
         for k, v in q.items():
-            t[k] = v
+            t[k] = [resolve_theatre(x, t["region_slug"], self.catalog.get(t["id"])) for x in v]                 if k in ("theatres", "skip_theatres") else v
         self.lookups.append(t["id"])
         self.me["awaiting"] = {"id": t["id"], "field": "any"}
         if not note:
