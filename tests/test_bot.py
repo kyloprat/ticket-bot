@@ -449,11 +449,11 @@ def test_check_bms_first_showtimes_alert_then_quiet_then_new_theatre():
     r = main.check_bms(t, {}, fetch=lambda *a: api([]))
     assert r["ok"] and r["result"] == "no showtimes listed yet" and r["changes"] == []
     r = main.check_bms(t, {}, fetch=lambda *a: api(["PVR Forum", "INOX Garuda"]))
-    assert "BOOKINGS OPEN" in r["changes"][0]
+    assert r["changes"] == ["• INOX Garuda", "• PVR Forum"] and r["first"]
     r2 = main.check_bms(t, r["state"], fetch=lambda *a: api(["PVR Forum", "INOX Garuda"]))
     assert r2["changes"] == []
     r3 = main.check_bms(t, r["state"], fetch=lambda *a: api(["PVR Forum", "INOX Garuda", "Cinepolis Orion"]))
-    assert any("NEW" in c and "Cinepolis" in c for c in r3["changes"])
+    assert r3["changes"] == ["• Cinepolis Orion"] and not r3["first"]
 
 
 def test_check_bms_any_date_fetches_every_open_day():
@@ -475,7 +475,7 @@ def test_check_bms_theatre_filter_and_no_data():
     r = main.check_bms(t, {}, fetch=lambda *a: api(["INOX Garuda"]))
     assert r["ok"] and r["state"]["shows"] == {} and r["changes"] == []
     r = main.check_bms(t, r["state"], fetch=lambda *a: api(["INOX Garuda", "PVR Forum"]))
-    assert "BOOKINGS OPEN" in r["changes"][0]
+    assert r["changes"] == ["• PVR Forum"]
     assert main.check_bms(t, {}, fetch=lambda *a: None)["ok"] is False
 
 
@@ -492,8 +492,7 @@ def test_check_bms_covers_every_format_and_matches_screens():
     r = main.check_bms(t, {}, fetch=lambda code, *a: feeds[code])
     assert r["catalog"]["formats"] == ["2D", "3D"] and r["catalog"]["screens"] == ["PXL"]
     assert len(r["shows"]) == 1 and r["shows"][0].fmt == "3D"
-    assert "BOOKINGS OPEN: 1 matching show" in r["changes"][0]
-    assert "PVR: Mani Square Mall · 3D PXL" in r["changes"][1]
+    assert r["changes"] == ["• PVR: Mani Square Mall · 3D PXL"]
     card = chat.card_text(t, r["catalog"], r["result"])
     assert "3D PXL (showing)" in card and "Available: 2D, 3D · PXL" in card
     t2 = doomsday_tracker(event_code="ET2D", theatres=["mani square"], formats=["2d"])
@@ -529,7 +528,8 @@ def test_run_alerts_the_tracker_owner_immediately_and_only_once(workdir):
     tg = FakeTg()
     main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["PVR Forum"]))
     assert {c for c, _, _ in tg.log} == {FRIEND, OWNER}
-    assert "BOOKINGS OPEN" in tg.texts[0] and DOOMSDAY_BUY in tg.texts[0]
+    assert tg.texts[0] == "🎟️ Bookings open: Avengers: Doomsday (Bengaluru)\n\n• PVR Forum\n\n📅 18 Dec"
+    assert tg.sent[0][1] == [[("🎟️ Book on BookMyShow", DOOMSDAY_BUY + "20261218")]]   # lands on the open day
     tg2 = FakeTg()
     main.run(now=NOW_MORNING, tg=tg2, fetch=lambda *a: api(["PVR Forum"]))
     assert tg2.sent == []
@@ -545,7 +545,7 @@ def test_run_never_alerts_before_done(workdir):
     t["confirmed"] = True                                               # Done tapped
     write("trackers.json", [t])
     main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["PVR Forum"]))
-    assert len(tg.sent) == 1 and "BOOKINGS OPEN" in tg.texts[0]
+    assert len(tg.sent) == 1 and "Bookings open" in tg.texts[0]
 
 
 def test_run_drops_state_of_removed_trackers_and_restarts_on_new_epoch(workdir):
@@ -560,7 +560,7 @@ def test_run_drops_state_of_removed_trackers_and_restarts_on_new_epoch(workdir):
     t["epoch"] = 1                                             # /resume, or Done after changing filters
     write("trackers.json", [t])
     main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["PVR Forum"]))
-    assert len(tg.sent) == 2 and "BOOKINGS OPEN" in tg.texts[-1]
+    assert len(tg.sent) == 2 and "Bookings open" in tg.texts[-1]
 
 
 def test_run_daily_note_once_at_8pm_per_person(workdir):
@@ -695,6 +695,110 @@ def test_an_alert_telegram_did_not_take_is_sent_again_next_run(workdir):
     assert len(down.sent) == 1 and read("bms_state.json") == {}
     tg = FakeTg()
     main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["PVR Forum"]))
-    assert len(tg.sent) == 1 and "BOOKINGS OPEN" in tg.texts[0]
+    assert len(tg.sent) == 1 and "Bookings open" in tg.texts[0]
     main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api(["PVR Forum"]))
     assert len(tg.sent) == 1                                   # delivered once: not again
+
+
+# ── crossing out ("not 4DX", "not INOX"), the short alert, laptop + GitHub ─────
+def formats_payload(feeds_venues):
+    """{event code: [(venue, screen)]} -> fetch() serving one event per format (2D / 4DX 3D / ICE 3D)."""
+    chips = [{"title": f, "cta": {"additionalData": {"eventCode": c}}}
+             for c, f in (("ET2D", "2D"), ("ET4DX", "MS - Inf Vsn 4DX 3D"), ("ETICE", "MS InfVsn ICE 3D"))]
+    asked = []
+
+    def fetch(code, *a):
+        asked.append(code)
+        d = api(feeds_venues.get(code, []))
+        d["data"]["bottomSheetData"] = {"format-selector": {"widgets": [{"type": "chip-list", "data": chips}]}}
+        return d
+    return fetch, asked
+
+
+def test_crossed_out_format_and_theatre_drop_their_shows_and_skip_requests():
+    fetch, asked = formats_payload({"ET2D": ["INOX Garuda"], "ET4DX": ["PVR: Superplex Forum Mall, Kanakapura Road"],
+                                    "ETICE": ["PVR: Superplex Forum Mall, Kanakapura Road"]})
+    t = doomsday_tracker(event_code="ET2D", theatres=["superplex forum"], skip_formats=["4dx"])
+    r = main.check_bms(t, {}, fetch=fetch)
+    assert r["changes"] == ["• PVR: Superplex Forum Mall, Kanakapura Road · MS InfVsn ICE 3D"]
+    assert "ET4DX" not in asked                       # a crossed-out format is not even asked for
+    t2 = doomsday_tracker(event_code="ET2D", skip_theatres=["inox"])
+    r2 = main.check_bms(t2, {}, fetch=formats_payload({"ET2D": ["INOX Garuda", "PVR Orion"]})[0])
+    assert r2["changes"] == ["• PVR Orion · 2D"]
+
+
+def test_typed_crossing_out():
+    q = chat.parse_query("superplex forum no 4dx", TODAY)
+    assert q == {"skip_formats": ["4dx"], "theatres": ["superplex forum"]}
+    q = chat.parse_query("IMAX, not INOX, -4DX", TODAY)
+    assert q["formats"] == ["imax"] and q["skip_formats"] == ["4dx"] and q["skip_theatres"] == ["inox"]
+    assert chat.parse_query("pxl", TODAY) == {"formats": ["pxl"]}
+
+
+def test_format_and_theatre_buttons_cycle_only_not_clear():
+    t = doomsday_tracker()
+    chat.cycle(t, "formats", "4dx")
+    assert t["formats"] == ["4dx"] and t["skip_formats"] == []
+    chat.cycle(t, "formats", "4dx")
+    assert t["formats"] == [] and t["skip_formats"] == ["4dx"]
+    assert chat.mark(t, "formats", "4DX") == "❌ "
+    assert "any format, not ❌ 4DX" in chat.card_text(t)
+    chat.cycle(t, "formats", "4dx")
+    assert t["formats"] == [] and t["skip_formats"] == []
+
+
+def test_superplex_forum_south_is_a_top_theatre():
+    assert chat.is_favorite("bengaluru", "PVR: Superplex Forum Mall, Kanakapura Road")
+
+
+def test_book_link_is_a_button():
+    assert chat._markup([[("Book", "https://x.test/a"), ("Edit", "set:1:edit")]]) == {"inline_keyboard": [[
+        {"text": "Book", "url": "https://x.test/a"}, {"text": "Edit", "callback_data": "set:1:edit"}]]}
+
+
+def test_alert_lists_dates_on_each_line_only_when_several():
+    old = {"shows": {}}
+    new = main.build_state([main.ShowInfo("A", "PVR Orion", "1", d, "7 PM", "1900", "",
+                                           [main.CatInfo("Gold", "300", "3")], fmt="2D")
+                            for d in ("20261217", "20261218")], [])
+    assert main.detect_changes(old, new) == ["• PVR Orion · 2D · 17 Dec, 18 Dec"]
+
+
+def test_warning_once_per_outage_and_one_lucky_read_does_not_end_it(workdir, monkeypatch):
+    monkeypatch.setenv("CHECKER", "github")
+    write("trackers.json", [doomsday_tracker()])
+    tg = FakeTg()
+    blocked, fine = (lambda *a: None), (lambda *a: api([]))
+    for f in [blocked] * 3 + [fine] + [blocked] * 3:
+        main.run(now=NOW_MORNING, tg=tg, fetch=f)
+    assert sum("Can't read BookMyShow" in x for x in tg.texts) == 1 and "GitHub" in tg.texts[0]
+    for _ in range(3):
+        main.run(now=NOW_MORNING, tg=tg, fetch=fine)
+    assert tg.texts[-1].startswith("✅ Reading BookMyShow again") and len(tg.sent) == 2
+
+
+def test_laptop_read_ends_the_outage_and_github_skips_while_laptop_is_fresh(workdir, monkeypatch):
+    write("trackers.json", [doomsday_tracker()])
+    write("meta.json", {"fails": 5, "warned": True})
+    tg = FakeTg()
+    monkeypatch.setenv("CHECKER", "laptop")
+    main.run(now=NOW_MORNING, tg=tg, fetch=lambda *a: api([]))
+    assert tg.texts == ["✅ Reading BookMyShow again from your laptop. Alerts work again."]
+    assert read("meta.json")["laptop_ok_at"] == NOW_MORNING.isoformat(timespec="minutes")
+    monkeypatch.setenv("CHECKER", "github")
+    asked = []
+    main.run(now=NOW_MORNING.replace(minute=8), tg=tg, fetch=lambda *a: asked.append(a))
+    assert asked == []                                         # laptop read 8 minutes ago
+    main.run(now=NOW_MORNING.replace(minute=10), tg=tg, fetch=lambda *a: asked.append(a))
+    assert asked                                               # 10 minutes: GitHub checks again
+
+
+def test_one_refusal_stops_the_run_asking(monkeypatch):
+    asked = []
+    t = doomsday_tracker(dates=["20261217", "20261218"])
+    r = main.check_bms(t, {}, fetch=lambda *a: asked.append(a))
+    assert len(asked) == 2 and r["result"] == "BookMyShow gave no data"   # first request + its retry only
+
+
+def test_format_label_drops_the_repeated_screen_name():
+    assert main.fmt_label("MS InfVsn ICE 3D ICE") == "MS InfVsn ICE 3D" and main.fmt_label("3D PXL") == "3D PXL"

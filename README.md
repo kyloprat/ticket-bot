@@ -18,6 +18,12 @@ message or the next one, e.g. `kolkata 6, 7 Nov 3D PXL Mani Square evening`.
    dates are picked, Done first asks which dates. Done always runs a fresh check.
 5. You get a message the moment matching shows appear, and one note a day at 8 pm IST.
 
+**Cross out** what you don't want: tap a theatre or format once for *only this* (✅), twice for
+*not this* (❌), and a third time to clear it. Or type it: `superplex forum no 4dx`, `IMAX, not INOX`.
+
+An alert lists each newly open **theatre · format** (dates too, when there are several), with a
+**Book on BookMyShow** button that opens the first open date.
+
 **Other people** can use the same bot: when someone new messages it, the owner gets an Allow button.
 Each person has their own trackers and alerts. Owner commands: `/users`, `/revoke ID`.
 
@@ -33,6 +39,17 @@ BookMyShow doesn't answer Vercel, so for a new tracker the relay starts a one-tr
 
 **District links** are understood (`district.in/movies/...-movie-tickets-in-<city>-MV...`) but district.in
 returns 403 to GitHub's servers, so those trackers show as blocked unless the watcher runs from another network.
+
+## Laptop + GitHub
+
+BookMyShow often refuses GitHub's servers (HTTP 403). Your laptop's home network is not blocked, so the
+laptop can check too: run `laptop\install-task.ps1` once. It checks at :05, :15, ... while you are logged
+on, from its own copy of the repo in `%LOCALAPPDATA%\ticket-bot`, and saves state to GitHub like the
+GitHub run does. The GitHub run skips while the laptop has checked in the last 9 minutes, and does all
+the checks when the laptop is off. Put the bot token and chat id in `%LOCALAPPDATA%\ticket-bot\telegram.env`
+(`TELEGRAM_BOT_TOKEN=...`, `TELEGRAM_CHAT_ID=...`). Log: `%LOCALAPPDATA%\ticket-bot\check.log`.
+
+If BookMyShow can't be read 3 times in a row you get one warning, and one note when it works again.
 
 ## Setup
 
