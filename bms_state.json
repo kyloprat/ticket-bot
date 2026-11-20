@@ -11,5 +11,109 @@
       "20261127": "NOT_OPEN"
     },
     "_epoch": 1
+  },
+  "et00491771-bengaluru": {
+    "shows": {
+      "PVER|63016|20261216|PICTURE  PERFECT": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
+        "price": "680.00",
+        "status": "1"
+      },
+      "PVER|63016|20261216|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "660.00",
+        "status": "2"
+      },
+      "PVER|63016|20261216|PRIME ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PRIME ROWS",
+        "price": "560.00",
+        "status": "2"
+      },
+      "PVER|63016|20261216|CLASSIC PLUS ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "CLASSIC PLUS ROWS",
+        "price": "520.00",
+        "status": "3"
+      },
+      "PVER|63016|20261216|CLASSIC ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "CLASSIC ROWS",
+        "price": "500.00",
+        "status": "3"
+      },
+      "PVER|63017|20261216|PICTURE  PERFECT": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
+        "price": "680.00",
+        "status": "1"
+      },
+      "PVER|63017|20261216|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "660.00",
+        "status": "3"
+      },
+      "PVER|63017|20261216|PRIME ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PRIME ROWS",
+        "price": "560.00",
+        "status": "2"
+      },
+      "PVER|63017|20261216|CLASSIC PLUS ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "CLASSIC PLUS ROWS",
+        "price": "520.00",
+        "status": "3"
+      },
+      "PVER|63017|20261216|CLASSIC ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "CLASSIC ROWS",
+        "price": "500.00",
+        "status": "3"
+      }
+    },
+    "dates": {
+      "20261121": "NOT_OPEN",
+      "20261122": "NOT_OPEN",
+      "20261123": "NOT_OPEN",
+      "20261124": "NOT_OPEN",
+      "20261125": "NOT_OPEN",
+      "20261126": "NOT_OPEN",
+      "20261127": "NOT_OPEN"
+    },
+    "_epoch": 0
   }
 }
