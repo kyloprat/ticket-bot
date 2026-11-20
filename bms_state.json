@@ -14,15 +14,6 @@
   },
   "et00491771-bengaluru": {
     "shows": {
-      "PVFF|58817|20261216|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
-        "time": "07:10 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "2000.00",
-        "status": "2"
-      },
       "PVFF|58817|20261216|PICTURE  PERFECT": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
         "time": "07:10 PM",
@@ -31,6 +22,15 @@
         "cat": "PICTURE  PERFECT",
         "price": "2000.00",
         "status": "1"
+      },
+      "PVFF|58817|20261216|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
+        "time": "07:10 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXTRA LEGROOM ROWS",
+        "price": "2000.00",
+        "status": "2"
       },
       "PVFF|58817|20261216|PRIME ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
@@ -66,7 +66,7 @@
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
         "price": "2000.00",
-        "status": "2"
+        "status": "1"
       },
       "PVFF|58818|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
@@ -111,7 +111,7 @@
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
         "price": "700.00",
-        "status": "1"
+        "status": "2"
       },
       "PVER|63016|20261216|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
