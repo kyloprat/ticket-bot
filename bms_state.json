@@ -21,7 +21,7 @@
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
         "price": "700.00",
-        "status": "1"
+        "status": "0"
       },
       "PVER|63016|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Vega City, Bannerghatta Road",
@@ -83,7 +83,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PRIME ROWS",
-        "price": "560.00",
+        "price": "580.00",
         "status": "2"
       },
       "PVER|63017|20261216|CLASSIC PLUS ROWS": {
@@ -92,7 +92,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "520.00",
+        "price": "540.00",
         "status": "3"
       },
       "PVER|63017|20261216|CLASSIC ROWS": {
