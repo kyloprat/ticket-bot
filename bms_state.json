@@ -66,7 +66,7 @@
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
         "price": "2000.00",
-        "status": "1"
+        "status": "2"
       },
       "PVFF|58818|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
@@ -111,7 +111,7 @@
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
         "price": "700.00",
-        "status": "2"
+        "status": "1"
       },
       "PVER|63016|20261216|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
