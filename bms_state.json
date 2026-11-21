@@ -201,7 +201,7 @@
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
         "price": "2000.00",
-        "status": "2"
+        "status": "1"
       },
       "PVWW|45003|20261216|PRIME ROWS": {
         "venue": "PVR: VR Bengaluru, Whitefield Road",
@@ -362,7 +362,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
-        "price": "1400.00",
+        "price": "1500.00",
         "status": "2"
       },
       "INMB|76928|20261216|EXTRA LEGROOM ROWS": {
@@ -417,7 +417,7 @@
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
         "price": "1400.00",
-        "status": "2"
+        "status": "3"
       },
       "INMB|76929|20261216|PRIME ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
