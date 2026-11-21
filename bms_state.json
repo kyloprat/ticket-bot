@@ -149,21 +149,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63017|20261216|PICTURE  PERFECT": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "10:00 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
-        "status": "0"
-      },
       "PVER|63017|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "10:00 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "2300.00",
+        "status": "0"
+      },
+      "PVER|63017|20261216|PICTURE  PERFECT": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
         "price": "2300.00",
         "status": "0"
       },
@@ -200,8 +200,8 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
-        "price": "1800.00",
-        "status": "3"
+        "price": "1900.00",
+        "status": "2"
       },
       "PVWW|45003|20261216|PRIME ROWS": {
         "venue": "PVR: VR Bengaluru, Whitefield Road",
