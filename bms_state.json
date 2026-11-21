@@ -59,21 +59,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVFF|58818|20261216|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "2300.00",
-        "status": "0"
-      },
       "PVFF|58818|20261216|PICTURE  PERFECT": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
+        "price": "2300.00",
+        "status": "0"
+      },
+      "PVFF|58818|20261216|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "2300.00",
         "status": "0"
       },
