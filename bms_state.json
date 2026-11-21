@@ -104,6 +104,60 @@
         "price": "1500.00",
         "status": "3"
       },
+      "CFBS|19027|20261216|NORMAL": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "07:05 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "NORMAL",
+        "price": "1700.00",
+        "status": "3"
+      },
+      "CFBS|19027|20261216|EXECUTIVE": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "07:05 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXECUTIVE",
+        "price": "2200.00",
+        "status": "3"
+      },
+      "CFBS|19027|20261216|PREMIUM": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "07:05 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PREMIUM",
+        "price": "2600.00",
+        "status": "3"
+      },
+      "CFBS|19028|20261216|NORMAL": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "NORMAL",
+        "price": "1700.00",
+        "status": "3"
+      },
+      "CFBS|19028|20261216|EXECUTIVE": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXECUTIVE",
+        "price": "2200.00",
+        "status": "3"
+      },
+      "CFBS|19028|20261216|PREMIUM": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PREMIUM",
+        "price": "2600.00",
+        "status": "3"
+      },
       "PVER|63016|20261216|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "06:40 PM",
