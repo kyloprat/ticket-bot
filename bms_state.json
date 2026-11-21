@@ -192,7 +192,7 @@
         "date": "20261216",
         "cat": "CLASSIC PLUS ROWS",
         "price": "1800.00",
-        "status": "2"
+        "status": "1"
       },
       "PVER|63016|20261216|CLASSIC ROWS": {
         "venue": "PVR: Vega City, Bannerghatta Road",
@@ -2300,21 +2300,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69664|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69664|20261220|PICTURE  PERFECT": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69664|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1400.00",
         "status": "3"
       },
@@ -2390,21 +2390,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76946|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76946|20261220|PICTURE  PERFECT": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76946|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1300.00",
         "status": "3"
       },
