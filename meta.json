@@ -2,7 +2,7 @@
   "last_heartbeat": "2026-11-20",
   "results": {
     "et00439706-bengaluru": "0 matching showtimes",
-    "et00491771-bengaluru": "6 matching showtimes"
+    "et00491771-bengaluru": "8 matching showtimes"
   },
   "fails": 0,
   "catalog": {
@@ -45,6 +45,7 @@
       ],
       "venues": [
         "INOX: Galleria Mall, Yelahanka",
+        "INOX: Mantri Square, Malleshwaram",
         "PVR: Global Mall, Mysore Road, Bengaluru",
         "PVR: Nexus (Formerly Forum), Koramangala",
         "PVR: Orion Mall, Dr Rajkumar Road",
@@ -151,8 +152,8 @@
     }
   },
   "card_hash": {
-    "et00491771-bengaluru": "🎬 Dune: Part Three · English\n📍 Bengaluru\n\n🟢 Bookings OPEN: Wed 16 Dec · 8 theatre(s) listed so far\n\nAlert me for:\n📅 any open date (Wed 16 Dec)\n🏛 any theatre\n🎞 IMAX (showing)\n🕐 any time\n\nAvailable: 2D, 2D, ICE, IMAX 2D · 4DX, ICE, IMAX\n\nRight now: 6 matching showtimes\n\nTip: type it in one line, e.g. 6, 7 Nov 7-8 pm 3D PXL Mani Square",
+    "et00491771-bengaluru": "🎬 Dune: Part Three · English\n📍 Bengaluru\n\n🟢 Bookings OPEN: Wed 16 Dec · 9 theatre(s) listed so far\n\nAlert me for:\n📅 any open date (Wed 16 Dec)\n🏛 any theatre\n🎞 IMAX (showing)\n🕐 any time\n\nAvailable: 2D, 2D, ICE, IMAX 2D · 4DX, ICE, IMAX\n\nRight now: 8 matching showtimes\n\nTip: type it in one line, e.g. 6, 7 Nov 7-8 pm 3D PXL Mani Square",
     "et00439706-bengaluru": "🎬 Avengers: Doomsday · English\n📍 Bengaluru\n\n🟢 Bookings OPEN: Thu 17 Dec · 18 theatre(s) listed so far\n\nAlert me for:\n📅 Sat 26 Dec (not listed yet), Sun 27 Dec (not listed yet)\n🏛 superplex (showing it)\n🎞 PXL (showing), not ❌ 4DX\n🕐 any time\n\nAvailable: 2D, DOLBY CINEMA 2D, MS - Inf Vsn 4DX 3D, MS - Infinity Vision, MS InVsn 3D Screen X, MS InfVsn ICE 3D, MS-Infinity Vsn 3d · 2K LASER DOLBY 7.1, 4K ATMOS, 4K DOLBY ATMOS, 4K LASER ATMOS MACRO XE, 4K LASER DOLBY 7.1, ATMOS, BIGPIX, DOLBY 7.1, DOLBY CINEMAS, ICE, Infinity Vision 2D, Infinity Vision 3D, LASER, PXL, SCREEN X\n\nRight now: 0 matching showtimes\n\nTip: type it in one line, e.g. 6, 7 Nov 7-8 pm 3D PXL Mani Square"
   },
-  "laptop_ok_at": "2026-11-21T12:45+05:30"
+  "laptop_ok_at": "2026-11-21T12:55+05:30"
 }
