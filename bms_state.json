@@ -59,15 +59,6 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVFF|58818|20261216|PICTURE  PERFECT": {
-        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
-        "status": "0"
-      },
       "PVFF|58818|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
         "time": "10:30 PM",
@@ -76,6 +67,15 @@
         "cat": "EXTRA LEGROOM ROWS",
         "price": "2300.00",
         "status": "1"
+      },
+      "PVFF|58818|20261216|PICTURE  PERFECT": {
+        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
+        "price": "2300.00",
+        "status": "0"
       },
       "PVFF|58818|20261216|PRIME ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
@@ -201,7 +201,7 @@
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
         "price": "1800.00",
-        "status": "2"
+        "status": "3"
       },
       "PVWW|45003|20261216|PRIME ROWS": {
         "venue": "PVR: VR Bengaluru, Whitefield Road",
@@ -311,21 +311,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69644|20261216|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69644|20261216|PICTURE  PERFECT": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69644|20261216|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1400.00",
         "status": "3"
       },
@@ -356,21 +356,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INMB|76928|20261216|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "07:10 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76928|20261216|PICTURE  PERFECT": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "07:10 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76928|20261216|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "07:10 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1300.00",
         "status": "3"
       },
