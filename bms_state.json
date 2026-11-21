@@ -284,21 +284,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INMB|76928|20261216|PICTURE  PERFECT": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "07:10 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "PICTURE  PERFECT",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76928|20261216|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "07:10 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76928|20261216|PICTURE  PERFECT": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "07:10 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
         "price": "1300.00",
         "status": "3"
       },
@@ -345,7 +345,7 @@
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
         "price": "1300.00",
-        "status": "3"
+        "status": "2"
       },
       "INMB|76929|20261216|PRIME ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
