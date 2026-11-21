@@ -237,7 +237,7 @@
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
         "price": "1900.00",
-        "status": "3"
+        "status": "2"
       },
       "PVWW|45004|20261216|PRIME ROWS": {
         "venue": "PVR: VR Bengaluru, Whitefield Road",
@@ -311,21 +311,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69644|20261216|PICTURE  PERFECT": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "PICTURE  PERFECT",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69644|20261216|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69644|20261216|PICTURE  PERFECT": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
         "price": "1400.00",
         "status": "3"
       },
