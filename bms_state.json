@@ -14,15 +14,6 @@
   },
   "et00491771-bengaluru": {
     "shows": {
-      "PVFF|58817|20261216|PICTURE  PERFECT": {
-        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
-        "time": "07:10 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
-        "status": "0"
-      },
       "PVFF|58817|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
         "time": "07:10 PM",
@@ -31,6 +22,15 @@
         "cat": "EXTRA LEGROOM ROWS",
         "price": "2300.00",
         "status": "1"
+      },
+      "PVFF|58817|20261216|PICTURE  PERFECT": {
+        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
+        "time": "07:10 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
+        "price": "2300.00",
+        "status": "0"
       },
       "PVFF|58817|20261216|PRIME ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
@@ -59,21 +59,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVFF|58818|20261216|PICTURE  PERFECT": {
-        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
-        "status": "0"
-      },
       "PVFF|58818|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "2300.00",
+        "status": "0"
+      },
+      "PVFF|58818|20261216|PICTURE  PERFECT": {
+        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
         "price": "2300.00",
         "status": "0"
       },
@@ -158,21 +158,21 @@
         "price": "2600.00",
         "status": "3"
       },
-      "PVER|63016|20261216|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "06:40 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "2300.00",
-        "status": "0"
-      },
       "PVER|63016|20261216|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "06:40 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
+        "price": "2300.00",
+        "status": "0"
+      },
+      "PVER|63016|20261216|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "2300.00",
         "status": "0"
       },
@@ -264,7 +264,7 @@
         "date": "20261216",
         "cat": "PRIME ROWS",
         "price": "1600.00",
-        "status": "3"
+        "status": "2"
       },
       "PVWW|45003|20261216|CLASSIC PLUS ROWS": {
         "venue": "PVR: VR Bengaluru, Whitefield Road",
@@ -687,7 +687,7 @@
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
         "price": "2200.00",
-        "status": "2"
+        "status": "3"
       },
       "PVFF|58848|20261219|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
@@ -725,13 +725,40 @@
         "price": "1500.00",
         "status": "3"
       },
+      "CFBS|19047|20261219|NORMAL": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "09:20 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "NORMAL",
+        "price": "1900.00",
+        "status": "3"
+      },
+      "CFBS|19047|20261219|EXECUTIVE": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "09:20 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "EXECUTIVE",
+        "price": "1950.00",
+        "status": "3"
+      },
+      "CFBS|19047|20261219|PREMIUM": {
+        "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
+        "time": "09:20 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PREMIUM",
+        "price": "2000.00",
+        "status": "3"
+      },
       "CFBS|19037|20261219|NORMAL": {
         "venue": "Cinepolis: Nexus Shantiniketan, Bengaluru",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "NORMAL",
-        "price": "1700.00",
+        "price": "1900.00",
         "status": "3"
       },
       "CFBS|19037|20261219|EXECUTIVE": {
@@ -740,7 +767,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXECUTIVE",
-        "price": "2200.00",
+        "price": "1950.00",
         "status": "3"
       },
       "CFBS|19037|20261219|PREMIUM": {
@@ -749,7 +776,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PREMIUM",
-        "price": "2600.00",
+        "price": "2000.00",
         "status": "3"
       },
       "CFBS|19038|20261219|NORMAL": {
@@ -758,7 +785,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "NORMAL",
-        "price": "1700.00",
+        "price": "1900.00",
         "status": "3"
       },
       "CFBS|19038|20261219|EXECUTIVE": {
@@ -767,7 +794,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXECUTIVE",
-        "price": "2200.00",
+        "price": "1950.00",
         "status": "3"
       },
       "CFBS|19038|20261219|PREMIUM": {
@@ -776,7 +803,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PREMIUM",
-        "price": "2600.00",
+        "price": "2000.00",
         "status": "3"
       },
       "CFBS|19039|20261219|NORMAL": {
@@ -785,7 +812,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "NORMAL",
-        "price": "1700.00",
+        "price": "1900.00",
         "status": "3"
       },
       "CFBS|19039|20261219|EXECUTIVE": {
@@ -794,7 +821,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXECUTIVE",
-        "price": "2200.00",
+        "price": "1950.00",
         "status": "3"
       },
       "CFBS|19039|20261219|PREMIUM": {
@@ -803,7 +830,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PREMIUM",
-        "price": "2600.00",
+        "price": "2000.00",
         "status": "3"
       },
       "CFBS|19040|20261219|NORMAL": {
@@ -812,7 +839,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "NORMAL",
-        "price": "1700.00",
+        "price": "1900.00",
         "status": "3"
       },
       "CFBS|19040|20261219|EXECUTIVE": {
@@ -821,7 +848,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXECUTIVE",
-        "price": "2200.00",
+        "price": "1950.00",
         "status": "3"
       },
       "CFBS|19040|20261219|PREMIUM": {
@@ -830,16 +857,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PREMIUM",
-        "price": "2600.00",
-        "status": "3"
-      },
-      "PVER|63049|20261219|PICTURE  PERFECT": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "08:40 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1800.00",
+        "price": "2000.00",
         "status": "3"
       },
       "PVER|63049|20261219|EXTRA LEGROOM ROWS": {
@@ -848,6 +866,15 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63049|20261219|PICTURE  PERFECT": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "08:40 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1800.00",
         "status": "3"
       },
@@ -1013,21 +1040,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63053|20261219|PICTURE  PERFECT": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "10:00 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63053|20261219|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "10:00 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63053|20261219|PICTURE  PERFECT": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1800.00",
         "status": "3"
       },
@@ -1103,21 +1130,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69656|20261219|PICTURE  PERFECT": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69656|20261219|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69656|20261219|PICTURE  PERFECT": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1400.00",
         "status": "3"
       },
@@ -1283,21 +1310,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INMB|76940|20261219|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "09:10 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76940|20261219|PICTURE  PERFECT": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "09:10 AM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76940|20261219|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "09:10 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1300.00",
         "status": "3"
       },
@@ -1328,21 +1355,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76941|20261219|PICTURE  PERFECT": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76941|20261219|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76941|20261219|PICTURE  PERFECT": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1300.00",
         "status": "3"
       },
@@ -1463,21 +1490,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76944|20261219|PICTURE  PERFECT": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76944|20261219|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76944|20261219|PICTURE  PERFECT": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1300.00",
         "status": "3"
       },
@@ -1560,7 +1587,7 @@
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
         "price": "2200.00",
-        "status": "3"
+        "status": "2"
       },
       "PVFF|58850|20261220|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
@@ -1643,21 +1670,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVFF|58852|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
-        "time": "07:10 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
-        "status": "3"
-      },
       "PVFF|58852|20261220|PICTURE  PERFECT": {
         "venue": "PVR: Nexus (Formerly Forum), Koramangala",
         "time": "07:10 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "2100.00",
+        "status": "3"
+      },
+      "PVFF|58852|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
+        "time": "07:10 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "2100.00",
         "status": "3"
       },
@@ -1868,21 +1895,21 @@
         "price": "2000.00",
         "status": "3"
       },
-      "PVER|63054|20261220|PICTURE  PERFECT": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "08:40 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "PICTURE  PERFECT",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63054|20261220|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "08:40 AM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63054|20261220|PICTURE  PERFECT": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "08:40 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "PICTURE  PERFECT",
         "price": "1800.00",
         "status": "3"
       },
@@ -2003,21 +2030,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63057|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "06:40 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63057|20261220|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "06:40 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63057|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1800.00",
         "status": "3"
       },
@@ -2363,21 +2390,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76946|20261220|PICTURE  PERFECT": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "PICTURE  PERFECT",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76946|20261220|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76946|20261220|PICTURE  PERFECT": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "PICTURE  PERFECT",
         "price": "1300.00",
         "status": "3"
       },
@@ -2551,14 +2578,7 @@
       "20261221": "NOT_OPEN",
       "20261222": "NOT_OPEN",
       "20261223": "NOT_OPEN",
-      "20261224": "NOT_OPEN",
-      "20261121": "NOT_OPEN",
-      "20261122": "NOT_OPEN",
-      "20261123": "NOT_OPEN",
-      "20261124": "NOT_OPEN",
-      "20261125": "NOT_OPEN",
-      "20261126": "NOT_OPEN",
-      "20261127": "NOT_OPEN"
+      "20261224": "NOT_OPEN"
     },
     "_epoch": 0
   }
