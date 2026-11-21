@@ -20,7 +20,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
+        "price": "2000.00",
         "status": "0"
       },
       "PVFF|58817|20261216|EXTRA LEGROOM ROWS": {
@@ -29,7 +29,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2300.00",
+        "price": "2000.00",
         "status": "1"
       },
       "PVFF|58817|20261216|PRIME ROWS": {
@@ -38,7 +38,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PRIME ROWS",
-        "price": "2100.00",
+        "price": "1800.00",
         "status": "2"
       },
       "PVFF|58817|20261216|CLASSIC PLUS ROWS": {
@@ -47,7 +47,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1800.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58817|20261216|CLASSIC ROWS": {
@@ -56,7 +56,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58818|20261216|EXTRA LEGROOM ROWS": {
@@ -65,7 +65,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2300.00",
+        "price": "2000.00",
         "status": "0"
       },
       "PVFF|58818|20261216|PICTURE  PERFECT": {
@@ -74,7 +74,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
+        "price": "2000.00",
         "status": "0"
       },
       "PVFF|58818|20261216|PRIME ROWS": {
@@ -83,7 +83,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "PRIME ROWS",
-        "price": "2100.00",
+        "price": "1800.00",
         "status": "2"
       },
       "PVFF|58818|20261216|CLASSIC PLUS ROWS": {
@@ -92,7 +92,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1800.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58818|20261216|CLASSIC ROWS": {
@@ -101,7 +101,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "CFBS|19027|20261216|NORMAL": {
@@ -203,21 +203,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63017|20261216|PICTURE  PERFECT": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "10:00 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261216",
-        "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
-        "status": "0"
-      },
       "PVER|63017|20261216|EXTRA LEGROOM ROWS": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "10:00 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261216",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "2300.00",
+        "status": "0"
+      },
+      "PVER|63017|20261216|PICTURE  PERFECT": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261216",
+        "cat": "PICTURE  PERFECT",
         "price": "2300.00",
         "status": "0"
       },
@@ -506,7 +506,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
-        "price": "2200.00",
+        "price": "1600.00",
         "status": "3"
       },
       "PVFF|58844|20261219|EXTRA LEGROOM ROWS": {
@@ -515,7 +515,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58844|20261219|PRIME ROWS": {
@@ -524,7 +524,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58844|20261219|CLASSIC PLUS ROWS": {
@@ -533,7 +533,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58844|20261219|CLASSIC ROWS": {
@@ -542,7 +542,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58845|20261219|PICTURE  PERFECT": {
@@ -551,7 +551,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
+        "price": "2000.00",
         "status": "2"
       },
       "PVFF|58845|20261219|EXTRA LEGROOM ROWS": {
@@ -560,7 +560,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2200.00",
+        "price": "1600.00",
         "status": "3"
       },
       "PVFF|58845|20261219|PRIME ROWS": {
@@ -569,7 +569,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58845|20261219|CLASSIC PLUS ROWS": {
@@ -578,7 +578,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58845|20261219|CLASSIC ROWS": {
@@ -587,7 +587,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58846|20261219|PICTURE  PERFECT": {
@@ -596,7 +596,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
+        "price": "2000.00",
         "status": "1"
       },
       "PVFF|58846|20261219|EXTRA LEGROOM ROWS": {
@@ -605,7 +605,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58846|20261219|PRIME ROWS": {
@@ -614,7 +614,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58846|20261219|CLASSIC PLUS ROWS": {
@@ -623,7 +623,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58846|20261219|CLASSIC ROWS": {
@@ -632,7 +632,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58847|20261219|PICTURE  PERFECT": {
@@ -641,7 +641,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
-        "price": "2300.00",
+        "price": "2000.00",
         "status": "2"
       },
       "PVFF|58847|20261219|EXTRA LEGROOM ROWS": {
@@ -650,7 +650,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58847|20261219|PRIME ROWS": {
@@ -659,7 +659,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58847|20261219|CLASSIC PLUS ROWS": {
@@ -668,7 +668,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58847|20261219|CLASSIC ROWS": {
@@ -677,7 +677,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58848|20261219|PICTURE  PERFECT": {
@@ -686,7 +686,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
-        "price": "2200.00",
+        "price": "1600.00",
         "status": "2"
       },
       "PVFF|58848|20261219|EXTRA LEGROOM ROWS": {
@@ -695,7 +695,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58848|20261219|PRIME ROWS": {
@@ -704,7 +704,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58848|20261219|CLASSIC PLUS ROWS": {
@@ -713,7 +713,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58848|20261219|CLASSIC ROWS": {
@@ -722,7 +722,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "CFBS|19047|20261219|NORMAL": {
@@ -1040,21 +1040,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63053|20261219|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "10:00 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63053|20261219|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "10:00 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63053|20261219|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1800.00",
         "status": "3"
       },
@@ -1085,21 +1085,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "INRZ|69655|20261219|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "09:10 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69655|20261219|PICTURE  PERFECT": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "09:10 AM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69655|20261219|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "09:10 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1400.00",
         "status": "3"
       },
@@ -1130,21 +1130,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69656|20261219|PICTURE  PERFECT": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69656|20261219|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69656|20261219|PICTURE  PERFECT": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1400.00",
         "status": "3"
       },
@@ -1220,21 +1220,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69658|20261219|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "07:10 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69658|20261219|PICTURE  PERFECT": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "07:10 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69658|20261219|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "07:10 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1400.00",
         "status": "3"
       },
@@ -1265,21 +1265,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69659|20261219|PICTURE  PERFECT": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69659|20261219|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69659|20261219|PICTURE  PERFECT": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1400.00",
         "status": "3"
       },
@@ -1310,21 +1310,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INMB|76940|20261219|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "09:10 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76940|20261219|PICTURE  PERFECT": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "09:10 AM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "PICTURE  PERFECT",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76940|20261219|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "09:10 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1300.00",
         "status": "3"
       },
@@ -1355,21 +1355,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76941|20261219|PICTURE  PERFECT": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76941|20261219|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76941|20261219|PICTURE  PERFECT": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1300.00",
         "status": "3"
       },
@@ -1490,21 +1490,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76944|20261219|PICTURE  PERFECT": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261219",
-        "cat": "PICTURE  PERFECT",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76944|20261219|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261219",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76944|20261219|PICTURE  PERFECT": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261219",
+        "cat": "PICTURE  PERFECT",
         "price": "1300.00",
         "status": "3"
       },
@@ -1541,7 +1541,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
-        "price": "2200.00",
+        "price": "1600.00",
         "status": "3"
       },
       "PVFF|58849|20261220|EXTRA LEGROOM ROWS": {
@@ -1550,7 +1550,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58849|20261220|PRIME ROWS": {
@@ -1559,7 +1559,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58849|20261220|CLASSIC PLUS ROWS": {
@@ -1568,7 +1568,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58849|20261220|CLASSIC ROWS": {
@@ -1577,7 +1577,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58850|20261220|PICTURE  PERFECT": {
@@ -1586,7 +1586,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
-        "price": "2200.00",
+        "price": "1600.00",
         "status": "2"
       },
       "PVFF|58850|20261220|EXTRA LEGROOM ROWS": {
@@ -1595,7 +1595,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58850|20261220|PRIME ROWS": {
@@ -1604,7 +1604,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58850|20261220|CLASSIC PLUS ROWS": {
@@ -1613,7 +1613,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58850|20261220|CLASSIC ROWS": {
@@ -1622,7 +1622,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58851|20261220|PICTURE  PERFECT": {
@@ -1631,7 +1631,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
-        "price": "2200.00",
+        "price": "1600.00",
         "status": "2"
       },
       "PVFF|58851|20261220|EXTRA LEGROOM ROWS": {
@@ -1640,7 +1640,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58851|20261220|PRIME ROWS": {
@@ -1649,7 +1649,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58851|20261220|CLASSIC PLUS ROWS": {
@@ -1658,7 +1658,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58851|20261220|CLASSIC ROWS": {
@@ -1667,7 +1667,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "PVFF|58852|20261220|PICTURE  PERFECT": {
@@ -1676,7 +1676,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58852|20261220|EXTRA LEGROOM ROWS": {
@@ -1685,7 +1685,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58852|20261220|PRIME ROWS": {
@@ -1694,7 +1694,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58852|20261220|CLASSIC PLUS ROWS": {
@@ -1703,7 +1703,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58852|20261220|CLASSIC ROWS": {
@@ -1712,6 +1712,15 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC ROWS",
+        "price": "1200.00",
+        "status": "3"
+      },
+      "PVFF|58853|20261220|PICTURE  PERFECT": {
+        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "PICTURE  PERFECT",
         "price": "1500.00",
         "status": "3"
       },
@@ -1721,16 +1730,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
-        "price": "2100.00",
-        "status": "3"
-      },
-      "PVFF|58853|20261220|PICTURE  PERFECT": {
-        "venue": "PVR: Nexus (Formerly Forum), Koramangala",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "PICTURE  PERFECT",
-        "price": "2100.00",
+        "price": "1500.00",
         "status": "3"
       },
       "PVFF|58853|20261220|PRIME ROWS": {
@@ -1739,7 +1739,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PRIME ROWS",
-        "price": "1900.00",
+        "price": "1400.00",
         "status": "3"
       },
       "PVFF|58853|20261220|CLASSIC PLUS ROWS": {
@@ -1748,7 +1748,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC PLUS ROWS",
-        "price": "1700.00",
+        "price": "1300.00",
         "status": "3"
       },
       "PVFF|58853|20261220|CLASSIC ROWS": {
@@ -1757,7 +1757,7 @@
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "CLASSIC ROWS",
-        "price": "1500.00",
+        "price": "1200.00",
         "status": "3"
       },
       "CFBS|19048|20261220|NORMAL": {
@@ -1895,21 +1895,21 @@
         "price": "2000.00",
         "status": "3"
       },
-      "PVER|63054|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "08:40 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63054|20261220|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "08:40 AM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63054|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "08:40 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1800.00",
         "status": "3"
       },
@@ -1985,21 +1985,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63056|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "03:20 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63056|20261220|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "03:20 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "2200.00",
+        "status": "3"
+      },
+      "PVER|63056|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "03:20 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1800.00",
         "status": "3"
       },
@@ -2030,21 +2030,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63057|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "06:40 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63057|20261220|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "06:40 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63057|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "06:40 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1800.00",
         "status": "3"
       },
@@ -2075,21 +2075,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "PVER|63058|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "PVR: Vega City, Bannerghatta Road",
-        "time": "10:00 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1800.00",
-        "status": "3"
-      },
       "PVER|63058|20261220|PICTURE  PERFECT": {
         "venue": "PVR: Vega City, Bannerghatta Road",
         "time": "10:00 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1800.00",
+        "status": "3"
+      },
+      "PVER|63058|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "PVR: Vega City, Bannerghatta Road",
+        "time": "10:00 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1800.00",
         "status": "3"
       },
@@ -2120,21 +2120,21 @@
         "price": "1500.00",
         "status": "3"
       },
-      "INRZ|69660|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "09:10 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69660|20261220|PICTURE  PERFECT": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "09:10 AM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69660|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "09:10 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1400.00",
         "status": "3"
       },
@@ -2165,21 +2165,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69661|20261220|PICTURE  PERFECT": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "PICTURE  PERFECT",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69661|20261220|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69661|20261220|PICTURE  PERFECT": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "PICTURE  PERFECT",
         "price": "1400.00",
         "status": "3"
       },
@@ -2255,21 +2255,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69663|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "07:10 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69663|20261220|PICTURE  PERFECT": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "07:10 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69663|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "07:10 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1400.00",
         "status": "3"
       },
@@ -2300,21 +2300,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INRZ|69664|20261220|PICTURE  PERFECT": {
-        "venue": "INOX: Galleria Mall, Yelahanka",
-        "time": "10:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "PICTURE  PERFECT",
-        "price": "1400.00",
-        "status": "3"
-      },
       "INRZ|69664|20261220|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Galleria Mall, Yelahanka",
         "time": "10:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1400.00",
+        "status": "3"
+      },
+      "INRZ|69664|20261220|PICTURE  PERFECT": {
+        "venue": "INOX: Galleria Mall, Yelahanka",
+        "time": "10:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "PICTURE  PERFECT",
         "price": "1400.00",
         "status": "3"
       },
@@ -2345,21 +2345,21 @@
         "price": "1200.00",
         "status": "3"
       },
-      "INMB|76945|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "09:10 AM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76945|20261220|PICTURE  PERFECT": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "09:10 AM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76945|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "09:10 AM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1300.00",
         "status": "3"
       },
@@ -2390,21 +2390,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76946|20261220|PICTURE  PERFECT": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "12:30 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "PICTURE  PERFECT",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76946|20261220|EXTRA LEGROOM ROWS": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "12:30 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "EXTRA LEGROOM ROWS",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76946|20261220|PICTURE  PERFECT": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "12:30 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "PICTURE  PERFECT",
         "price": "1300.00",
         "status": "3"
       },
@@ -2435,21 +2435,21 @@
         "price": "1000.00",
         "status": "3"
       },
-      "INMB|76947|20261220|EXTRA LEGROOM ROWS": {
-        "venue": "INOX: Mantri Square, Malleshwaram",
-        "time": "03:50 PM",
-        "fmt": "IMAX 2D IMAX",
-        "date": "20261220",
-        "cat": "EXTRA LEGROOM ROWS",
-        "price": "1300.00",
-        "status": "3"
-      },
       "INMB|76947|20261220|PICTURE  PERFECT": {
         "venue": "INOX: Mantri Square, Malleshwaram",
         "time": "03:50 PM",
         "fmt": "IMAX 2D IMAX",
         "date": "20261220",
         "cat": "PICTURE  PERFECT",
+        "price": "1300.00",
+        "status": "3"
+      },
+      "INMB|76947|20261220|EXTRA LEGROOM ROWS": {
+        "venue": "INOX: Mantri Square, Malleshwaram",
+        "time": "03:50 PM",
+        "fmt": "IMAX 2D IMAX",
+        "date": "20261220",
+        "cat": "EXTRA LEGROOM ROWS",
         "price": "1300.00",
         "status": "3"
       },
